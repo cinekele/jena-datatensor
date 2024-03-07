@@ -1,15 +1,13 @@
 package pl.edu.pw.mini.jena.datatensor.datatypes.utils.mapper;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.exc.InvalidTypeIdException;
-import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import org.nd4j.linalg.api.buffer.DataType;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 import pl.edu.pw.mini.jena.datatensor.datatypes.utils.parser.*;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -69,16 +67,14 @@ public class Mapper {
         return data;
     }
 
-    public static INDArray mapJsonToINDArray(String json) throws IOException {
+    public static INDArray mapJsonToINDArray(String json) throws IllegalArgumentException {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, true);
 
         JSONData jsonData;
         try {
             jsonData = objectMapper.readValue(json, JSONData.class);
-        } catch (InvalidTypeIdException e) {
-            throw new IllegalArgumentException("Error parsing tensor: " + e.getMessage());
-        } catch (MismatchedInputException e) {
+        } catch (JsonProcessingException e) {
             throw new IllegalArgumentException("Error parsing tensor: " + e.getMessage());
         }
 

@@ -1,7 +1,9 @@
 package pl.edu.pw.mini.jena.datatensor.datatypes.implementations;
 
 import org.apache.jena.graph.impl.LiteralLabel;
+import org.nd4j.linalg.api.ndarray.INDArray;
 import pl.edu.pw.mini.jena.datatensor.datatypes.DataTensor;
+import pl.edu.pw.mini.jena.datatensor.datatypes.utils.mapper.Mapper;
 
 public class NumericDataTensor extends DataTensor {
 
@@ -14,14 +16,39 @@ public class NumericDataTensor extends DataTensor {
     }
 
 
-    public boolean isValidValue(LiteralLabel literalLabel) {
-        return literalLabel instanceof Number;
+    @Override
+    public boolean isValidLiteral(LiteralLabel lexicalForm) {
+        try {
+            Mapper.mapJsonToINDArray(lexicalForm.getLexicalForm());
+            return true;
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
     }
 
-    public Object parse(String lexicalForm) {
-        return null;
+    @Override
+    public boolean isValidValue(Object value) {
+        return value instanceof INDArray;
     }
 
+    @Override
+    public Object parse(String lexicalForm) throws IllegalArgumentException {
+        return Mapper.mapJsonToINDArray(lexicalForm);
+    }
 
+    @Override
+    public String unparse(Object value) {
+        return Mapper.mapINDArrayToJson((INDArray) value);
+    }
+
+    @Override
+    public boolean isEqual(LiteralLabel value1, LiteralLabel value2) {
+        if (value1.getDatatype() instanceof NumericDataTensor && value2.getDatatype() instanceof NumericDataTensor) {
+            INDArray array1 = (INDArray) value1.getValue();
+            INDArray array2 = (INDArray) value2.getValue();
+            return array1.equals(array2);
+        }
+        return false;
+    }
 
 }

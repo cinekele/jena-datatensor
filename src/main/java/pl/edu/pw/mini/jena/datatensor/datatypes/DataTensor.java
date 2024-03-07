@@ -2,6 +2,7 @@ package pl.edu.pw.mini.jena.datatensor.datatypes;
 
 import org.apache.jena.datatypes.BaseDatatype;
 import org.apache.jena.datatypes.TypeMapper;
+import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.NumericDataTensor;
 
 
 /**
@@ -10,6 +11,7 @@ import org.apache.jena.datatypes.TypeMapper;
 public class DataTensor extends BaseDatatype {
     public static final String URI = "http://example.org/data-tensor#";
     protected Class<?> javaClass = null;
+    public static final DataTensor numericDataTensor = new NumericDataTensor(URI + "NumericDataTensor");
 
 
     public DataTensor(String uri) {
@@ -26,6 +28,7 @@ public class DataTensor extends BaseDatatype {
 
     public static void registerDataTensorDatatypes(TypeMapper typeMapper) {
         if (!isDatatypesRegistered) {
+            typeMapper.registerDatatype(numericDataTensor);
             isDatatypesRegistered = true;
         }
 
