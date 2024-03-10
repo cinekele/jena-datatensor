@@ -3,9 +3,11 @@ package pl.edu.pw.mini.jena.datatensor.datatypes.implementations;
 import org.apache.jena.graph.impl.LiteralLabel;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import pl.edu.pw.mini.jena.datatensor.datatypes.DataTensor;
-import pl.edu.pw.mini.jena.datatensor.datatypes.utils.mapper.Mapper;
+import pl.edu.pw.mini.jena.datatensor.datatypes.utils.mapper.NumericMapper;
 
 public class NumericDataTensor extends DataTensor {
+
+    public static final NumericDataTensor INSTANCE = new NumericDataTensor(URI + "NumericDataTensor");
 
     public NumericDataTensor(String uri) {
         super(uri);
@@ -19,7 +21,7 @@ public class NumericDataTensor extends DataTensor {
     @Override
     public boolean isValidLiteral(LiteralLabel lexicalForm) {
         try {
-            Mapper.mapJsonToINDArray(lexicalForm.getLexicalForm());
+            NumericMapper.mapJsonToINDArray(lexicalForm.getLexicalForm());
             return true;
         } catch (IllegalArgumentException e) {
             return false;
@@ -33,12 +35,12 @@ public class NumericDataTensor extends DataTensor {
 
     @Override
     public Object parse(String lexicalForm) throws IllegalArgumentException {
-        return Mapper.mapJsonToINDArray(lexicalForm);
+        return NumericMapper.mapJsonToINDArray(lexicalForm);
     }
 
     @Override
     public String unparse(Object value) {
-        return Mapper.mapINDArrayToJson((INDArray) value);
+        return NumericMapper.mapINDArrayToJson((INDArray) value);
     }
 
     @Override
