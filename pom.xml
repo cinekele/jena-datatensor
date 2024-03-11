@@ -4,7 +4,7 @@
 
     <groupId>pl.edu.mini.pw</groupId>
     <artifactId>jena-datatensor</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>4.10.0</version>
     <packaging>jar</packaging>
     <name>Jena Data Tensor Engine</name>
 
@@ -16,7 +16,7 @@
     </parent>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <automatic.module.name>pl.edu.mini.pw.jena.datatensor</automatic.module.name>
     </properties>
 
     <dependencies>
@@ -112,18 +112,18 @@
                 </executions>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <configuration>
-                    <source>8</source>
-                    <detectJavaApiLink>false</detectJavaApiLink>
-                    <doclint>none</doclint>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-javadoc-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    <source>8</source>-->
+<!--                    <detectJavaApiLink>false</detectJavaApiLink>-->
+<!--                    <doclint>none</doclint>-->
 
-                    <windowtitle>Apache Jena Vec</windowtitle>
-                    <doctitle>Apache Jena Vec</doctitle>
-                </configuration>
-            </plugin>
+<!--                    <windowtitle>Jena Data Tensor Engine</windowtitle>-->
+<!--                    <doctitle>Jena Data Tensor Engine ${project.version}</doctitle>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 </project>

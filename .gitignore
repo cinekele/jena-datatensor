@@ -37,4 +37,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### My personal preferences ###
 /src/main/java/org/nd4j/

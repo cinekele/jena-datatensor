@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Mapper {
+public class NumericMapper {
 
     public static String mapINDArrayToJson(INDArray array) {
         ObjectMapper objectMapper = new ObjectMapper();
