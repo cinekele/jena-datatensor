@@ -17,7 +17,6 @@ public class NumericMapper {
     public static String mapINDArrayToJson(INDArray array) {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        List<Long> shape = Arrays.stream(array.shape()).boxed().collect(Collectors.toList());
 
         String type = array.data().dataType().toString().toLowerCase();
         if (type.equals("int32")) {
@@ -26,7 +25,7 @@ public class NumericMapper {
             type = "long";
         }
 
-        JSONData jsonData = null;
+        JSONData jsonData;
         switch (type) {
             case "double":
                 jsonData = new DoubleJSONData();
@@ -49,10 +48,13 @@ public class NumericMapper {
                 short[] data = getShortArray(array);
                 ((ShortJSONData) jsonData).setData(data);
                 break;
+            case "boolean":
+            case "string":
+                throw new IllegalArgumentException("Boolean data type is not supported");
             default:
                 throw new IllegalArgumentException("Unsupported data type: " + type);
         }
-        jsonData.setShape(shape);
+        jsonData.setShape(array.shape());
 
         try {
             return objectMapper.writeValueAsString(jsonData);
@@ -79,7 +81,7 @@ public class NumericMapper {
         }
 
         INDArray indArray;
-        long[] shape = jsonData.getShape().stream().mapToLong(x -> x).toArray();
+        long[] shape = jsonData.getShape();
 
         switch (jsonData.getType()) {
             case "double":

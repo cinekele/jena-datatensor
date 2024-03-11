@@ -1,9 +1,6 @@
 package pl.edu.pw.mini.jena.datatensor.datatypes.utils.parser;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.*;
 
 import java.util.List;
 
@@ -17,12 +14,14 @@ import static com.fasterxml.jackson.annotation.JsonSubTypes.Type;
         @Type(value = ShortJSONData.class, name = "short"),
         @Type(value = IntJSONData.class, name = "int"),
         @Type(value = LongJSONData.class, name = "long"),
+        @Type(value = StringJSONData.class, name = "string"),
+        @Type(value = BooleanJSONData.class, name = "boolean")
 })
 @JsonPropertyOrder({"type", "shape"})
 abstract public class JSONData {
     @JsonProperty("type")
     private String type;
-    private List<Long> shape;
+    private long[] shape;
 
     public String getType() {
         return type;
@@ -32,11 +31,11 @@ abstract public class JSONData {
         this.type = type;
     }
 
-    public List<Long> getShape() {
+    public long[] getShape() {
         return shape;
     }
 
-    public void setShape(List<Long> shape) {
+    public void setShape(long[] shape) {
         this.shape = shape;
     }
 }
