@@ -1,8 +1,9 @@
 package pl.edu.pw.mini.jena.datatensor.datatypes.utils.parser;
 
-import com.fasterxml.jackson.annotation.*;
-
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import static com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
