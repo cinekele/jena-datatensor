@@ -1,6 +1,7 @@
 package pl.edu.pw.mini.jena.datatensor.datatypes.implementations;
 
 import org.apache.jena.graph.impl.LiteralLabel;
+import org.nd4j.linalg.api.buffer.DataType;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import pl.edu.pw.mini.jena.datatensor.datatypes.BaseDataTensor;
 import pl.edu.pw.mini.jena.datatensor.datatypes.utils.mapper.NumericMapper;
@@ -30,7 +31,12 @@ public class NumericDataTensor extends BaseDataTensor {
 
     @Override
     public boolean isValidValue(Object value) {
-        return value instanceof INDArray;
+        if (value instanceof INDArray) {
+            DataType dataType = ((INDArray) value).dataType();
+            return dataType == DataType.INT32 || dataType == DataType.INT64 || dataType == DataType.FLOAT ||
+                    dataType == DataType.DOUBLE || dataType == DataType.SHORT;
+        }
+        return false;
     }
 
     @Override
