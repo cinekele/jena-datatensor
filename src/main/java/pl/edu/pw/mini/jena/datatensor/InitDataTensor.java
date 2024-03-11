@@ -6,7 +6,7 @@ import org.apache.jena.sparql.function.FunctionRegistry;
 import org.apache.jena.sparql.pfunction.PropertyFunctionRegistry;
 import org.apache.jena.sys.JenaSubsystemLifecycle;
 import org.apache.jena.sys.JenaSystem;
-import pl.edu.pw.mini.jena.datatensor.datatypes.DataTensor;
+import pl.edu.pw.mini.jena.datatensor.datatypes.BaseDataTensor;
 
 public class InitDataTensor implements JenaSubsystemLifecycle {
     private static volatile boolean initalized = false;
@@ -30,7 +30,7 @@ public class InitDataTensor implements JenaSubsystemLifecycle {
             LogCtlJUL.routeJULtoSLF4J();
             JenaSystem.logLifecycle("InitTensSPARQL - start");
             TypeMapper tm = TypeMapper.getInstance();
-            DataTensor.registerDataTensorDatatypes(tm);
+            BaseDataTensor.registerDataTensorDatatypes(tm);
             JenaSystem.logLifecycle("InitTensSPARQL - registered datatype");
             PropertyFunctionRegistry propertyFunctionRegistry = PropertyFunctionRegistry.get();
             FunctionRegistry functionRegistry = FunctionRegistry.get();

@@ -8,18 +8,18 @@ import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.NumericDataTenso
 /**
  * @author piotr.marciniak
  */
-public class DataTensor extends BaseDatatype {
+public class BaseDataTensor extends BaseDatatype {
     public static final String URI = "http://example.org/data-tensor#";
-    public static final DataTensor numericDataTensor = NumericDataTensor.INSTANCE;
+    public static final BaseDataTensor numericDataTensor = NumericDataTensor.INSTANCE;
     private static boolean isDatatypesRegistered = false;
     public Class<?> javaClass = null;
 
-    public DataTensor(String uri) {
+    public BaseDataTensor(String uri) {
         super(uri);
     }
 
 
-    public DataTensor(String uri, Class<?> javaClass) {
+    public BaseDataTensor(String uri, Class<?> javaClass) {
         super(uri);
         this.javaClass = javaClass;
     }

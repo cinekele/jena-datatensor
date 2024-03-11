@@ -2,10 +2,10 @@ package pl.edu.pw.mini.jena.datatensor.datatypes.implementations;
 
 import org.apache.jena.graph.impl.LiteralLabel;
 import org.nd4j.linalg.api.ndarray.INDArray;
-import pl.edu.pw.mini.jena.datatensor.datatypes.DataTensor;
+import pl.edu.pw.mini.jena.datatensor.datatypes.BaseDataTensor;
 import pl.edu.pw.mini.jena.datatensor.datatypes.utils.mapper.NumericMapper;
 
-public class NumericDataTensor extends DataTensor {
+public class NumericDataTensor extends BaseDataTensor {
 
     public static final NumericDataTensor INSTANCE = new NumericDataTensor(URI + "NumericDataTensor");
 
