@@ -7,15 +7,17 @@ import org.junit.Test;
 import org.nd4j.linalg.api.buffer.DataType;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
+import pl.edu.pw.mini.jena.datatensor.datatypes.BaseDataTensor;
 import pl.edu.pw.mini.jena.datatensor.vocabulary.DataTensor;
 
 public class NumericDataTensorTest extends TestCase {
-    private NumericDataTensor numericDataTensor = NumericDataTensor.INSTANCE;
+    private final NumericDataTensor numericDataTensor = NumericDataTensor.INSTANCE;
 
     @Test
     public void testNumericDataTensor() {
         checkRegistration1(
-                DataTensor.numericDataTensor
+                DataTensor.numericDataTensor,
+                "NumericDataTensor"
         );
     }
 
@@ -35,10 +37,9 @@ public class NumericDataTensorTest extends TestCase {
         assertEquals(expected, unparseResult);
     }
 
-
-    private void checkRegistration1(Resource resource) {
-        NumericDataTensor ndt = (NumericDataTensor) NodeFactory.getType("http://example.org/data-tensor#NumericDataTensor");
-        assertNotNull(ndt);
-        assertEquals(ndt.getURI(), resource.getURI());
+    private void checkRegistration1(Resource resource, String resourceName) {
+        BaseDataTensor dt = (BaseDataTensor) NodeFactory.getType(DataTensor.getURI() + resourceName);
+        assertNotNull(dt);
+        assertEquals(dt.getURI(), resource.getURI());
     }
 }

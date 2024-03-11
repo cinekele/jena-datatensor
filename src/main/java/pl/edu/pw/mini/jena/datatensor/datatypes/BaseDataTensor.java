@@ -10,7 +10,6 @@ import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.NumericDataTenso
  */
 public class BaseDataTensor extends BaseDatatype {
     public static final String URI = "http://example.org/data-tensor#";
-    public static final BaseDataTensor numericDataTensor = NumericDataTensor.INSTANCE;
     private static boolean isDatatypesRegistered = false;
     public Class<?> javaClass = null;
 
@@ -26,7 +25,7 @@ public class BaseDataTensor extends BaseDatatype {
 
     public static void registerDataTensorDatatypes(TypeMapper typeMapper) {
         if (!isDatatypesRegistered) {
-            typeMapper.registerDatatype(numericDataTensor);
+            typeMapper.registerDatatype(NumericDataTensor.INSTANCE);
             isDatatypesRegistered = true;
         }
 

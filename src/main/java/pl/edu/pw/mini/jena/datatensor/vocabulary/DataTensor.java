@@ -13,7 +13,7 @@ public class DataTensor {
         numericDataTensor = ResourceFactory.createResource(NumericDataTensor.INSTANCE.getURI());
     }
 
-    static String getURI() {
+    public static String getURI() {
         return NS;
     }
 
