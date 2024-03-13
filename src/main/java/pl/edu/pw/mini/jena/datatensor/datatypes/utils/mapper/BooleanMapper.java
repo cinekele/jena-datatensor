@@ -1,6 +1,8 @@
 package pl.edu.pw.mini.jena.datatensor.datatypes.utils.mapper;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.nd4j.linalg.api.buffer.DataType;
 import org.nd4j.linalg.api.ndarray.INDArray;
@@ -11,7 +13,8 @@ public class BooleanMapper {
 
     public static INDArray mapJSONtoINDArray(String json) {
         ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.registerSubtypes(BooleanJSONData.class);
+        objectMapper.configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, true);
+        objectMapper.disable(MapperFeature.ALLOW_COERCION_OF_SCALARS);
         BooleanJSONData booleanJSONData;
         try {
             booleanJSONData = objectMapper.readValue(json, BooleanJSONData.class);
@@ -26,7 +29,6 @@ public class BooleanMapper {
 
     public static String mapINDArrayToJson(INDArray array) {
         ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.registerSubtypes(BooleanJSONData.class);
         BooleanJSONData booleanJSONData = new BooleanJSONData();
         boolean[] data = getBooleanArray(array);
         booleanJSONData.setData(data);
