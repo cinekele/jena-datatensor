@@ -1,4 +1,4 @@
-package pl.edu.pw.mini.jena.datatensor.datatypes.utils.parser;
+package pl.edu.pw.mini.jena.datatensor.datatypes.utils.jackson;
 
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -8,8 +8,7 @@ public class LongJSONData extends JSONData {
     private long[] data;
 
     public LongJSONData() {
-        super();
-        super.setType("long");
+        super("long");
     }
 
     public long[] getData() {

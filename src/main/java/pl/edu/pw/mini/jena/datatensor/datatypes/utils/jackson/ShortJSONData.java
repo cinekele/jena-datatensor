@@ -1,4 +1,4 @@
-package pl.edu.pw.mini.jena.datatensor.datatypes.utils.parser;
+package pl.edu.pw.mini.jena.datatensor.datatypes.utils.jackson;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
@@ -7,8 +7,7 @@ public class ShortJSONData extends JSONData {
     private short[] data;
 
     public ShortJSONData() {
-        super();
-        super.setType("short");
+        super("short");
     }
 
     public short[] getData() {

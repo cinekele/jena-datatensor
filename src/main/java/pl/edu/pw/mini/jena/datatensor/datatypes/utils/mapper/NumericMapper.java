@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.nd4j.linalg.api.buffer.DataType;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
-import pl.edu.pw.mini.jena.datatensor.datatypes.utils.parser.*;
+import pl.edu.pw.mini.jena.datatensor.datatypes.utils.jackson.*;
 
 public class NumericMapper {
 

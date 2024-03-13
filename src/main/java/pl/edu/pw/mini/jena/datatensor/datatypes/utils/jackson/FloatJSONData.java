@@ -1,4 +1,4 @@
-package pl.edu.pw.mini.jena.datatensor.datatypes.utils.parser;
+package pl.edu.pw.mini.jena.datatensor.datatypes.utils.jackson;
 
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -8,8 +8,7 @@ public class FloatJSONData extends JSONData {
     private float[] data;
 
     public FloatJSONData() {
-        super();
-        super.setType("float");
+        super("float");
     }
 
     public float[] getData() {
