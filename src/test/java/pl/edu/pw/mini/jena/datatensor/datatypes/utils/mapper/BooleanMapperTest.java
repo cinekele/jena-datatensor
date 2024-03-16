@@ -20,7 +20,7 @@ public class BooleanMapperTest extends TestCase {
     public void testMapJSONtoINDArrayWithInvalidValue() {
         String json = "{\"shape\":[2,2],\"data\":[1,false,true,false]}";
         try {
-            INDArray array = BooleanMapper.mapJsontoINDArray(json);
+            BooleanMapper.mapJsontoINDArray(json);
             fail("Expected an IllegalArgumentException to be thrown");
         } catch (IllegalArgumentException e) {
             assertEquals("Invalid JSON format", e.getMessage().substring(0, 19));
