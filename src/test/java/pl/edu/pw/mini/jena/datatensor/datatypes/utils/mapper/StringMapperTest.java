@@ -12,7 +12,7 @@ public class StringMapperTest extends TestCase {
         String json = "{\"type\":\"string\",\"data\":[\"a\",\"b\",\"c\",\"d\"],\"shape\":[2,2]}";
         INDArray expected = Nd4j.create(Arrays.asList("a", "b", "c", "d"), new long[]{2, 2}, 'c');
 
-        INDArray result = StringMapper.mapJSONtoINDArray(json);
+        INDArray result = StringMapper.mapJsonToINDArray(json);
         assertEquals(expected, result);
     }
 
@@ -28,7 +28,7 @@ public class StringMapperTest extends TestCase {
         String json = "";
 
         try {
-            StringMapper.mapJSONtoINDArray(json);
+            StringMapper.mapJsonToINDArray(json);
             fail("Expected an IllegalArgumentException to be thrown");
         } catch (IllegalArgumentException e) {
             assertEquals("Invalid JSON format", e.getMessage().substring(0, 19));

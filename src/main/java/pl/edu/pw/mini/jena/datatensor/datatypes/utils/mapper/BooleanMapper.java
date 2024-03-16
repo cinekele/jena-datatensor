@@ -9,9 +9,9 @@ import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 import pl.edu.pw.mini.jena.datatensor.datatypes.utils.jackson.BooleanJSONData;
 
-public class BooleanMapper {
+public class BooleanMapper implements DataTensorMapper{
 
-    public static INDArray mapJSONtoINDArray(String json) {
+    public static INDArray mapJsontoINDArray(String json) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, true);
         objectMapper.disable(MapperFeature.ALLOW_COERCION_OF_SCALARS);

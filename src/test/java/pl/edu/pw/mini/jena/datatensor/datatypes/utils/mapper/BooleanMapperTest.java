@@ -9,7 +9,7 @@ public class BooleanMapperTest extends TestCase {
 
     public void testMapJSONtoINDArray() {
         String json = "{\"shape\":[2,2],\"data\":[true,false,true,false]}";
-        INDArray array = BooleanMapper.mapJSONtoINDArray(json);
+        INDArray array = BooleanMapper.mapJsontoINDArray(json);
         INDArray expected = Nd4j.create(
                 new boolean[]{true, false, true, false},
                 new long[]{2, 2}, DataType.BOOL);
@@ -20,7 +20,7 @@ public class BooleanMapperTest extends TestCase {
     public void testMapJSONtoINDArrayWithInvalidValue() {
         String json = "{\"shape\":[2,2],\"data\":[1,false,true,false]}";
         try {
-            BooleanMapper.mapJSONtoINDArray(json);
+            INDArray array = BooleanMapper.mapJsontoINDArray(json);
             fail("Expected an IllegalArgumentException to be thrown");
         } catch (IllegalArgumentException e) {
             assertEquals("Invalid JSON format", e.getMessage().substring(0, 19));
@@ -30,7 +30,7 @@ public class BooleanMapperTest extends TestCase {
     public void testMapJSONtoINDArrayWithInvalidJSON() {
         String json = "";
         try {
-            BooleanMapper.mapJSONtoINDArray(json);
+            BooleanMapper.mapJsontoINDArray(json);
             fail("Expected an IllegalArgumentException to be thrown");
         } catch (IllegalArgumentException e) {
             assertEquals("Invalid JSON format", e.getMessage().substring(0, 19));

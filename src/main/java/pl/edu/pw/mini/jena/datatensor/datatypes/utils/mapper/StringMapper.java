@@ -9,9 +9,10 @@ import pl.edu.pw.mini.jena.datatensor.datatypes.utils.jackson.StringJSONData;
 import java.util.Arrays;
 import java.util.List;
 
-public class StringMapper {
+public class StringMapper implements DataTensorMapper {
 
-    public static INDArray mapJSONtoINDArray(String json) {
+
+    public static INDArray mapJsonToINDArray(String json) throws IllegalArgumentException {
 
         ObjectMapper objectMapper = new ObjectMapper();
         StringJSONData stringJSONData;
@@ -28,6 +29,7 @@ public class StringMapper {
         array = array.reshape(shape);
         return array;
     }
+
 
     public static String mapINDArrayToJson(INDArray array) throws IllegalArgumentException {
         ObjectMapper objectMapper = new ObjectMapper();

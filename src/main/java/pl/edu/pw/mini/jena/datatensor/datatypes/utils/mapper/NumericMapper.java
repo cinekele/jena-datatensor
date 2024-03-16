@@ -8,7 +8,7 @@ import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 import pl.edu.pw.mini.jena.datatensor.datatypes.utils.jackson.*;
 
-public class NumericMapper {
+public class NumericMapper implements DataTensorMapper {
 
     public static String mapINDArrayToJson(INDArray array) {
         ObjectMapper objectMapper = new ObjectMapper();
