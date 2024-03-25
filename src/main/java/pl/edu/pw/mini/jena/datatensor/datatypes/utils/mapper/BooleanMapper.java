@@ -12,9 +12,9 @@ import pl.edu.pw.mini.jena.datatensor.datatypes.utils.jackson.BooleanJSONData;
 public class BooleanMapper implements DataTensorMapper {
 
     public static INDArray mapJsonToINDArray(String json) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, true);
-        objectMapper.disable(MapperFeature.ALLOW_COERCION_OF_SCALARS);
+        ObjectMapper objectMapper = new ObjectMapper()
+                .configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, true)
+                .disable(MapperFeature.ALLOW_COERCION_OF_SCALARS);
         BooleanJSONData booleanJSONData;
         try {
             booleanJSONData = objectMapper.readValue(json, BooleanJSONData.class);

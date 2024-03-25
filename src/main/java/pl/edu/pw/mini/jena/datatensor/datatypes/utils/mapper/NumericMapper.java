@@ -1,7 +1,9 @@
 package pl.edu.pw.mini.jena.datatensor.datatypes.utils.mapper;
 
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.nd4j.linalg.api.buffer.DataType;
 import org.nd4j.linalg.api.ndarray.INDArray;
@@ -66,8 +68,9 @@ public class NumericMapper implements DataTensorMapper {
     }
 
     public static INDArray mapJsonToINDArray(String json) throws IllegalArgumentException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, true);
+        ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, true)
+                .configure(DeserializationFeature.ACCEPT_FLOAT_AS_INT, false)
+                .configure(MapperFeature.ALLOW_COERCION_OF_SCALARS, false);
 
         JSONData jsonData;
         try {

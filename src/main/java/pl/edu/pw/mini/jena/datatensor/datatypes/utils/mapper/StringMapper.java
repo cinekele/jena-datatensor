@@ -1,7 +1,11 @@
 package pl.edu.pw.mini.jena.datatensor.datatypes.utils.mapper;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.cfg.CoercionAction;
+import com.fasterxml.jackson.databind.cfg.CoercionInputShape;
+import com.fasterxml.jackson.databind.type.LogicalType;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 import pl.edu.pw.mini.jena.datatensor.datatypes.utils.jackson.StringJSONData;
@@ -14,7 +18,10 @@ public class StringMapper implements DataTensorMapper {
 
     public static INDArray mapJsonToINDArray(String json) throws IllegalArgumentException {
 
-        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectMapper objectMapper = new ObjectMapper().configure(MapperFeature.ALLOW_COERCION_OF_SCALARS, false);
+        objectMapper.coercionConfigFor(LogicalType.Textual).setCoercion(CoercionInputShape.Boolean, CoercionAction.Fail)
+                .setCoercion(CoercionInputShape.Float, CoercionAction.Fail)
+                .setCoercion(CoercionInputShape.Integer, CoercionAction.Fail);
         StringJSONData stringJSONData;
 
         try {
@@ -26,7 +33,6 @@ public class StringMapper implements DataTensorMapper {
         long[] shape = stringJSONData.getShape();
         List<String> data = Arrays.asList(stringJSONData.getData());
         INDArray array = Nd4j.create(data, shape, 'c');
-        array = array.reshape(shape);
         return array;
     }
 
