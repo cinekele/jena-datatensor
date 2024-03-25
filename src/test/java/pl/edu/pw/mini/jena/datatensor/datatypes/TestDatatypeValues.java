@@ -4,6 +4,7 @@ import org.apache.jena.graph.Node;
 import org.apache.jena.graph.NodeFactory;
 import org.junit.Assert;
 import org.junit.Test;
+import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.BooleanDataTensor;
 import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.NumericDataTensor;
 import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.StringDataTensor;
 
@@ -52,6 +53,6 @@ public class TestDatatypeValues {
     private void booleanCompareTest(Boolean expected, String lex1, String lex2) {
         Node d1 = NodeFactory.createLiteral(lex1, null, StringDataTensor.INSTANCE);
         Node d2 = NodeFactory.createLiteral(lex2, null, StringDataTensor.INSTANCE);
-        Assert.assertEquals(expected, StringDataTensor.INSTANCE.isEqual(d1.getLiteral(), d2.getLiteral()));
+        Assert.assertEquals(expected, BooleanDataTensor.INSTANCE.isEqual(d1.getLiteral(), d2.getLiteral()));
     }
 }
