@@ -2,21 +2,23 @@ package pl.edu.pw.mini.jena.datatensor.vocabulary;
 
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.ResourceFactory;
-import pl.edu.pw.mini.jena.datatensor.datatypes.BaseDataTensor;
+import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.BooleanDataTensor;
+import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.NumericDataTensor;
+import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.StringDataTensor;
 
 public class DataTensor {
 
     public static final String NS = "http://example.org/data-tensor#";
-    public static final Resource NumericDataTensor;
+    public static final Resource numericDataTensor;
 
-    public static final Resource StringDataTensor;
+    public static final Resource stringDataTensor;
 
-    public static final Resource BooleanDataTensor;
+    public static final Resource booleanDataTensor;
 
     static {
-        NumericDataTensor = ResourceFactory.createResource(BaseDataTensor.NumericDataTensor.getURI());
-        StringDataTensor = ResourceFactory.createResource(BaseDataTensor.StringDataTensor.getURI());
-        BooleanDataTensor = ResourceFactory.createResource(BaseDataTensor.BooleanDataTensor.getURI());
+        numericDataTensor = ResourceFactory.createResource(NumericDataTensor.INSTANCE.getURI());
+        stringDataTensor = ResourceFactory.createResource(StringDataTensor.INSTANCE.getURI());
+        booleanDataTensor = ResourceFactory.createResource(BooleanDataTensor.INSTANCE.getURI());
     }
 
     public static String getURI() {
