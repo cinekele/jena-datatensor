@@ -5,23 +5,19 @@ import org.apache.jena.graph.impl.LiteralLabel;
 import org.nd4j.linalg.api.buffer.DataType;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import pl.edu.pw.mini.jena.datatensor.datatypes.BaseDataTensor;
-import pl.edu.pw.mini.jena.datatensor.datatypes.utils.mapper.NumericMapper;
+import pl.edu.pw.mini.jena.datatensor.datatypes.utils.mapper.BooleanMapper;
 
-public class NumericDataTensor extends BaseDataTensor {
+public class BooleanDataTensor extends BaseDataTensor {
 
-    public NumericDataTensor(String uri) {
+    public static final BooleanDataTensor INSTANCE = new BooleanDataTensor(URI + "BooleanDataTensor");
+
+    public BooleanDataTensor(String uri) {
         super(uri);
     }
 
-    public NumericDataTensor(String uri, Class<?> javaClass) {
-        super(uri, javaClass);
-    }
-
-
     @Override
     public boolean isValidLiteral(LiteralLabel lexicalForm) {
-        try {
-            NumericMapper.mapJsonToINDArray(lexicalForm.getLexicalForm());
+        try (INDArray array = BooleanMapper.mapJsonToINDArray(lexicalForm.getLexicalForm())) {
             return true;
         } catch (IllegalArgumentException e) {
             return false;
@@ -32,8 +28,7 @@ public class NumericDataTensor extends BaseDataTensor {
     public boolean isValidValue(Object value) {
         if (value instanceof INDArray) {
             DataType dataType = ((INDArray) value).dataType();
-            return dataType == DataType.INT32 || dataType == DataType.INT64 || dataType == DataType.FLOAT ||
-                    dataType == DataType.DOUBLE || dataType == DataType.SHORT;
+            return dataType == DataType.BOOL;
         }
         return false;
     }
@@ -41,25 +36,24 @@ public class NumericDataTensor extends BaseDataTensor {
     @Override
     public Object parse(String lexicalForm) throws DatatypeFormatException {
         try {
-            return NumericMapper.mapJsonToINDArray(lexicalForm);
+            return BooleanMapper.mapJsonToINDArray(lexicalForm);
         } catch (IllegalArgumentException e) {
-            throw new DatatypeFormatException("Invalid value for NumericDataTensor: " + lexicalForm + "\n" + e.getMessage());
+            throw new DatatypeFormatException("Invalid value for BooleanDataTensor: " + lexicalForm);
         }
     }
 
     @Override
-    public String unparse(Object value) throws IllegalArgumentException {
-        return NumericMapper.mapINDArrayToJson((INDArray) value);
+    public String unparse(Object value) {
+        return BooleanMapper.mapINDArrayToJson((INDArray) value);
     }
 
     @Override
     public boolean isEqual(LiteralLabel value1, LiteralLabel value2) {
-        if (value1.getDatatype() instanceof NumericDataTensor && value2.getDatatype() instanceof NumericDataTensor) {
+        if (value1.getDatatype() instanceof BooleanDataTensor && value2.getDatatype() instanceof BooleanDataTensor) {
             INDArray array1 = (INDArray) value1.getValue();
             INDArray array2 = (INDArray) value2.getValue();
             return array1.equals(array2);
         }
         return false;
     }
-
 }

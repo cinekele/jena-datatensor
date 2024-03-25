@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class StringMapperTest extends TestCase {
 
     public void testMapJSONtoINDArray() {
-        String json = "{\"type\":\"string\",\"data\":[\"a\",\"b\",\"c\",\"d\"],\"shape\":[2,2]}";
+        String json = "{\"data\":[\"a\",\"b\",\"c\",\"d\"],\"shape\":[2,2]}";
         INDArray expected = Nd4j.create(Arrays.asList("a", "b", "c", "d"), new long[]{2, 2}, 'c');
 
         INDArray result = StringMapper.mapJsonToINDArray(json);
