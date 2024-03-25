@@ -51,8 +51,8 @@ public class TestDatatypeValues {
     }
 
     private void booleanCompareTest(Boolean expected, String lex1, String lex2) {
-        Node d1 = NodeFactory.createLiteral(lex1, null, StringDataTensor.INSTANCE);
-        Node d2 = NodeFactory.createLiteral(lex2, null, StringDataTensor.INSTANCE);
+        Node d1 = NodeFactory.createLiteral(lex1, null, BooleanDataTensor.INSTANCE);
+        Node d2 = NodeFactory.createLiteral(lex2, null, BooleanDataTensor.INSTANCE);
         Assert.assertEquals(expected, BooleanDataTensor.INSTANCE.isEqual(d1.getLiteral(), d2.getLiteral()));
     }
 }
