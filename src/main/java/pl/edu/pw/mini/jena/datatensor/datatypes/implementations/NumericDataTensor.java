@@ -9,6 +9,8 @@ import pl.edu.pw.mini.jena.datatensor.datatypes.utils.mapper.NumericMapper;
 
 public class NumericDataTensor extends BaseDataTensor {
 
+    public static final NumericDataTensor INSTANCE = new NumericDataTensor(URI + "NumericDataTensor");
+
     public NumericDataTensor(String uri) {
         super(uri);
     }
