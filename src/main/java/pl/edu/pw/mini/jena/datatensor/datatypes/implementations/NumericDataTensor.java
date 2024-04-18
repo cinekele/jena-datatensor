@@ -34,8 +34,7 @@ public class NumericDataTensor extends BaseDataTensor {
     public boolean isValidValue(Object value) {
         if (value instanceof INDArray) {
             DataType dataType = ((INDArray) value).dataType();
-            return dataType == DataType.INT32 || dataType == DataType.INT64 || dataType == DataType.FLOAT ||
-                    dataType == DataType.DOUBLE || dataType == DataType.SHORT;
+            return dataType == DataType.SHORT || dataType == DataType.INT32 || dataType == DataType.INT64 || dataType == DataType.FLOAT || dataType == DataType.DOUBLE;
         }
         return false;
     }

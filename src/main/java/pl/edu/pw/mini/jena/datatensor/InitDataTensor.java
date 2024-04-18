@@ -3,10 +3,10 @@ package pl.edu.pw.mini.jena.datatensor;
 import org.apache.jena.atlas.logging.LogCtlJUL;
 import org.apache.jena.datatypes.TypeMapper;
 import org.apache.jena.sparql.function.FunctionRegistry;
-import org.apache.jena.sparql.pfunction.PropertyFunctionRegistry;
 import org.apache.jena.sys.JenaSubsystemLifecycle;
 import org.apache.jena.sys.JenaSystem;
 import pl.edu.pw.mini.jena.datatensor.datatypes.BaseDataTensor;
+import pl.edu.pw.mini.jena.datatensor.functions.SimilarityRegistry;
 
 public class InitDataTensor implements JenaSubsystemLifecycle {
     private static volatile boolean initalized = false;
@@ -32,10 +32,9 @@ public class InitDataTensor implements JenaSubsystemLifecycle {
             TypeMapper tm = TypeMapper.getInstance();
             BaseDataTensor.registerDataTensorDatatypes(tm);
             JenaSystem.logLifecycle("InitTensSPARQL - registered datatype");
-            PropertyFunctionRegistry propertyFunctionRegistry = PropertyFunctionRegistry.get();
             FunctionRegistry functionRegistry = FunctionRegistry.get();
+            SimilarityRegistry.loadFunctions(functionRegistry);
             JenaSystem.logLifecycle("InitTensSPARQL - registered function");
-
             JenaSystem.logLifecycle("InitTensSPARQL - finish");
         }
 
