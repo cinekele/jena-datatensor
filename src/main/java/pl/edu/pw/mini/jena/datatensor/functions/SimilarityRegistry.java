@@ -10,7 +10,7 @@ import static pl.edu.pw.mini.jena.datatensor.vocabulary.FunctionsDT.EUCLIDEAN_DI
 
 public class SimilarityRegistry {
 
-    public static final void loadFunctions(FunctionRegistry registry) {
+    public static void loadFunctions(FunctionRegistry registry) {
         registry.put(COSINE_SIMILARITY, CosineSimilarity.class);
         registry.put(EUCLIDEAN_DISTANCE, EuclideanDistance.class);
     }
