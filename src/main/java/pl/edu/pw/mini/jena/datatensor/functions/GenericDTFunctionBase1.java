@@ -4,9 +4,9 @@ import org.apache.jena.sparql.expr.NodeValue;
 import org.apache.jena.sparql.function.FunctionBase1;
 import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.NumericDataTensor;
 
-abstract public class GenericNumericDTFunctionBase1 extends FunctionBase1 {
+abstract public class GenericDTFunctionBase1 extends FunctionBase1 {
 
-    public GenericNumericDTFunctionBase1() {
+    public GenericDTFunctionBase1() {
         super();
     }
 

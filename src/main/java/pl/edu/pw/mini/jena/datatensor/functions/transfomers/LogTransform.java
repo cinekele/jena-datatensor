@@ -7,9 +7,9 @@ import org.nd4j.linalg.api.buffer.DataType;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.ops.transforms.Transforms;
 import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.NumericDataTensor;
-import pl.edu.pw.mini.jena.datatensor.functions.GenericNumericDTFunctionBase1;
+import pl.edu.pw.mini.jena.datatensor.functions.GenericDTFunctionBase1;
 
-public class LogTransform extends GenericNumericDTFunctionBase1 {
+public class LogTransform extends GenericDTFunctionBase1 {
     public LogTransform() {
         super();
     }

@@ -6,9 +6,9 @@ import org.apache.jena.sparql.expr.NodeValue;
 import org.nd4j.linalg.api.buffer.DataType;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.NumericDataTensor;
-import pl.edu.pw.mini.jena.datatensor.functions.GenericNumericDTFunctionBase2;
+import pl.edu.pw.mini.jena.datatensor.functions.GenericDTFunctionBase2;
 
-public class ScaleTransform extends GenericNumericDTFunctionBase2 {
+public class ScaleTransform extends GenericDTFunctionBase2 {
 
     public ScaleTransform() {
         super();

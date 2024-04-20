@@ -7,9 +7,9 @@ import org.nd4j.linalg.api.buffer.DataType;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.ops.transforms.Transforms;
 import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.NumericDataTensor;
-import pl.edu.pw.mini.jena.datatensor.functions.GenericNumericDTFunctionBase2;
+import pl.edu.pw.mini.jena.datatensor.functions.GenericDTFunctionBase2;
 
-public class PolyTransform extends GenericNumericDTFunctionBase2 {
+public class PolyTransform extends GenericDTFunctionBase2 {
 
     public PolyTransform() {
         super();

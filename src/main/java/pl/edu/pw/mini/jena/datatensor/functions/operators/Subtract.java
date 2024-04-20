@@ -7,9 +7,9 @@ import org.nd4j.linalg.api.buffer.DataType;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.NumericDataTensor;
 import pl.edu.pw.mini.jena.datatensor.datatypes.utils.N4DJUtils;
-import pl.edu.pw.mini.jena.datatensor.functions.GenericNumericDTFunctionBase2;
+import pl.edu.pw.mini.jena.datatensor.functions.GenericDTFunctionBase2;
 
-public class Subtract extends GenericNumericDTFunctionBase2 {
+public class Subtract extends GenericDTFunctionBase2 {
 
     @Override
     public NodeValue exec(NodeValue v1, NodeValue v2) {
