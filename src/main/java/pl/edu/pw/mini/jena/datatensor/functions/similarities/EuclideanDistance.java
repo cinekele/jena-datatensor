@@ -17,7 +17,7 @@ public class EuclideanDistance extends GenericNumericDTFunctionBase2 {
 
     @Override
     public NodeValue exec(NodeValue v1, NodeValue v2) {
-        if (!super.isTwoNumericDT(v1, v2))
+        if (super.isNotTwoNumericDT(v1, v2))
             throw new ExprEvalException("Arguments must have the NumericDataTensor datatype");
         try {
             INDArray t1 = (INDArray) (v1.getNode().getLiteralValue());

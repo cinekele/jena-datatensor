@@ -17,13 +17,13 @@ abstract public class GenericNumericDTFunctionBase2 extends FunctionBase2 {
 
     public abstract NodeValue exec(NodeValue v1, NodeValue v2);
 
-    protected boolean isTwoNumericDT(NodeValue v1, NodeValue v2) {
+    protected boolean isNotTwoNumericDT(NodeValue v1, NodeValue v2) {
         if (!v1.asNode().isLiteral() || !v2.asNode().isLiteral()) {
-            return false;
+            return true;
         }
         RDFDatatype literalDatatype = v1.asNode().getLiteralDatatype();
         RDFDatatype literalDatatype2 = v2.asNode().getLiteralDatatype();
-        return literalDatatype instanceof NumericDataTensor && literalDatatype.equals(literalDatatype2);
+        return !(literalDatatype instanceof NumericDataTensor) || !literalDatatype.equals(literalDatatype2);
     }
 
     protected boolean isNotNumericAndNumericDT(NodeValue v1, NodeValue v2) {
