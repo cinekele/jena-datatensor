@@ -6,6 +6,7 @@ import org.apache.jena.sparql.function.FunctionRegistry;
 import org.apache.jena.sys.JenaSubsystemLifecycle;
 import org.apache.jena.sys.JenaSystem;
 import pl.edu.pw.mini.jena.datatensor.datatypes.BaseDataTensor;
+import pl.edu.pw.mini.jena.datatensor.functions.OperatorRegistry;
 import pl.edu.pw.mini.jena.datatensor.functions.SimilarityRegistry;
 import pl.edu.pw.mini.jena.datatensor.functions.TransformerRegistry;
 
@@ -36,6 +37,7 @@ public class InitDataTensor implements JenaSubsystemLifecycle {
             FunctionRegistry functionRegistry = FunctionRegistry.get();
             SimilarityRegistry.loadFunctions(functionRegistry);
             TransformerRegistry.loadFunctions(functionRegistry);
+            OperatorRegistry.loadFunctions(functionRegistry);
             JenaSystem.logLifecycle("InitTensSPARQL - registered function");
             JenaSystem.logLifecycle("InitTensSPARQL - finish");
         }

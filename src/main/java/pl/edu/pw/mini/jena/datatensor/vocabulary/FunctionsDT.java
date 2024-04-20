@@ -14,4 +14,10 @@ public class FunctionsDT {
     public static final String SCALE_TRANSFORM = DataTensor.getURI() + "scaleTransform";
     public static final String SIN_TRANSFORM = DataTensor.getURI() + "sinTransform";
     public static final String ABS_TRANSFORM = DataTensor.getURI() + "absTransform";
+
+    // Operators
+    public static final String ADD = DataTensor.getURI() + "add";
+    public static final String SUBTRACT = DataTensor.getURI() + "subtract";
+    public static final String MULTIPLY = DataTensor.getURI() + "multiply";
+    public static final String DIVIDE = DataTensor.getURI() + "divide";
 }
