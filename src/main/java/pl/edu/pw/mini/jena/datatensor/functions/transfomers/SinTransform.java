@@ -17,7 +17,7 @@ public class SinTransform extends GenericNumericDTFunctionBase1 {
 
     @Override
     public NodeValue exec(NodeValue v1) {
-        if (!super.isValidInput(v1))
+        if (super.isInvalidInput(v1))
             throw new ExprEvalException("Argument must have the NumericDataTensor datatype");
 
         try {

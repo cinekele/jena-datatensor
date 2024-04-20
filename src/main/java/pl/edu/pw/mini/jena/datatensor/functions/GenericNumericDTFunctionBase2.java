@@ -26,11 +26,11 @@ abstract public class GenericNumericDTFunctionBase2 extends FunctionBase2 {
         return literalDatatype instanceof NumericDataTensor && literalDatatype.equals(literalDatatype2);
     }
 
-    protected boolean isNumericAndNumericDT(NodeValue v1, NodeValue v2) {
+    protected boolean isNotNumericAndNumericDT(NodeValue v1, NodeValue v2) {
         if (!v1.asNode().isLiteral() || !v2.asNode().isLiteral())
-            return false;
+            return true;
         RDFDatatype dataType = v1.asNode().getLiteralDatatype();
-        return (dataType instanceof XSDBaseNumericType || dataType instanceof XSDFloat || dataType instanceof XSDDouble)
-                && v2.asNode().getLiteralDatatype() instanceof NumericDataTensor;
+        return (!(dataType instanceof XSDBaseNumericType) && !(dataType instanceof XSDFloat) && !(dataType instanceof XSDDouble))
+                || !(v2.asNode().getLiteralDatatype() instanceof NumericDataTensor);
     }
 }

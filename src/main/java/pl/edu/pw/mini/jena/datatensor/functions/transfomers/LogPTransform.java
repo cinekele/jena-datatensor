@@ -16,7 +16,7 @@ public class LogPTransform extends GenericNumericDTFunctionBase2 {
     }
 
     public NodeValue exec(NodeValue v1, NodeValue v2) {
-        if (!isNumericAndNumericDT(v1, v2))
+        if (isNotNumericAndNumericDT(v1, v2))
             throw new ExprEvalException("First argument has to be the NumericDataTensor datatype and second must be one of XSDNumeric datatypes");
         try {
             double base = v1.getDouble();

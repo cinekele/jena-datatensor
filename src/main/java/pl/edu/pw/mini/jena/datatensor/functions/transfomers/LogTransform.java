@@ -15,7 +15,7 @@ public class LogTransform extends GenericNumericDTFunctionBase1 {
     }
 
     public NodeValue exec(NodeValue nodeValue) {
-        if (!super.isValidInput(nodeValue))
+        if (super.isInvalidInput(nodeValue))
             throw new ExprEvalException("Argument must have the NumericDataTensor datatype");
 
         try {

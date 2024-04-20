@@ -16,7 +16,7 @@ public class PolyTransform extends GenericNumericDTFunctionBase2 {
     }
 
     public NodeValue exec(NodeValue v1, NodeValue v2) {
-        if (!isNumericAndNumericDT(v1, v2))
+        if (isNotNumericAndNumericDT(v1, v2))
             throw new ExprEvalException("First argument must be one of XSD Numeric datatype and second have the NumericDataTensor datatype");
         try {
             double power = v1.getDouble();
