@@ -15,13 +15,12 @@ public class CosTransform extends GenericNumericDTFunctionBase1 {
     }
 
     public NodeValue exec(NodeValue nodeValue) {
-        if (super.isValidInput(nodeValue))
+        if (!super.isValidInput(nodeValue))
             throw new ExprEvalException("Argument must have the NumericDataTensor datatype");
 
         try {
             INDArray t1 = (INDArray) (nodeValue.getNode().getLiteralValue());
-            if (!t1.dataType().isFPType())
-                t1 = t1.castTo(DataType.DOUBLE);
+            if (!t1.dataType().isFPType())  t1 = t1.castTo(DataType.DOUBLE);
             INDArray cosTransform = Transforms.cos(t1);
             return NodeValue.makeNode(NodeFactory.createLiteralByValue(cosTransform, NumericDataTensor.INSTANCE));
         } catch (Exception ex) {

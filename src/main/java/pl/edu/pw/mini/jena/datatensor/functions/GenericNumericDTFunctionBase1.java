@@ -13,6 +13,6 @@ abstract public class GenericNumericDTFunctionBase1 extends FunctionBase1 {
     abstract public NodeValue exec(NodeValue nodeValue);
 
     public boolean isValidInput(NodeValue v1) {
-        return !v1.asNode().isLiteral() || !v1.asNode().getLiteralDatatype().equals(NumericDataTensor.INSTANCE);
+        return v1.asNode().isLiteral() && v1.asNode().getLiteralDatatype().equals(NumericDataTensor.INSTANCE);
     }
 }

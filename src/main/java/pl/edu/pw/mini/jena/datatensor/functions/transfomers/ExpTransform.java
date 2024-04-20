@@ -16,7 +16,7 @@ public class ExpTransform extends GenericNumericDTFunctionBase1 {
     }
 
     public NodeValue exec(NodeValue nodeValue) {
-        if (super.isValidInput(nodeValue))
+        if (!super.isValidInput(nodeValue))
             throw new ExprEvalException("Argument must have the NumericDataTensor datatype");
 
         try {
