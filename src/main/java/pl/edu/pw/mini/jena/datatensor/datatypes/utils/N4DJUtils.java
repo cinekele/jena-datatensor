@@ -12,7 +12,7 @@ public class N4DJUtils {
                 return dataType1;
             }
             if (dataType1.isFPType() && dataType2.isFPType()) {
-                if (dataType1.precision() > dataType2.precision()) {
+                if (dataType1.width() > dataType2.width()) {
                     return dataType1;
                 } else {
                     return dataType2;
@@ -20,7 +20,7 @@ public class N4DJUtils {
             }
 
             if (dataType1.isIntType() && dataType2.isIntType()) {
-                if (dataType1.precision() > dataType2.precision()) {
+                if (dataType1.width() > dataType2.width()) {
                     return dataType1;
                 } else {
                     return dataType2;
