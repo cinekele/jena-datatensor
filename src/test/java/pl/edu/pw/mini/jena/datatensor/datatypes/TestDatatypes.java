@@ -13,6 +13,7 @@ import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.StringDataTensor
 import pl.edu.pw.mini.jena.datatensor.vocabulary.DataTensor;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -158,14 +159,14 @@ public class TestDatatypes {
     @Test
     public void valueToLex_string() {
         testValueToLex(Nd4j.create("a"), stringDataTensor);
-        testValueToLex(Nd4j.create(Arrays.asList("a"), new long[]{1, 1, 1}, 'c'), stringDataTensor);
+        testValueToLex(Nd4j.create(List.of("a"), new long[]{1, 1, 1}, 'c'), stringDataTensor);
         testValueToLex(Nd4j.create(Arrays.asList("a", "b", "c", "d"), new long[]{2, 2}, 'c'), stringDataTensor);
     }
 
     @Test
     public void literalIsCorrect_string() {
         testLiteralIsCorrectType(Nd4j.create("a"), stringDataTensor);
-        testLiteralIsCorrectType(Nd4j.create(Arrays.asList("a"), new long[]{1, 1, 1}, 'c'), stringDataTensor);
+        testLiteralIsCorrectType(Nd4j.create(List.of("a"), new long[]{1, 1, 1}, 'c'), stringDataTensor);
         testLiteralIsCorrectType(Nd4j.create(Arrays.asList("a", "b", "c", "d"), new long[]{2, 2}, 'c'), stringDataTensor);
     }
 
