@@ -3,7 +3,7 @@ package pl.edu.pw.mini.jena.datatensor.datatypes.utils;
 import org.nd4j.linalg.api.buffer.DataType;
 import org.nd4j.linalg.api.ndarray.INDArray;
 
-public class N4DJUtils {
+public class ND4JUtils {
     public static DataType getSupportedOperationType(Object value1, Object value2) {
         if (value1 instanceof INDArray && value2 instanceof INDArray) {
             DataType dataType1 = ((INDArray) value1).dataType();
