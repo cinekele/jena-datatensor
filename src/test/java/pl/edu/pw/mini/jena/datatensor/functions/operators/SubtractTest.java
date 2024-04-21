@@ -1,6 +1,5 @@
 package pl.edu.pw.mini.jena.datatensor.functions.operators;
 
-import junit.framework.TestCase;
 import org.apache.jena.sparql.expr.NodeValue;
 import org.junit.Assert;
 import org.junit.Test;
