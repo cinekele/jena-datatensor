@@ -1,12 +1,12 @@
 package pl.edu.pw.mini.jena.datatensor.functions.similarities;
 
-import junit.framework.JUnit4TestAdapter;
-import junit.framework.TestSuite;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
-public class TSSimilarities extends TestSuite {
-    public TSSimilarities() {
-        super("Similarities");
-        addTest(new JUnit4TestAdapter(CosineSimilarityTest.class));
-        addTest(new JUnit4TestAdapter(EuclideanDistanceTest.class));
-    }
+@RunWith(Suite.class)
+@Suite.SuiteClasses({
+        CosineSimilarityTest.class,
+        EuclideanDistanceTest.class
+})
+public class TSSimilarities {
 }
