@@ -1,10 +1,6 @@
-package pl.edu.pw.mini.jena.datatensor.functions;
+package pl.edu.pw.mini.jena.datatensor.functions.operators;
 
 import org.apache.jena.sparql.function.FunctionRegistry;
-import pl.edu.pw.mini.jena.datatensor.functions.operators.Add;
-import pl.edu.pw.mini.jena.datatensor.functions.operators.Divide;
-import pl.edu.pw.mini.jena.datatensor.functions.operators.Multiply;
-import pl.edu.pw.mini.jena.datatensor.functions.operators.Subtract;
 
 import static pl.edu.pw.mini.jena.datatensor.vocabulary.FunctionsDT.*;
 
