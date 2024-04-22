@@ -11,7 +11,8 @@ import pl.edu.pw.mini.jena.datatensor.functions.transfomers.TSTransformers;
 @Suite.SuiteClasses({
         TSOperators.class,
         TSSimilarities.class,
-        TSTransformers.class
+        TSTransformers.class,
+        AggregatesTest.class
 })
 public class TSFunctions extends TestSuite {
 }
