@@ -8,7 +8,7 @@ import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.StringDataTensor
 
 public class DataTensor {
 
-    public static final String NS = "http://example.org/datatensor#";
+    public static final String NS = "http://example.org/data-tensor#";
     public static final Resource numericDataTensor;
 
     public static final Resource stringDataTensor;
