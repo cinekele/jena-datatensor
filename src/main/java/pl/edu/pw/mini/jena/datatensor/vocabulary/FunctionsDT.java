@@ -20,4 +20,6 @@ public class FunctionsDT {
     public static final String SUBTRACT = DataTensor.getURI() + "subtract";
     public static final String MULTIPLY = DataTensor.getURI() + "multiply";
     public static final String DIVIDE = DataTensor.getURI() + "divide";
+    public static final String EQ = DataTensor.getURI() + "eq";
+    public static final String NEQ = DataTensor.getURI() + "neq";
 }

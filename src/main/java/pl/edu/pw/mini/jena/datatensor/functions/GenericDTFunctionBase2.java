@@ -6,6 +6,7 @@ import org.apache.jena.datatypes.xsd.impl.XSDDouble;
 import org.apache.jena.datatypes.xsd.impl.XSDFloat;
 import org.apache.jena.sparql.expr.NodeValue;
 import org.apache.jena.sparql.function.FunctionBase2;
+import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.BooleanDataTensor;
 import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.NumericDataTensor;
 
 abstract public class GenericDTFunctionBase2 extends FunctionBase2 {
@@ -32,5 +33,14 @@ abstract public class GenericDTFunctionBase2 extends FunctionBase2 {
         RDFDatatype dataType = v1.asNode().getLiteralDatatype();
         return (!(dataType instanceof XSDBaseNumericType) && !(dataType instanceof XSDFloat) && !(dataType instanceof XSDDouble))
                 || !(v2.asNode().getLiteralDatatype() instanceof NumericDataTensor);
+    }
+
+    protected boolean isNotTwoNumericOrTwoBooleanDT(NodeValue v1, NodeValue v2) {
+        if (!v1.asNode().isLiteral())
+            return true;
+        RDFDatatype dataType = v1.asNode().getLiteralDatatype();
+        RDFDatatype dataType2 = v2.asNode().getLiteralDatatype();
+        return !(dataType instanceof NumericDataTensor || dataType instanceof BooleanDataTensor) &&
+                (dataType.equals(dataType2));
     }
 }

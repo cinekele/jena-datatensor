@@ -10,5 +10,7 @@ public class OperatorRegistry {
         functionRegistry.put(SUBTRACT, Subtract.class);
         functionRegistry.put(MULTIPLY, Multiply.class);
         functionRegistry.put(DIVIDE, Divide.class);
+        functionRegistry.put(EQ, Eq.class);
+        functionRegistry.put(NEQ, NotEq.class);
     }
 }

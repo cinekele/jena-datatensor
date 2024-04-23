@@ -8,7 +8,9 @@ import org.junit.runners.Suite;
         AddTest.class,
         DivideTest.class,
         MultiplyTest.class,
-        SubtractTest.class
+        SubtractTest.class,
+        EqTest.class,
+        NotEqTest.class
 })
-public class TSOperators{
+public class TSOperators {
 }
