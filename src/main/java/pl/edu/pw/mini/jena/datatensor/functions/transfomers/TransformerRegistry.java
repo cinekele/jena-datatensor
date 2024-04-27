@@ -14,5 +14,6 @@ public class TransformerRegistry {
         registry.put(SCALE_TRANSFORM, ScaleTransform.class);
         registry.put(SIN_TRANSFORM, SinTransform.class);
         registry.put(ABS_TRANSFORM, AbsTransform.class);
+        registry.put(NOT_TRANSFORM, NotTransform.class);
     }
 }

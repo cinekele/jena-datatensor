@@ -12,7 +12,8 @@ import org.junit.runners.Suite;
         LogTransformTest.class,
         PolyTransformTest.class,
         ScaleTransformTest.class,
-        SinTransformTest.class
+        SinTransformTest.class,
+        NotTransformTest.class
 })
 public class TSTransformers {
 
