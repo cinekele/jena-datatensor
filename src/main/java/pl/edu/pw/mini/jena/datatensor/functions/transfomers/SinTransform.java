@@ -7,11 +7,6 @@ import pl.edu.pw.mini.jena.datatensor.functions.NumericDTFunctionBase1;
 
 public class SinTransform extends NumericDTFunctionBase1 {
 
-    public SinTransform() {
-        super();
-    }
-
-
     @Override
     public INDArray calc(INDArray v1) {
         INDArray properValue = v1.dataType().isFPType() ? v1 : v1.castTo(DataType.DOUBLE);

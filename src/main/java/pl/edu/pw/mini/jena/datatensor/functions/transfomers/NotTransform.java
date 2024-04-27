@@ -6,10 +6,6 @@ import pl.edu.pw.mini.jena.datatensor.functions.BooleanDTFunctionBase1;
 
 public class NotTransform extends BooleanDTFunctionBase1 {
 
-    public NotTransform() {
-        super();
-    }
-
     public INDArray calc(INDArray v1) {
         return Transforms.not(v1);
     }

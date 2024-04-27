@@ -6,9 +6,6 @@ import org.nd4j.linalg.ops.transforms.Transforms;
 import pl.edu.pw.mini.jena.datatensor.functions.NumericDTFunctionBase1;
 
 public class CosTransform extends NumericDTFunctionBase1 {
-    public CosTransform() {
-        super();
-    }
 
     @Override
     public INDArray calc(INDArray v1) {
