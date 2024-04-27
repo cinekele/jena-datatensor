@@ -3,9 +3,9 @@ package pl.edu.pw.mini.jena.datatensor.functions.transfomers;
 import org.nd4j.linalg.api.buffer.DataType;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.ops.transforms.Transforms;
-import pl.edu.pw.mini.jena.datatensor.functions.NumericDTFunctionBase1;
+import pl.edu.pw.mini.jena.datatensor.functions.NumericDT1FunctionBase;
 
-public class CosTransform extends NumericDTFunctionBase1 {
+public class CosTransform extends NumericDT1FunctionBase {
 
     @Override
     public INDArray calc(INDArray v1) {

@@ -7,9 +7,9 @@ import org.apache.jena.sparql.function.FunctionBase1;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.NumericDataTensor;
 
-abstract public class NumericDTFunctionBase1 extends FunctionBase1 {
+abstract public class NumericDT1FunctionBase extends FunctionBase1 {
 
-    public NumericDTFunctionBase1() {
+    public NumericDT1FunctionBase() {
         super();
     }
 
