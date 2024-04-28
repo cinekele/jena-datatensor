@@ -23,4 +23,6 @@ public class FunctionsDT {
     public static final String DIVIDE = DataTensor.getURI() + "divide";
     public static final String EQ = DataTensor.getURI() + "eq";
     public static final String NEQ = DataTensor.getURI() + "neq";
+    public static final String AND = DataTensor.getURI() + "and";
+    public static final String OR = DataTensor.getURI() + "or";
 }

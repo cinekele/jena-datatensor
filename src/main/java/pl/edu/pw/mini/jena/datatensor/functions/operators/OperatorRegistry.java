@@ -12,5 +12,7 @@ public class OperatorRegistry {
         functionRegistry.put(DIVIDE, Divide.class);
         functionRegistry.put(EQ, Eq.class);
         functionRegistry.put(NEQ, NotEq.class);
+        functionRegistry.put(AND, And.class);
+        functionRegistry.put(OR, Or.class);
     }
 }
