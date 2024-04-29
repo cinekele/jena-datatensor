@@ -7,7 +7,8 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         HStackTest.class,
-        VStackTest.class
+        VStackTest.class,
+        ConcatenateTest.class
 })
 public class TSConcatenators {
 }
