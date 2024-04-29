@@ -35,4 +35,15 @@ public class FunctionsDT {
     public static final String CONCAT = DataTensor.getURI() + "concat";
     public static final String HSTACK = DataTensor.getURI() + "hstack";
     public static final String VSTACK = DataTensor.getURI() + "vstack";
+
+    // Reductions
+    public static final String AVG = DataTensor.getURI() + "avg";
+    public static final String SUM = DataTensor.getURI() + "sum";
+    public static final String MAX = DataTensor.getURI() + "max";
+    public static final String MED = DataTensor.getURI() + "median";
+    public static final String MIN = DataTensor.getURI() + "min";
+    public static final String STD = DataTensor.getURI() + "std";
+    public static final String VAR = DataTensor.getURI() + "var";
+    public static final String NORM1 = DataTensor.getURI() + "norm1";
+    public static final String NORM2 = DataTensor.getURI() + "norm2";
 }

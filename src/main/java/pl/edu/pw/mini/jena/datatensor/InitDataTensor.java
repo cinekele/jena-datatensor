@@ -9,6 +9,7 @@ import pl.edu.pw.mini.jena.datatensor.datatypes.BaseDataTensor;
 import pl.edu.pw.mini.jena.datatensor.functions.concatenators.ConcatenaterRegistry;
 import pl.edu.pw.mini.jena.datatensor.functions.indexers.IndexerRegistry;
 import pl.edu.pw.mini.jena.datatensor.functions.operators.OperatorRegistry;
+import pl.edu.pw.mini.jena.datatensor.functions.reductors.ReductionRegistry;
 import pl.edu.pw.mini.jena.datatensor.functions.similarities.SimilarityRegistry;
 import pl.edu.pw.mini.jena.datatensor.functions.transfomers.TransformerRegistry;
 
@@ -42,6 +43,7 @@ public class InitDataTensor implements JenaSubsystemLifecycle {
             OperatorRegistry.loadFunctions(functionRegistry);
             IndexerRegistry.loadFunctions(functionRegistry);
             ConcatenaterRegistry.loadFunctions(functionRegistry);
+            ReductionRegistry.loadFunctions(functionRegistry);
             JenaSystem.logLifecycle("InitTensSPARQL - registered function");
             JenaSystem.logLifecycle("InitTensSPARQL - finish");
         }
