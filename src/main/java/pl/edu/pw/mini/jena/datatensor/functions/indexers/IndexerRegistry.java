@@ -8,6 +8,4 @@ public class IndexerRegistry {
     public static void loadFunctions(FunctionRegistry functionRegistry) {
         functionRegistry.put(GET_SUB_DT, GetSubDT.class);
     }
-
-    ;
 }
