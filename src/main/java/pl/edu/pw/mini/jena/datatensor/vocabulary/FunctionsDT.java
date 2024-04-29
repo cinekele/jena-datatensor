@@ -30,4 +30,9 @@ public class FunctionsDT {
 
     // Indexers
     public static final String GET_SUB_DT = DataTensor.getURI() + "getSubDT";
+
+    // Concatenators
+    public static final String CONCAT = DataTensor.getURI() + "concat";
+    public static final String HSTACK = DataTensor.getURI() + "hstack";
+    public static final String VSTACK = DataTensor.getURI() + "vstack";
 }
