@@ -25,4 +25,6 @@ public class FunctionsDT {
     public static final String NEQ = DataTensor.getURI() + "neq";
     public static final String AND = DataTensor.getURI() + "and";
     public static final String OR = DataTensor.getURI() + "or";
+    public static final String GT = DataTensor.getURI() + "gt";
+    public static final String LT = DataTensor.getURI() + "lt";
 }

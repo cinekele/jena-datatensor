@@ -14,5 +14,7 @@ public class OperatorRegistry {
         functionRegistry.put(NEQ, NotEq.class);
         functionRegistry.put(AND, And.class);
         functionRegistry.put(OR, Or.class);
+        functionRegistry.put(GT, Gt.class);
+        functionRegistry.put(LT, Lt.class);
     }
 }
