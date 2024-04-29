@@ -1,6 +1,7 @@
 package pl.edu.pw.mini.jena.datatensor.functions;
 
 import org.apache.jena.datatypes.RDFDatatype;
+import org.apache.jena.sparql.expr.ExprEvalException;
 import org.apache.jena.sparql.expr.NodeValue;
 import org.apache.jena.sparql.function.FunctionBase2;
 import org.nd4j.linalg.api.ndarray.INDArray;
@@ -21,11 +22,15 @@ abstract public class GenericDT2FunctionBase extends FunctionBase2 {
     @Override
     public NodeValue exec(NodeValue v1, NodeValue v2) {
         if (isNotTwoNumericOrTwoBooleanDT(v1, v2)) {
-            return NodeValue.FALSE;
+            throw new ExprEvalException("Arguments must be the same NumericDataTensor or BooleanDataTensor datatype");
         }
-        INDArray t1 = (INDArray) v1.getNode().getLiteralValue();
-        INDArray t2 = (INDArray) v2.getNode().getLiteralValue();
-        return calc(t1, t2);
+        try {
+            INDArray t1 = (INDArray) v1.getNode().getLiteralValue();
+            INDArray t2 = (INDArray) v2.getNode().getLiteralValue();
+            return calc(t1, t2);
+        } catch (Exception ex) {
+            throw new ExprEvalException(ex.getMessage(), ex);
+        }
     }
 
     abstract public NodeValue calc(INDArray v1, INDArray v2);
