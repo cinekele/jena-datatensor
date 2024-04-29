@@ -27,4 +27,7 @@ public class FunctionsDT {
     public static final String OR = DataTensor.getURI() + "or";
     public static final String GT = DataTensor.getURI() + "gt";
     public static final String LT = DataTensor.getURI() + "lt";
+
+    // Indexers
+    public static final String GET_SUB_DT = DataTensor.getURI() + "getSubDT";
 }
