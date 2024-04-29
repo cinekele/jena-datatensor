@@ -29,8 +29,9 @@ abstract public class NumericDTNumericFunctionBase extends FunctionBase2 {
         try {
             double t1 = v1.getDouble();
             INDArray t2 = (INDArray) (v2.getNode().getLiteralValue());
-            INDArray result = calc(t1, t2);
-            return NodeValue.makeNode(NodeFactory.createLiteralByValue(result, NumericDataTensor.INSTANCE));
+            INDArray array = calc(t1, t2);
+            NodeValue result = array.isScalar() ? NodeValue.makeDouble(array.getDouble(0)) : NodeValue.makeNode(NodeFactory.createLiteralByValue(array, NumericDataTensor.INSTANCE));
+            return result;
         } catch (Exception ex) {
             throw new ExprEvalException(ex.getMessage(), ex);
         }

@@ -20,7 +20,8 @@ abstract public class NumericDT1FunctionBase extends FunctionBase1 {
         try {
             INDArray t1 = (INDArray) (nodeValue.getNode().getLiteralValue());
             INDArray t1Transformed = calc(t1);
-            return NodeValue.makeNode(NodeFactory.createLiteralByValue(t1Transformed, NumericDataTensor.INSTANCE));
+            NodeValue result = t1Transformed.isScalar() ? NodeValue.makeDouble(t1Transformed.getDouble(0)) : NodeValue.makeNode(NodeFactory.createLiteralByValue(t1Transformed, NumericDataTensor.INSTANCE));
+            return result;
         } catch (Exception ex) {
             throw new ExprEvalException(ex.getMessage(), ex);
         }

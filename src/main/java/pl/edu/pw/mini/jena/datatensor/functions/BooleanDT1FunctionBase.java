@@ -7,9 +7,9 @@ import org.apache.jena.sparql.function.FunctionBase1;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.BooleanDataTensor;
 
-abstract public class BooleanDTFunctionBase extends FunctionBase1 {
+abstract public class BooleanDT1FunctionBase extends FunctionBase1 {
 
-    public BooleanDTFunctionBase() {
+    public BooleanDT1FunctionBase() {
         super();
     }
 
@@ -20,6 +20,8 @@ abstract public class BooleanDTFunctionBase extends FunctionBase1 {
         try {
             INDArray t1 = (INDArray) (nodeValue.getNode().getLiteralValue());
             INDArray t1Transformed = calc(t1);
+            if (t1Transformed.isScalar())
+                return NodeValue.makeBoolean(t1Transformed.getDouble(0) == 1.0);
             return NodeValue.makeNode(NodeFactory.createLiteralByValue(t1Transformed, BooleanDataTensor.INSTANCE));
         } catch (Exception ex) {
             throw new ExprEvalException(ex.getMessage(), ex);
