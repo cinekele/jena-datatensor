@@ -7,9 +7,9 @@ import org.apache.jena.sparql.function.FunctionBase1;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.BooleanDataTensor;
 
-abstract public class BooleanDTFunctionBase1 extends FunctionBase1 {
+abstract public class BooleanDTFunctionBase extends FunctionBase1 {
 
-    public BooleanDTFunctionBase1() {
+    public BooleanDTFunctionBase() {
         super();
     }
 
