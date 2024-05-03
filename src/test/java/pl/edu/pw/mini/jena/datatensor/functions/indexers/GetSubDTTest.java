@@ -14,9 +14,9 @@ public class GetSubDTTest {
     @Test
     public void testExec1() {
         GetSubDT getSubDT = new GetSubDT();
-        NodeValue nv1 = NodeValue.makeNode(NodeFactory.createLiteralByValue(
+        NodeValue nv1 = NodeValue.makeNode(NodeFactory.createLiteral(
                 "{\"type\":\"double\",\"shape\":[2],\"data\":[3, 2]}", NumericDataTensor.INSTANCE));
-        NodeValue nv2 = NodeValue.makeNode(NodeFactory.createLiteralByValue(
+        NodeValue nv2 = NodeValue.makeNode(NodeFactory.createLiteral(
                 "{\"type\":\"int\",\"shape\":[1],\"data\":[1]}", NumericDataTensor.INSTANCE));
         INDArray result = (INDArray) getSubDT.exec(nv1, nv2).getNode().getLiteralValue();
         INDArray expected = Nd4j.create(new double[]{2});
@@ -26,9 +26,9 @@ public class GetSubDTTest {
     @Test
     public void testExec2() {
         GetSubDT getSubDT = new GetSubDT();
-        NodeValue nv1 = NodeValue.makeNode(NodeFactory.createLiteralByValue(
+        NodeValue nv1 = NodeValue.makeNode(NodeFactory.createLiteral(
                 "{\"type\":\"double\",\"shape\":[2],\"data\":[3, 2]}", NumericDataTensor.INSTANCE));
-        NodeValue nv2 = NodeValue.makeNode(NodeFactory.createLiteralByValue(
+        NodeValue nv2 = NodeValue.makeNode(NodeFactory.createLiteral(
                 "{\"type\":\"int\",\"shape\":[1],\"data\":[0]}", NumericDataTensor.INSTANCE));
         INDArray result = (INDArray) getSubDT.exec(nv1, nv2).getNode().getLiteralValue();
         INDArray expected = Nd4j.create(new double[]{3});
@@ -38,9 +38,9 @@ public class GetSubDTTest {
     @Test
     public void testExec3() {
         GetSubDT getSubDT = new GetSubDT();
-        NodeValue nv1 = NodeValue.makeNode(NodeFactory.createLiteralByValue(
+        NodeValue nv1 = NodeValue.makeNode(NodeFactory.createLiteral(
                 "{\"type\":\"double\",\"shape\":[2, 2],\"data\":[3, 2, 3, 4]}", NumericDataTensor.INSTANCE));
-        NodeValue nv2 = NodeValue.makeNode(NodeFactory.createLiteralByValue(
+        NodeValue nv2 = NodeValue.makeNode(NodeFactory.createLiteral(
                 "{\"type\":\"int\",\"shape\":[1, 1],\"data\":[0]}", NumericDataTensor.INSTANCE));
         INDArray result = (INDArray) getSubDT.exec(nv1, nv2).getNode().getLiteralValue();
         INDArray expected = Nd4j.create(new double[]{3, 2});
