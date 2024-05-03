@@ -3,6 +3,7 @@ package pl.edu.pw.mini.jena.datatensor.functions.concatenators;
 import org.apache.jena.datatypes.RDFDatatype;
 import org.apache.jena.datatypes.xsd.XSDDatatype;
 import org.apache.jena.graph.NodeFactory;
+import org.apache.jena.sparql.expr.ExprEvalException;
 import org.apache.jena.sparql.expr.NodeValue;
 import org.apache.jena.sparql.function.FunctionBase3;
 import org.nd4j.linalg.api.buffer.DataType;
@@ -16,7 +17,7 @@ public class Concatenate extends FunctionBase3 {
     @Override
     public NodeValue exec(NodeValue nodeValue, NodeValue nodeValue1, NodeValue nodeValue2) {
         if (isInvalidInput(nodeValue, nodeValue1, nodeValue2))
-            throw new IllegalArgumentException("Arguments must be the same NumericDataTensor datatype");
+            throw new ExprEvalException("Arguments must be the same NumericDataTensor datatype");
         try {
             int axis = nodeValue.getInteger().intValue();
             INDArray t1 = (INDArray) nodeValue1.getNode().getLiteralValue();
@@ -28,7 +29,7 @@ public class Concatenate extends FunctionBase3 {
             RDFDatatype rdfDatatype = dataType.equals(DataType.BOOL) ? BooleanDataTensor.INSTANCE : NumericDataTensor.INSTANCE;
             return NodeValue.makeNode(NodeFactory.createLiteralByValue(result, rdfDatatype));
         } catch (Exception ex) {
-            throw new IllegalArgumentException(ex.getMessage(), ex);
+            throw new ExprEvalException(ex.getMessage(), ex);
         }
     }
 
