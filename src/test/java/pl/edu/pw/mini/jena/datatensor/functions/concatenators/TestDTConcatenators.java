@@ -6,7 +6,7 @@ import org.junit.Test;
 import static pl.edu.pw.mini.jena.datatensor.functions.DTTestExpr.test;
 import static pl.edu.pw.mini.jena.datatensor.functions.DTTestExpr.testError;
 
-public class TestDTFunctionsConcatenators {
+public class TestDTConcatenators {
 
     @Test
     public void concatenateDTTest1() {

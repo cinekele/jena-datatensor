@@ -6,7 +6,7 @@ import org.junit.Test;
 import static pl.edu.pw.mini.jena.datatensor.functions.DTTestExpr.test;
 import static pl.edu.pw.mini.jena.datatensor.functions.DTTestExpr.testError;
 
-public class TestDTFunctionsIndexers {
+public class TestDTIndexers {
     @Test
     public void getSubDTTest1() {
         test("dt:getSubDT(\"{\\\"type\\\":\\\"int\\\",\\\"shape\\\":[2,2,2],\\\"data\\\":[3,2,3,4,3,2,3,4]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int\\\",\\\"shape\\\":[3,1],\\\"data\\\":[0,0,0]}\"^^dt:NumericDataTensor)",
