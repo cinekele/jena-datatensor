@@ -12,6 +12,8 @@ import org.apache.jena.sparql.function.FunctionEnvBase;
 import org.apache.jena.sparql.util.Context;
 import org.apache.jena.sparql.util.ExprUtils;
 import org.apache.jena.sparql.util.NodeFactoryExtra;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.nd4j.linalg.api.ndarray.INDArray;
 import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.BooleanDataTensor;
 import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.NumericDataTensor;
 
@@ -77,7 +79,7 @@ public class DTTestExpr {
         assertTrue("Expected = " + expected + " : Actual = " + actual, expected.equals(actual));
     }
 
-    private static boolean isNumericDTorBooleanDT(Node n) {
+    private static boolean isNumericDTorBooleanDT(@NonNull Node n) {
         return n.getLiteralDatatype().equals(NumericDataTensor.INSTANCE) || n.getLiteralDatatype().equals(BooleanDataTensor.INSTANCE);
     }
 
@@ -86,11 +88,18 @@ public class DTTestExpr {
             return false;
         Node n1 = nv1.getNode();
         Node n2 = nv2.getNode();
-        if (isNumericDTorBooleanDT(n1) && isNumericDTorBooleanDT(n2) ){
+        if (isNumericDTorBooleanDT(n1) && isNumericDTorBooleanDT(n2)) {
             return n1.getLiteralValue().equals(n2.getLiteralValue());
+        }
+        if (n1.getLiteralDatatype() instanceof NumericDataTensor && n2.getLiteralDatatype() instanceof NumericDataTensor) {
+            return compareWithEps(n1, n2, 0.0001);
         } else {
             return n1.sameValueAs(n2);
         }
+    }
+
+    private static boolean compareWithEps(Node nv1, Node n2, double eps) {
+        return ((INDArray) nv1.getLiteralValue()).equalsWithEps((INDArray) n2.getLiteralValue(), eps);
     }
 
     public static void test(String exprStr) {
