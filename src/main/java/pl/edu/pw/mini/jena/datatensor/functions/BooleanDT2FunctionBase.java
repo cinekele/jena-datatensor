@@ -32,7 +32,8 @@ abstract public class BooleanDT2FunctionBase extends FunctionBase2 {
             if (t1.shape().length != t2.shape().length) {
                 INDArray lesser = t1.shape().length < t2.shape().length ? t1.dup() : t2.dup();
                 INDArray greater = t1.shape().length > t2.shape().length ? t1.dup() : t2.dup();
-                INDArray newLesser = lesser.broadcast(greater);
+                lesser = unsqueeze(lesser, greater.shape().length);
+                INDArray newLesser = lesser.broadcast(greater.shape());
                 result = calc(newLesser, greater);
             } else {
                 if (!Arrays.equals(t1.shape(), t2.shape())) {
@@ -52,6 +53,19 @@ abstract public class BooleanDT2FunctionBase extends FunctionBase2 {
         } catch (Exception ex) {
             throw new ExprEvalException(ex.getMessage(), ex);
         }
+    }
+
+    private INDArray unsqueeze(INDArray t1, int dimension) {
+        long[] shape = t1.shape();
+        long[] newShape = new long[dimension];
+        for (int i = 0; i < dimension; i++) {
+            if (i < shape.length)
+                newShape[dimension - i - 1] = shape[shape.length - i - 1];
+            else
+                newShape[dimension - i - 1] = 1;
+        }
+        return t1.reshape(newShape);
+
     }
 
     abstract public INDArray calc(INDArray v1, INDArray v2);
