@@ -13,6 +13,10 @@ import pl.edu.pw.mini.jena.datatensor.functions.GenericDT2FunctionBase;
 
 public class HStack extends GenericDT2FunctionBase {
 
+    public HStack() {
+        super(true);
+    }
+
     @Override
     public NodeValue calc(INDArray v1, INDArray v2) {
         DataType dataType = ND4JUtils.getSupportedOperationType(v1, v2);

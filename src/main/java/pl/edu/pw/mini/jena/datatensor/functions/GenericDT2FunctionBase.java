@@ -9,19 +9,29 @@ import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.BooleanDataTenso
 import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.NumericDataTensor;
 
 abstract public class GenericDT2FunctionBase extends FunctionBase2 {
+    private final boolean bothSameType;
 
-    private boolean isNotTwoNumericOrTwoBooleanDT(NodeValue v1, NodeValue v2) {
+    public GenericDT2FunctionBase(boolean bothSameType) {
+        this.bothSameType = bothSameType;
+    }
+
+    private boolean isNumericOrBooleanDT(RDFDatatype datatype) {
+        return datatype instanceof NumericDataTensor || datatype instanceof BooleanDataTensor;
+    }
+
+    private boolean isInputInvalid(NodeValue v1, NodeValue v2) {
         if (!v1.asNode().isLiteral() || !v2.asNode().isLiteral())
             return true;
         RDFDatatype dataType = v1.asNode().getLiteralDatatype();
         RDFDatatype dataType2 = v2.asNode().getLiteralDatatype();
-        return !(dataType instanceof NumericDataTensor || dataType instanceof BooleanDataTensor) &&
-                (dataType.equals(dataType2));
+        if (!isNumericOrBooleanDT(dataType) || !isNumericOrBooleanDT(dataType2))
+            return true;
+        return bothSameType && !dataType.equals(dataType2);
     }
 
     @Override
     public NodeValue exec(NodeValue v1, NodeValue v2) {
-        if (isNotTwoNumericOrTwoBooleanDT(v1, v2)) {
+        if (isInputInvalid(v1, v2)) {
             throw new ExprEvalException("Arguments must be the same NumericDataTensor or BooleanDataTensor datatype");
         }
         try {
