@@ -6,7 +6,7 @@ public class FunctionsDT {
     public static final String EUCLIDEAN_DISTANCE = DataTensor.getURI() + "euclideanDistance";
 
     // Transformers
-    public static final String COSINE_TRANSFORM = DataTensor.getURI() + "cosine";
+    public static final String COSINE_TRANSFORM = DataTensor.getURI() + "cos";
     public static final String EXP_TRANSFORM = DataTensor.getURI() + "exp";
     public static final String LOG_TRANSFORM = DataTensor.getURI() + "log";
     public static final String LOGP_TRANSFORM = DataTensor.getURI() + "logp";
