@@ -23,7 +23,7 @@ abstract public class NumericDT2FunctionBase extends FunctionBase2 {
 
     public NodeValue exec(NodeValue v1, NodeValue v2) {
         if (isNotTwoNumericDT(v1, v2)) {
-            throw new IllegalArgumentException("Both arguments must be numeric data tensors");
+            throw new ExprEvalException("Both arguments must be numeric data tensors");
         }
         try {
             INDArray t1 = (INDArray) (v1.getNode().getLiteralValue());
