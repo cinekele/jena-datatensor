@@ -16,10 +16,16 @@ public class NumericMapper implements DataTensorMapper {
 
 
         String type = array.data().dataType().toString().toLowerCase();
-        if (type.equals("int32")) {
-            type = "int";
-        } else if (type.equals("int64")) {
-            type = "long";
+        switch (type) {
+            case "int32":
+                type = "int";
+                break;
+            case "int64":
+                type = "long";
+                break;
+            case "int16":
+                type = "short";
+                break;
         }
 
         JSONData jsonData;
@@ -117,7 +123,7 @@ public class NumericMapper implements DataTensorMapper {
             case "short":
                 try {
                     short[] data = ((ShortJSONData) jsonData).getData();
-                    indArray = Nd4j.create(data, shape, DataType.SHORT);
+                    indArray = Nd4j.create(data, shape, DataType.INT16);
                 } catch (Exception e) {
                     throw new IllegalArgumentException("Error parsing tensor: " + e.getMessage());
                 }
