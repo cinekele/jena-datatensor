@@ -76,9 +76,9 @@ public class TestDatatypes {
 
     @Test
     public void valueToLex_short() {
-        testValueToLex(Nd4j.create(new short[]{1}, new long[]{1, 1, 1}, DataType.SHORT), numericDataTensor);
-        testValueToLex(Nd4j.create(new short[]{1, 2, 3, 4}, new long[]{2, 2}, DataType.SHORT), numericDataTensor);
-        testValueToLex(Nd4j.create(new short[]{3}, new long[]{1}, DataType.SHORT), numericDataTensor);
+        testValueToLex(Nd4j.create(new short[]{1}, new long[]{1, 1, 1}, DataType.INT16), numericDataTensor);
+        testValueToLex(Nd4j.create(new short[]{1, 2, 3, 4}, new long[]{2, 2}, DataType.INT16), numericDataTensor);
+        testValueToLex(Nd4j.create(new short[]{3}, new long[]{1}, DataType.INT16), numericDataTensor);
     }
 
     @Test
@@ -111,9 +111,9 @@ public class TestDatatypes {
 
     @Test
     public void literalIsCorrect_short() {
-        testLiteralIsCorrectType(Nd4j.create(new short[]{1}, new long[]{1, 1, 1}, DataType.SHORT), numericDataTensor);
-        testLiteralIsCorrectType(Nd4j.create(new short[]{1, 2, 3, 4}, new long[]{2, 2}, DataType.SHORT), numericDataTensor);
-        testLiteralIsCorrectType(Nd4j.create(new short[]{3}, new long[]{1}, DataType.SHORT), numericDataTensor);
+        testLiteralIsCorrectType(Nd4j.create(new short[]{1}, new long[]{1, 1, 1}, DataType.INT16), numericDataTensor);
+        testLiteralIsCorrectType(Nd4j.create(new short[]{1, 2, 3, 4}, new long[]{2, 2}, DataType.INT16), numericDataTensor);
+        testLiteralIsCorrectType(Nd4j.create(new short[]{3}, new long[]{1}, DataType.INT16), numericDataTensor);
     }
 
     @Test

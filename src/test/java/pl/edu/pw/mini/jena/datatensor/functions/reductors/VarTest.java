@@ -18,7 +18,7 @@ public class VarTest {
         Var var = new Var();
         NodeValue v1 = NodeValue.makeNode(NodeFactory.createLiteralByValue(Nd4j.create(new double[]{0.0, 1.0, 2.0}), NumericDataTensor.INSTANCE));
         NodeValue result = var.exec(NodeValue.makeInteger(0), v1);
-        Double expected = (Math.pow(-1.0, 2) + Math.pow(1.0, 2)) / 2;
+        double expected = (Math.pow(-1.0, 2) + Math.pow(1.0, 2)) / 2;
         assertEquals(expected, result.getDouble(), 0.0);
     }
 
@@ -27,7 +27,7 @@ public class VarTest {
         Var var = new Var();
         NodeValue v1 = NodeValue.makeNode(NodeFactory.createLiteralByValue(Nd4j.create(new int[][]{{0, 1, 2}, {3, 4, 5}}), NumericDataTensor.INSTANCE));
         NodeValue result = var.exec(NodeValue.makeInteger(-1), v1);
-        Double expected = (Math.pow(-2.5, 2) + Math.pow(-1.5, 2) + Math.pow(-0.5, 2) + Math.pow(0.5, 2) + Math.pow(1.5, 2) + Math.pow(2.5, 2)) / 5;
+        double expected = (Math.pow(-2.5, 2) + Math.pow(-1.5, 2) + Math.pow(-0.5, 2) + Math.pow(0.5, 2) + Math.pow(1.5, 2) + Math.pow(2.5, 2)) / 5;
         assertEquals(expected, result.getDouble(), 0.0);
     }
 
@@ -45,17 +45,17 @@ public class VarTest {
     @Test
     public void testExec4() {
         Var var = new Var();
-        NodeValue v1 = NodeValue.makeNode(NodeFactory.createLiteralByValue(Nd4j.create(new int[][]{{0, 1, 2}, {3, 4, 5}}).castTo(DataType.SHORT),
+        NodeValue v1 = NodeValue.makeNode(NodeFactory.createLiteralByValue(Nd4j.create(new int[][]{{0, 1, 2}, {3, 4, 5}}).castTo(DataType.INT16),
                 NumericDataTensor.INSTANCE));
         NodeValue result = var.exec(NodeValue.makeInteger(-1), v1);
-        Double expected = (Math.pow(-2.5, 2) + Math.pow(-1.5, 2) + Math.pow(-0.5, 2) + Math.pow(0.5, 2) + Math.pow(1.5, 2) + Math.pow(2.5, 2)) / 5;
+        double expected = (Math.pow(-2.5, 2) + Math.pow(-1.5, 2) + Math.pow(-0.5, 2) + Math.pow(0.5, 2) + Math.pow(1.5, 2) + Math.pow(2.5, 2)) / 5;
         assertEquals(expected, result.getDouble(), 0.0);
     }
 
     @Test
     public void testExec5() {
         Var var = new Var();
-        NodeValue v1 = NodeValue.makeNode(NodeFactory.createLiteralByValue(Nd4j.create(new int[][]{{0, 1, 2}, {3, 4, 5}}).castTo(DataType.SHORT),
+        NodeValue v1 = NodeValue.makeNode(NodeFactory.createLiteralByValue(Nd4j.create(new int[][]{{0, 1, 2}, {3, 4, 5}}).castTo(DataType.INT16),
                 NumericDataTensor.INSTANCE));
         INDArray result = (INDArray) var.exec(NodeValue.makeInteger(0), v1).getNode().getLiteralValue();
         INDArray expected = Nd4j.create(new double[]{
@@ -70,7 +70,7 @@ public class VarTest {
         NodeValue v1 = NodeValue.makeNode(NodeFactory.createLiteralByValue(Nd4j.create(new float[][]{{0, 1, 2}, {3, 4, 5}}),
                 NumericDataTensor.INSTANCE));
         NodeValue result = var.exec(NodeValue.makeInteger(-1), v1);
-        Double expected = (Math.pow(-2.5, 2) + Math.pow(-1.5, 2) + Math.pow(-0.5, 2) + Math.pow(0.5, 2) + Math.pow(1.5, 2) + Math.pow(2.5, 2)) / 5;
+        double expected = (Math.pow(-2.5, 2) + Math.pow(-1.5, 2) + Math.pow(-0.5, 2) + Math.pow(0.5, 2) + Math.pow(1.5, 2) + Math.pow(2.5, 2)) / 5;
         assertEquals(expected, result.getDouble(), 0.001);
     }
 

@@ -17,7 +17,7 @@ public class SumTest {
         Sum sum = new Sum();
         NodeValue v1 = NodeValue.makeNode(NodeFactory.createLiteralByValue(Nd4j.create(new double[]{0.0, 1.0, 2.0}), NumericDataTensor.INSTANCE));
         NodeValue result = sum.exec(NodeValue.makeInteger(0), v1);
-        Double expected = 3.0;
+        double expected = 3.0;
         assertEquals(expected, result.getDouble(), 0.0);
     }
 
@@ -26,7 +26,7 @@ public class SumTest {
         Sum sum = new Sum();
         NodeValue v1 = NodeValue.makeNode(NodeFactory.createLiteralByValue(Nd4j.create(new int[][]{{0, 1, 2}, {3, 4, 5}}), NumericDataTensor.INSTANCE));
         NodeValue result = sum.exec(NodeValue.makeInteger(-1), v1);
-        Double expected = 0.0 + 1.0 + 2.0 + 3.0 + 4.0 + 5.0;
+        double expected = 0.0 + 1.0 + 2.0 + 3.0 + 4.0 + 5.0;
         assertEquals(expected, result.getDouble(), 0.0);
     }
 
@@ -43,20 +43,20 @@ public class SumTest {
     @Test
     public void testExec4() {
         Sum sum = new Sum();
-        NodeValue v1 = NodeValue.makeNode(NodeFactory.createLiteralByValue(Nd4j.create(new int[][]{{0, 1, 2}, {3, 4, 5}}).castTo(DataType.SHORT),
+        NodeValue v1 = NodeValue.makeNode(NodeFactory.createLiteralByValue(Nd4j.create(new int[][]{{0, 1, 2}, {3, 4, 5}}).castTo(DataType.INT16),
                 NumericDataTensor.INSTANCE));
         NodeValue result = sum.exec(NodeValue.makeInteger(-1), v1);
-        Double expected = 0.0 + 1.0 + 2.0 + 3.0 + 4.0 + 5.0;
+        double expected = 0.0 + 1.0 + 2.0 + 3.0 + 4.0 + 5.0;
         assertEquals(expected, result.getDouble(), 0.0);
     }
 
     @Test
     public void testExec5() {
         Sum sum = new Sum();
-        NodeValue v1 = NodeValue.makeNode(NodeFactory.createLiteralByValue(Nd4j.create(new int[][]{{0, 1, 2}, {3, 4, 5}}).castTo(DataType.SHORT),
+        NodeValue v1 = NodeValue.makeNode(NodeFactory.createLiteralByValue(Nd4j.create(new int[][]{{0, 1, 2}, {3, 4, 5}}).castTo(DataType.INT16),
                 NumericDataTensor.INSTANCE));
         INDArray result = (INDArray) sum.exec(NodeValue.makeInteger(0), v1).getNode().getLiteralValue();
-        INDArray expected = Nd4j.create(new int[]{3, 5, 7}, new long[]{3}, DataType.SHORT);
+        INDArray expected = Nd4j.create(new int[]{3, 5, 7}, new long[]{3}, DataType.INT16);
         boolean compare = expected.equalsWithEps(result, 0.001);
         assertTrue(compare);
     }
@@ -67,7 +67,7 @@ public class SumTest {
         NodeValue v1 = NodeValue.makeNode(NodeFactory.createLiteralByValue(Nd4j.create(new float[][]{{0, 1, 2}, {3, 4, 5}}),
                 NumericDataTensor.INSTANCE));
         NodeValue result = sum.exec(NodeValue.makeInteger(-1), v1);
-        Double expected = 0.0 + 1.0 + 2.0 + 3.0 + 4.0 + 5.0;
+        double expected = 0.0 + 1.0 + 2.0 + 3.0 + 4.0 + 5.0;
         assertEquals(expected, result.getDouble(), 0.0);
     }
 

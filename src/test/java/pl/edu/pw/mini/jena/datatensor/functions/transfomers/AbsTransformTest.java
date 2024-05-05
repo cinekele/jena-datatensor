@@ -27,7 +27,7 @@ public class AbsTransformTest {
         NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"short\",\"shape\":[2],\"data\":[-3, -4]}", NumericDataTensor.INSTANCE);
         NodeValue transformed = absTransform.exec(nodeValue);
         INDArray result = (INDArray) transformed.getNode().getLiteralValue();
-        INDArray expected = Nd4j.create(new double[]{3, 4}).castTo(DataType.SHORT);
+        INDArray expected = Nd4j.create(new double[]{3, 4}).castTo(DataType.INT16);
         boolean compare = result.equalsWithEps(expected, 0.0001);
         Assert.assertTrue(compare);
     }
