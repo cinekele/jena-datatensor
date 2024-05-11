@@ -7,7 +7,7 @@
     <version>4.10.0</version>
     <packaging>jar</packaging>
     <name>Jena Data Tensor Engine</name>
-
+    <description>Tensor-based data processing engine for Jena</description>
 
     <parent>
         <groupId>org.apache.jena</groupId>
@@ -112,18 +112,18 @@
                 </executions>
             </plugin>
 
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-javadoc-plugin</artifactId>-->
-<!--                <configuration>-->
-<!--                    <source>8</source>-->
-<!--                    <detectJavaApiLink>false</detectJavaApiLink>-->
-<!--                    <doclint>none</doclint>-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.apache.maven.plugins</groupId>-->
+            <!--                <artifactId>maven-javadoc-plugin</artifactId>-->
+            <!--                <configuration>-->
+            <!--                    <source>8</source>-->
+            <!--                    <detectJavaApiLink>false</detectJavaApiLink>-->
+            <!--                    <doclint>none</doclint>-->
 
-<!--                    <windowtitle>Jena Data Tensor Engine</windowtitle>-->
-<!--                    <doctitle>Jena Data Tensor Engine ${project.version}</doctitle>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
+            <!--                    <windowtitle>Jena Data Tensor Engine</windowtitle>-->
+            <!--                    <doctitle>Jena Data Tensor Engine ${project.version}</doctitle>-->
+            <!--                </configuration>-->
+            <!--            </plugin>-->
         </plugins>
     </build>
 </project>
