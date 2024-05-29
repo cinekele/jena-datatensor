@@ -16,7 +16,8 @@ import pl.edu.pw.mini.jena.datatensor.functions.transfomers.TestDTTransformers;
         TestDTOperators.class,
         TestDTReductors.class,
         TestDTSimilarities.class,
-        TestDTTransformers.class
+        TestDTTransformers.class,
+        AggregatesTest.class
 })
 public class TS_DTFunctionsIntegration {
 }
