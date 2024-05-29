@@ -6,7 +6,7 @@ import org.junit.Test;
 import static pl.edu.pw.mini.jena.datatensor.functions.DTTestExpr.test;
 import static pl.edu.pw.mini.jena.datatensor.functions.DTTestExpr.testError;
 
-public class TransformersDTTest {
+public class TestDTTransformers {
 
     @Test
     public void absDTTest1() {
