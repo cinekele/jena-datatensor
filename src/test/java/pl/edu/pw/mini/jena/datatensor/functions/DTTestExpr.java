@@ -88,9 +88,7 @@ public class DTTestExpr {
             return false;
         Node n1 = nv1.getNode();
         Node n2 = nv2.getNode();
-        if (isNumericDTorBooleanDT(n1) && isNumericDTorBooleanDT(n2)) {
-            return n1.getLiteralValue().equals(n2.getLiteralValue());
-        }
+
         if (n1.getLiteralDatatype() instanceof NumericDataTensor && n2.getLiteralDatatype() instanceof NumericDataTensor) {
             return compareWithEps(n1, n2, 0.0001);
         } else {

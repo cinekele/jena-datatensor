@@ -37,6 +37,7 @@ public class TestDatatypes {
         valid(numericDataTensor, "{\"type\":\"float64\",\"shape\":[2,1,2],\"data\":[3.0,2.0,3.0,4.0]}");
         valid(numericDataTensor, "{\"type\":\"int64\",\"shape\":[2,2,1],\"data\":[3,2,3,4]}");
         valid(numericDataTensor, "{\"type\":\"int16\",\"shape\":[1,2,2],\"data\":[3,2,3,4]}");
+        valid(numericDataTensor, "{\"type\":\"float16\",\"shape\":[1,2,2],\"data\":[3.0,2.0,3.0,4.0]}");
     }
 
     @Test
@@ -79,6 +80,13 @@ public class TestDatatypes {
     }
 
     @Test
+    public void valueToLexFloat16() {
+        testValueToLex(Nd4j.create(new float[]{1f}, new long[]{1, 1, 1}, DataType.FLOAT16), numericDataTensor);
+        testValueToLex(Nd4j.create(new float[]{1f, 2f, 3f, 4f}, new long[]{2, 2}, DataType.FLOAT16), numericDataTensor);
+        testValueToLex(Nd4j.create(new float[]{3f}, new long[]{1}, DataType.FLOAT16), numericDataTensor);
+    }
+
+    @Test
     public void valueToLexFloat32() {
         testValueToLex(Nd4j.create(new float[1][1]), numericDataTensor);
         testValueToLex(Nd4j.create(new float[][]{{1.4f, 2.3f}, {3f, 4f}}), numericDataTensor);
@@ -111,6 +119,13 @@ public class TestDatatypes {
         testLiteralIsCorrectType(Nd4j.create(new long[1][1]), numericDataTensor);
         testLiteralIsCorrectType(Nd4j.create(new long[][]{{1, 2}, {3, 4}}), numericDataTensor);
         testLiteralIsCorrectType(Nd4j.create(new long[]{1}), numericDataTensor);
+    }
+
+    @Test
+    public void literalIsCorrectFloat16() {
+        testLiteralIsCorrectType(Nd4j.create(new float[]{1f}, new long[]{1, 1, 1}, DataType.FLOAT16), numericDataTensor);
+        testLiteralIsCorrectType(Nd4j.create(new float[]{1f, 2f, 3f, 4f}, new long[]{2, 2}, DataType.FLOAT16), numericDataTensor);
+        testLiteralIsCorrectType(Nd4j.create(new float[]{3f}, new long[]{1}, DataType.FLOAT16), numericDataTensor);
     }
 
     @Test

@@ -195,13 +195,19 @@ public class TestDTOperators {
                 "\"{\\\"shape\\\":[2,2],\\\"data\\\":[true,false,false,false]}\"^^dt:BooleanDataTensor");
     }
 
-    @Test(expected = ExprEvalException.class)
+    @Test
     public void gtDTTest6() {
-        testError("dt:gt(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,4],\\\"data\\\":[1,2,3,4]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,6],\\\"data\\\":[1,2,3,4,5,6]}\"^^dt:NumericDataTensor)");
+        test("dt:gt(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,2]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"float16\\\",\\\"shape\\\":[2,2],\\\"data\\\":[1,2,3,4]}\"^^dt:NumericDataTensor)",
+                "\"{\\\"shape\\\":[2,2],\\\"data\\\":[true,false,false,false]}\"^^dt:BooleanDataTensor");
     }
 
     @Test(expected = ExprEvalException.class)
     public void gtDTTest7() {
+        testError("dt:gt(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,4],\\\"data\\\":[1,2,3,4]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,6],\\\"data\\\":[1,2,3,4,5,6]}\"^^dt:NumericDataTensor)");
+    }
+
+    @Test(expected = ExprEvalException.class)
+    public void gtDTTest8() {
         testError("dt:gt(\"{\\\"shape\\\":[2],\\\"data\\\":[true,false]}\"^^dt:BooleanDataTensor, \"{\\\"shape\\\":[1,2],\\\"data\\\":[false,false]}\"^^dt:BooleanDataTensor)");
     }
 
@@ -281,8 +287,14 @@ public class TestDTOperators {
                 "\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[3],\\\"data\\\":[0,0,0]}\"^^dt:NumericDataTensor");
     }
 
-    @Test(expected = ExprEvalException.class)
+    @Test
     public void multiplyDTTest7() {
+        test("dt:multiply(\"{\\\"type\\\":\\\"float16\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,2]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[2,2],\\\"data\\\":[1,2,3,4]}\"^^dt:NumericDataTensor)",
+                "\"{\\\"type\\\":\\\"float16\\\",\\\"shape\\\":[2,2],\\\"data\\\":[3,4,9,8]}\"^^dt:NumericDataTensor");
+    }
+
+    @Test(expected = ExprEvalException.class)
+    public void multiplyDTTest8() {
         testError("dt:multiply(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,3],\\\"data\\\":[3,2,3,4,5,6]}\"^^dt:NumericDataTensor)");
     }
 
@@ -400,12 +412,18 @@ public class TestDTOperators {
 
     @Test
     public void subtractDTTest6() {
+        test("dt:subtract(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[3],\\\"data\\\":[2,3,4]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"float16\\\",\\\"shape\\\":[1],\\\"data\\\":[0]}\"^^dt:NumericDataTensor)",
+                "\"{\\\"type\\\":\\\"float16\\\",\\\"shape\\\":[3],\\\"data\\\":[2,3,4]}\"^^dt:NumericDataTensor");
+    }
+
+    @Test
+    public void subtractDTTest7() {
         test("dt:subtract(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[3],\\\"data\\\":[2,3,4]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1],\\\"data\\\":[0]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[3],\\\"data\\\":[2,3,4]}\"^^dt:NumericDataTensor");
     }
 
     @Test(expected = ExprEvalException.class)
-    public void subtractDTTest7() {
+    public void subtractDTTest8() {
         testError("dt:subtract(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,3],\\\"data\\\":[3,2,3,4,5,6]}\"^^dt:NumericDataTensor)");
     }
 

@@ -49,4 +49,14 @@ public class GtTest {
         INDArray expected = Nd4j.create(new boolean[][]{{true, false}, {false, false}});
         assertEquals(expected, result);
     }
+
+    @Test
+    public void testExec5() {
+        Gt gt = new Gt();
+        NodeValue nodeValue1 = NodeValue.makeNode("{\"type\":\"int64\",\"shape\":[2, 2],\"data\":[1, 2, 3, 4]}", NumericDataTensor.INSTANCE);
+        NodeValue nodeValue2 = NodeValue.makeNode("{\"type\":\"float16\",\"shape\":[2, 2],\"data\":[1, 2, 3, 4]}", NumericDataTensor.INSTANCE);
+        INDArray result = (INDArray) gt.exec(nodeValue1, nodeValue2).getNode().getLiteralValue();
+        INDArray expected = Nd4j.create(new boolean[][]{{false, false}, {false, false}});
+        assertEquals(expected, result);
+    }
 }

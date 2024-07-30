@@ -23,6 +23,7 @@ public class NumericMapper implements DataTensorMapper {
                 jsonData = new Float64();
                 ((Float64) jsonData).setData(array.data().asDouble());
                 break;
+            case "float32":
             case "float":
                 jsonData = new Float32();
                 ((Float32) jsonData).setData(array.data().asFloat());
@@ -31,6 +32,7 @@ public class NumericMapper implements DataTensorMapper {
             case "float16":
                 jsonData = new Float16();
                 ((Float16) jsonData).setData(array.data().asFloat());
+                break;
             case "short":
             case "int16":
                 jsonData = new Int16();
