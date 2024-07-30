@@ -13,7 +13,7 @@ public class LogTransformTest {
     @Test
     public void testExec1() {
         LogTransform logTransform = new LogTransform();
-        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"int\",\"shape\":[2],\"data\":[3, 2]}", NumericDataTensor.INSTANCE);
+        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"int32\",\"shape\":[2],\"data\":[3, 2]}", NumericDataTensor.INSTANCE);
         NodeValue transformed = logTransform.exec(nodeValue);
         INDArray result = (INDArray) transformed.getNode().getLiteralValue();
         INDArray expected = Nd4j.create(new double[]{Math.log(3), Math.log(2)});
@@ -24,7 +24,7 @@ public class LogTransformTest {
     @Test
     public void testExec2() {
         LogTransform logTransform = new LogTransform();
-        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"short\",\"shape\":[2],\"data\":[3, 4]}", NumericDataTensor.INSTANCE);
+        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"int16\",\"shape\":[2],\"data\":[3, 4]}", NumericDataTensor.INSTANCE);
         NodeValue transformed = logTransform.exec(nodeValue);
         INDArray result = (INDArray) transformed.getNode().getLiteralValue();
         INDArray expected = Nd4j.create(new double[]{Math.log(3), Math.log(4)});
@@ -35,7 +35,7 @@ public class LogTransformTest {
     @Test
     public void testExec3() {
         LogTransform logTransform = new LogTransform();
-        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"float\",\"shape\":[2,2],\"data\":[3, 9, 27, 81]}", NumericDataTensor.INSTANCE);
+        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"float32\",\"shape\":[2,2],\"data\":[3, 9, 27, 81]}", NumericDataTensor.INSTANCE);
         NodeValue transformed = logTransform.exec(nodeValue);
         INDArray result = (INDArray) transformed.getNode().getLiteralValue();
         INDArray expected = Nd4j.create(new double[][]{{Math.log(3), Math.log(9)}, {Math.log(27), Math.log(81)}}).castTo(DataType.FLOAT);

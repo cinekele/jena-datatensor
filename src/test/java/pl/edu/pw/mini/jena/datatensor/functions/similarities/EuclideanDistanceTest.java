@@ -9,8 +9,8 @@ public class EuclideanDistanceTest {
     @Test
     public void testExec1() {
         EuclideanDistance euclideanDistance = new EuclideanDistance();
-        NodeValue v1 = NodeValue.makeNode("{\"type\":\"int\",\"shape\":[2],\"data\":[1, 1]}", NumericDataTensor.INSTANCE);
-        NodeValue v2 = NodeValue.makeNode("{\"type\":\"short\",\"shape\":[2],\"data\":[1, 1]}", NumericDataTensor.INSTANCE);
+        NodeValue v1 = NodeValue.makeNode("{\"type\":\"int32\",\"shape\":[2],\"data\":[1, 1]}", NumericDataTensor.INSTANCE);
+        NodeValue v2 = NodeValue.makeNode("{\"type\":\"int16\",\"shape\":[2],\"data\":[1, 1]}", NumericDataTensor.INSTANCE);
         NodeValue result = euclideanDistance.exec(v1, v2);
         Assert.assertEquals(0, result.getDouble(), 0.0001);
     }
@@ -18,8 +18,8 @@ public class EuclideanDistanceTest {
     @Test
     public void testExec2() {
         EuclideanDistance euclideanDistance = new EuclideanDistance();
-        NodeValue v1 = NodeValue.makeNode("{\"type\":\"float\",\"shape\":[2],\"data\":[1, 1]}", NumericDataTensor.INSTANCE);
-        NodeValue v2 = NodeValue.makeNode("{\"type\":\"short\",\"shape\":[2],\"data\":[1, 2]}", NumericDataTensor.INSTANCE);
+        NodeValue v1 = NodeValue.makeNode("{\"type\":\"float32\",\"shape\":[2],\"data\":[1, 1]}", NumericDataTensor.INSTANCE);
+        NodeValue v2 = NodeValue.makeNode("{\"type\":\"int16\",\"shape\":[2],\"data\":[1, 2]}", NumericDataTensor.INSTANCE);
         NodeValue result = euclideanDistance.exec(v1, v2);
         Assert.assertEquals(1, result.getDouble(), 0.0001);
     }
@@ -28,8 +28,8 @@ public class EuclideanDistanceTest {
     @Test
     public void testExec3() {
         EuclideanDistance euclideanDistance = new EuclideanDistance();
-        NodeValue v1 = NodeValue.makeNode("{\"type\":\"float\",\"shape\":[2],\"data\":[1, 1]}", NumericDataTensor.INSTANCE);
-        NodeValue v2 = NodeValue.makeNode("{\"type\":\"double\",\"shape\":[2],\"data\":[2, 2]}", NumericDataTensor.INSTANCE);
+        NodeValue v1 = NodeValue.makeNode("{\"type\":\"float32\",\"shape\":[2],\"data\":[1, 1]}", NumericDataTensor.INSTANCE);
+        NodeValue v2 = NodeValue.makeNode("{\"type\":\"float64\",\"shape\":[2],\"data\":[2, 2]}", NumericDataTensor.INSTANCE);
         NodeValue result = euclideanDistance.exec(v1, v2);
         Assert.assertEquals(Math.sqrt(2), result.getDouble(), 0.0001);
     }

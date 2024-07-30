@@ -11,7 +11,7 @@ public class NumericMapperTest {
 
     @Test
     public void testMapJsonToINDArrayInt() {
-        String json = "{\"type\":\"int\",\"shape\":[2,2],\"data\":[1,2,3,4]}";
+        String json = "{\"type\":\"int32\",\"shape\":[2,2],\"data\":[1,2,3,4]}";
         INDArray expected = Nd4j.create(new int[]{1, 2, 3, 4}, new long[]{2, 2}, DataType.INT32);
         INDArray actual = NumericMapper.mapJsonToINDArray(json);
         Assert.assertEquals(expected, actual);
@@ -19,7 +19,7 @@ public class NumericMapperTest {
 
     @Test
     public void testMapJsonToINDArrayLong() {
-        String json = "{\"type\":\"long\",\"shape\":[2,2],\"data\":[1,2,3,4]}";
+        String json = "{\"type\":\"int64\",\"shape\":[2,2],\"data\":[1,2,3,4]}";
         INDArray expected = Nd4j.create(new long[]{1, 2, 3, 4}, new long[]{2, 2}, DataType.INT64);
         INDArray actual = NumericMapper.mapJsonToINDArray(json);
         Assert.assertEquals(expected, actual);
@@ -27,7 +27,7 @@ public class NumericMapperTest {
 
     @Test
     public void testMapJsonToINDArrayFloat() {
-        String json = "{\"type\":\"float\",\"shape\":[2,2],\"data\":[1.0,2.0,3.0,4.0]}";
+        String json = "{\"type\":\"float32\",\"shape\":[2,2],\"data\":[1.0,2.0,3.0,4.0]}";
         INDArray expected = Nd4j.create(new float[]{1.0f, 2.0f, 3.0f, 4.0f}, new long[]{2, 2}, DataType.FLOAT);
         INDArray actual = NumericMapper.mapJsonToINDArray(json);
         Assert.assertEquals(expected, actual);
@@ -35,7 +35,7 @@ public class NumericMapperTest {
 
     @Test
     public void testMapJsonToINDArrayDouble() {
-        String json = "{\"type\":\"double\",\"shape\":[2,2],\"data\":[1.0,2.0,3.0,4.0]}";
+        String json = "{\"type\":\"float64\",\"shape\":[2,2],\"data\":[1.0,2.0,3.0,4.0]}";
         INDArray expected = Nd4j.create(new double[]{1.0, 2.0, 3.0, 4.0}, new long[]{2, 2}, DataType.DOUBLE);
         INDArray actual = NumericMapper.mapJsonToINDArray(json);
         Assert.assertEquals(expected, actual);
@@ -43,19 +43,19 @@ public class NumericMapperTest {
 
     @Test
     public void testMapJsonToINDArrayShort() {
-        String json = "{\"type\":\"short\",\"shape\":[2,2],\"data\":[1,2,3,4]}";
-        INDArray expected = Nd4j.create(new short[]{1, 2, 3, 4}, new long[]{2, 2}, DataType.SHORT);
+        String json = "{\"type\":\"int16\",\"shape\":[2,2],\"data\":[1,2,3,4]}";
+        INDArray expected = Nd4j.create(new short[]{1, 2, 3, 4}, new long[]{2, 2}, DataType.INT16);
         INDArray actual = NumericMapper.mapJsonToINDArray(json);
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void testMapJsonToINDArrayError() {
-        String json = "{\"type\":\"long\",\"shape\":[2,2],\"data\":[1,null,3,4]}";
+        String json = "{\"type\":\"int64\",\"shape\":[2,2],\"data\":[1,null,3,4]}";
         INDArray expected = Nd4j.create(new long[]{1, 2, 3, 4}, new long[]{2, 2}, DataType.INT64);
         boolean error = false;
         try {
-            INDArray actual = NumericMapper.mapJsonToINDArray(json);
+            NumericMapper.mapJsonToINDArray(json);
         } catch (IllegalArgumentException e) {
             error = true;
         }
@@ -64,12 +64,12 @@ public class NumericMapperTest {
     }
 
     @Test
-    public void testMapJsonToINDArrayUnsupportedType() throws Exception {
+    public void testMapJsonToINDArrayUnsupportedType() {
         String json = "{\"type\":\"unsupported\",\"shape\":[2,2],\"data\":[1,2,3,4]}";
         INDArray expected = Nd4j.create(new long[]{1, 2, 3, 4}, new long[]{2, 2}, DataType.INT64);
         boolean error = false;
         try {
-            INDArray actual = NumericMapper.mapJsonToINDArray(json);
+            NumericMapper.mapJsonToINDArray(json);
         } catch (IllegalArgumentException e) {
             error = true;
         }
@@ -78,12 +78,12 @@ public class NumericMapperTest {
     }
 
     @Test
-    public void testMapJsonToINDArrayDifferentShapesAndData() throws Exception {
-        String json = "{\"type\":\"int\",\"shape\":[3,2],\"data\":[1,2,3,4]}";
+    public void testMapJsonToINDArrayDifferentShapesAndData() {
+        String json = "{\"type\":\"int32\",\"shape\":[3,2],\"data\":[1,2,3,4]}";
         INDArray expected = Nd4j.create(new long[]{1, 2, 3, 4}, new long[]{2, 2}, DataType.INT64);
         boolean error = false;
         try {
-            INDArray actual = NumericMapper.mapJsonToINDArray(json);
+            NumericMapper.mapJsonToINDArray(json);
         } catch (IllegalArgumentException e) {
             error = true;
         }
@@ -95,7 +95,7 @@ public class NumericMapperTest {
     public void testMapINDArrayWithFloatToJson() {
         INDArray array = Nd4j.create(new float[]{1, 2, 3, 4}, new long[]{2, 2}, DataType.FLOAT);
         String json = NumericMapper.mapINDArrayToJson(array);
-        String expectedJson = "{\"type\":\"float\",\"shape\":[2,2],\"data\":[1.0,2.0,3.0,4.0]}";
+        String expectedJson = "{\"type\":\"float32\",\"shape\":[2,2],\"data\":[1.0,2.0,3.0,4.0]}";
         Assert.assertEquals(expectedJson, json);
     }
 
@@ -103,7 +103,7 @@ public class NumericMapperTest {
     public void testMapINDArrayToJsonWithDouble() {
         INDArray array = Nd4j.create(new double[]{1, 2, 3, 4}, new long[]{2, 2}, DataType.DOUBLE);
         String json = NumericMapper.mapINDArrayToJson(array);
-        String expectedJson = "{\"type\":\"double\",\"shape\":[2,2],\"data\":[1.0,2.0,3.0,4.0]}";
+        String expectedJson = "{\"type\":\"float64\",\"shape\":[2,2],\"data\":[1.0,2.0,3.0,4.0]}";
         Assert.assertEquals(expectedJson, json);
     }
 
@@ -111,7 +111,7 @@ public class NumericMapperTest {
     public void testMapINDArrayWithIntToJson() {
         INDArray array = Nd4j.create(new int[]{1, 2, 3, 4}, new long[]{2, 2}, DataType.INT32);
         String json = NumericMapper.mapINDArrayToJson(array);
-        String expectedJson = "{\"type\":\"int\",\"shape\":[2,2],\"data\":[1,2,3,4]}";
+        String expectedJson = "{\"type\":\"int32\",\"shape\":[2,2],\"data\":[1,2,3,4]}";
         Assert.assertEquals(expectedJson, json);
     }
 
@@ -119,15 +119,15 @@ public class NumericMapperTest {
     public void testMapINDArrayWithLongToJson() {
         INDArray array = Nd4j.create(new long[]{1, 2, 3, 4}, new long[]{2, 2}, DataType.INT64);
         String json = NumericMapper.mapINDArrayToJson(array);
-        String expectedJson = "{\"type\":\"long\",\"shape\":[2,2],\"data\":[1,2,3,4]}";
+        String expectedJson = "{\"type\":\"int64\",\"shape\":[2,2],\"data\":[1,2,3,4]}";
         Assert.assertEquals(expectedJson, json);
     }
 
     @Test
     public void testMapINDArrayWithShortToJson() {
-        INDArray array = Nd4j.create(new short[]{1, 2, 3, 4}, new long[]{2, 2}, DataType.SHORT);
+        INDArray array = Nd4j.create(new short[]{1, 2, 3, 4}, new long[]{2, 2}, DataType.INT16);
         String json = NumericMapper.mapINDArrayToJson(array);
-        String expectedJson = "{\"type\":\"short\",\"shape\":[2,2],\"data\":[1,2,3,4]}";
+        String expectedJson = "{\"type\":\"int16\",\"shape\":[2,2],\"data\":[1,2,3,4]}";
         Assert.assertEquals(expectedJson, json);
     }
 }

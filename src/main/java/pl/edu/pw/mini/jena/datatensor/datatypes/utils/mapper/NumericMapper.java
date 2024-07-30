@@ -16,44 +16,37 @@ public class NumericMapper implements DataTensorMapper {
 
 
         String type = array.data().dataType().toString().toLowerCase();
-        switch (type) {
-            case "int32":
-                type = "int";
-                break;
-            case "int64":
-                type = "long";
-                break;
-            case "int16":
-                type = "short";
-                break;
-        }
-
         JSONData jsonData;
         switch (type) {
             case "double":
-                jsonData = new DoubleJSONData();
-                ((DoubleJSONData) jsonData).setData(array.data().asDouble());
+            case "float64":
+                jsonData = new Float64();
+                ((Float64) jsonData).setData(array.data().asDouble());
                 break;
             case "float":
-                jsonData = new FloatJSONData();
-                ((FloatJSONData) jsonData).setData(array.data().asFloat());
+                jsonData = new Float32();
+                ((Float32) jsonData).setData(array.data().asFloat());
+                break;
+            case "half":
+            case "float16":
+                jsonData = new Float16();
+                ((Float16) jsonData).setData(array.data().asFloat());
+            case "short":
+            case "int16":
+                jsonData = new Int16();
+                short[] data = getShortArray(array);
+                ((Int16) jsonData).setData(data);
                 break;
             case "int":
-                jsonData = new IntJSONData();
-                ((IntJSONData) jsonData).setData(array.data().asInt());
+            case "int32":
+                jsonData = new Int32();
+                ((Int32) jsonData).setData(array.data().asInt());
                 break;
             case "long":
-                jsonData = new LongJSONData();
-                ((LongJSONData) jsonData).setData(array.data().asLong());
+            case "int64":
+                jsonData = new Int64();
+                ((Int64) jsonData).setData(array.data().asLong());
                 break;
-            case "short":
-                jsonData = new ShortJSONData();
-                short[] data = getShortArray(array);
-                ((ShortJSONData) jsonData).setData(data);
-                break;
-            case "boolean":
-            case "string":
-                throw new IllegalArgumentException("Boolean data type is not supported");
             default:
                 throw new IllegalArgumentException("Unsupported data type: " + type);
         }
@@ -88,42 +81,50 @@ public class NumericMapper implements DataTensorMapper {
         long[] shape = jsonData.getShape();
 
         switch (jsonData.getType()) {
-            case "double":
+            case "float16":
                 try {
-                    double[] data = ((DoubleJSONData) jsonData).getData();
-                    indArray = Nd4j.create(data, shape, DataType.DOUBLE);
+                    float[] data = ((Float16) jsonData).getData();
+                    indArray = Nd4j.create(data, shape, DataType.FLOAT16);
                 } catch (Exception e) {
                     throw new IllegalArgumentException("Error parsing tensor: " + e.getMessage());
                 }
                 break;
-            case "float":
+            case "float32":
                 try {
-                    float[] data = ((FloatJSONData) jsonData).getData();
+                    float[] data = ((Float32) jsonData).getData();
                     indArray = Nd4j.create(data, shape, DataType.FLOAT);
                 } catch (Exception e) {
                     throw new IllegalArgumentException("Error parsing tensor: " + e.getMessage());
                 }
                 break;
-            case "int":
+            case "float64":
                 try {
-                    int[] data = ((IntJSONData) jsonData).getData();
+                    double[] data = ((Float64) jsonData).getData();
+                    indArray = Nd4j.create(data, shape, DataType.DOUBLE);
+                } catch (Exception e) {
+                    throw new IllegalArgumentException("Error parsing tensor: " + e.getMessage());
+                }
+                break;
+            case "int16":
+                try {
+                    short[] data = ((Int16) jsonData).getData();
+                    indArray = Nd4j.create(data, shape, DataType.INT16);
+                } catch (Exception e) {
+                    throw new IllegalArgumentException("Error parsing tensor: " + e.getMessage());
+                }
+                break;
+            case "int32":
+                try {
+                    int[] data = ((Int32) jsonData).getData();
                     indArray = Nd4j.create(data, shape, DataType.INT32);
                 } catch (Exception e) {
                     throw new IllegalArgumentException("Error parsing tensor: " + e.getMessage());
                 }
                 break;
-            case "long":
+            case "int64":
                 try {
-                    long[] data = ((LongJSONData) jsonData).getData();
+                    long[] data = ((Int64) jsonData).getData();
                     indArray = Nd4j.create(data, shape, DataType.INT64);
-                } catch (Exception e) {
-                    throw new IllegalArgumentException("Error parsing tensor: " + e.getMessage());
-                }
-                break;
-            case "short":
-                try {
-                    short[] data = ((ShortJSONData) jsonData).getData();
-                    indArray = Nd4j.create(data, shape, DataType.INT16);
                 } catch (Exception e) {
                     throw new IllegalArgumentException("Error parsing tensor: " + e.getMessage());
                 }

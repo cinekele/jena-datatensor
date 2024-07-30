@@ -12,8 +12,8 @@ public class NotEqTest {
     @Test
     public void testExec1() {
         NotEq notEq = new NotEq();
-        NodeValue nodeValue1 = NodeValue.makeNode("{\"type\":\"double\",\"shape\":[2],\"data\":[4.0, 8.0]}", NumericDataTensor.INSTANCE);
-        NodeValue nodeValue2 = NodeValue.makeNode("{\"type\":\"double\",\"shape\":[2],\"data\":[2.0, 2.0]}", NumericDataTensor.INSTANCE);
+        NodeValue nodeValue1 = NodeValue.makeNode("{\"type\":\"float64\",\"shape\":[2],\"data\":[4.0, 8.0]}", NumericDataTensor.INSTANCE);
+        NodeValue nodeValue2 = NodeValue.makeNode("{\"type\":\"float64\",\"shape\":[2],\"data\":[2.0, 2.0]}", NumericDataTensor.INSTANCE);
         NodeValue resultNode = notEq.exec(nodeValue1, nodeValue2);
         assertEquals(NodeValue.TRUE, resultNode);
     }
@@ -21,8 +21,8 @@ public class NotEqTest {
     @Test
     public void testExec2() {
         NotEq notEq = new NotEq();
-        NodeValue nodeValue1 = NodeValue.makeNode("{\"type\":\"double\",\"shape\":[2],\"data\":[4.0, 8.0]}", NumericDataTensor.INSTANCE);
-        NodeValue nodeValue2 = NodeValue.makeNode("{\"type\":\"double\",\"shape\":[2],\"data\":[4.0, 8.0]}", NumericDataTensor.INSTANCE);
+        NodeValue nodeValue1 = NodeValue.makeNode("{\"type\":\"float64\",\"shape\":[2],\"data\":[4.0, 8.0]}", NumericDataTensor.INSTANCE);
+        NodeValue nodeValue2 = NodeValue.makeNode("{\"type\":\"float64\",\"shape\":[2],\"data\":[4.0, 8.0]}", NumericDataTensor.INSTANCE);
         NodeValue resultNode = notEq.exec(nodeValue1, nodeValue2);
         assertEquals(NodeValue.FALSE, resultNode);
     }

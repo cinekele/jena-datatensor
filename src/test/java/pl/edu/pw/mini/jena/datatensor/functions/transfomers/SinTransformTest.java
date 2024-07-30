@@ -13,7 +13,7 @@ public class SinTransformTest {
     @Test
     public void testExec1() {
         SinTransform sinTransform = new SinTransform();
-        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"double\",\"shape\":[2],\"data\":[0, 1.5707963267948966]}", NumericDataTensor.INSTANCE);
+        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"float64\",\"shape\":[2],\"data\":[0, 1.5707963267948966]}", NumericDataTensor.INSTANCE);
         NodeValue transformed = sinTransform.exec(nodeValue);
         INDArray result = (INDArray) transformed.getNode().getLiteralValue();
         INDArray expected = Nd4j.create(new double[]{Math.sin(0), Math.sin(Math.PI / 2)});
@@ -24,7 +24,7 @@ public class SinTransformTest {
     @Test
     public void testExec2() {
         SinTransform sinTransform = new SinTransform();
-        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"double\",\"shape\":[2],\"data\":[3.141592653589793, 4.71238898038469]}", NumericDataTensor.INSTANCE);
+        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"float64\",\"shape\":[2],\"data\":[3.141592653589793, 4.71238898038469]}", NumericDataTensor.INSTANCE);
         NodeValue transformed = sinTransform.exec(nodeValue);
         INDArray result = (INDArray) transformed.getNode().getLiteralValue();
         INDArray expected = Nd4j.create(new double[]{Math.sin(Math.PI), Math.sin(3 * Math.PI / 2)});
@@ -35,7 +35,7 @@ public class SinTransformTest {
     @Test
     public void testExec3() {
         SinTransform sinTransform = new SinTransform();
-        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"float\",\"shape\":[2,2],\"data\":[6.283185307179586, 7.853981633974483, 9.42477796076938, 10.9955742876]}", NumericDataTensor.INSTANCE);
+        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"float32\",\"shape\":[2,2],\"data\":[6.283185307179586, 7.853981633974483, 9.42477796076938, 10.9955742876]}", NumericDataTensor.INSTANCE);
         NodeValue transformed = sinTransform.exec(nodeValue);
         INDArray result = (INDArray) transformed.getNode().getLiteralValue();
         INDArray expected = Nd4j.create(new double[][]{{Math.sin(2 * Math.PI), Math.sin(5 * Math.PI / 2)}, {Math.sin(3 * Math.PI), Math.sin(7 * Math.PI / 2)}}).castTo(DataType.FLOAT);
@@ -46,7 +46,7 @@ public class SinTransformTest {
     @Test
     public void testExec4() {
         SinTransform sinTransform = new SinTransform();
-        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"int\",\"shape\":[2,2],\"data\":[0, 0, 0, 0]}", NumericDataTensor.INSTANCE);
+        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"int32\",\"shape\":[2,2],\"data\":[0, 0, 0, 0]}", NumericDataTensor.INSTANCE);
         NodeValue transformed = sinTransform.exec(nodeValue);
         INDArray result = (INDArray) transformed.getNode().getLiteralValue();
         INDArray expected = Nd4j.create(new double[][]{{Math.sin(0), Math.sin(0)}, {Math.sin(0), Math.sin(0)}});

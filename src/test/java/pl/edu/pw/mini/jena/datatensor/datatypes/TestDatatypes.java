@@ -32,96 +32,96 @@ public class TestDatatypes {
     // ex:NumericDataTensor
     @Test
     public void NumericDataTensor_01() {
-        valid(numericDataTensor, "{\"type\":\"int\",\"shape\":[1,2,2],\"data\":[3,2,3,4]}");
-        valid(numericDataTensor, "{\"type\":\"float\",\"shape\":[2,1,2],\"data\":[3.0,2.0,3.0,4.0]}");
-        valid(numericDataTensor, "{\"type\":\"double\",\"shape\":[2,1,2],\"data\":[3.0,2.0,3.0,4.0]}");
-        valid(numericDataTensor, "{\"type\":\"long\",\"shape\":[2,2,1],\"data\":[3,2,3,4]}");
-        valid(numericDataTensor, "{\"type\":\"short\",\"shape\":[1,2,2],\"data\":[3,2,3,4]}");
+        valid(numericDataTensor, "{\"type\":\"int32\",\"shape\":[1,2,2],\"data\":[3,2,3,4]}");
+        valid(numericDataTensor, "{\"type\":\"float32\",\"shape\":[2,1,2],\"data\":[3.0,2.0,3.0,4.0]}");
+        valid(numericDataTensor, "{\"type\":\"float64\",\"shape\":[2,1,2],\"data\":[3.0,2.0,3.0,4.0]}");
+        valid(numericDataTensor, "{\"type\":\"int64\",\"shape\":[2,2,1],\"data\":[3,2,3,4]}");
+        valid(numericDataTensor, "{\"type\":\"int16\",\"shape\":[1,2,2],\"data\":[3,2,3,4]}");
     }
 
     @Test
     public void NumericDataTensor_02() {
         invalid(numericDataTensor, "{\"shape\":[1,2,2],\"data\":[3.0,2.0,3.0,4.0]}");
-        invalid(numericDataTensor, "{\"type\":\"float\",\"data\":[3,2,3,4]}");
-        invalid(numericDataTensor, "{\"type\":\"double\",\"data\":[3,2,3,4]}");
-        invalid(numericDataTensor, "{\"type\":\"long\",\"shape\":[1,2,2],\"data\":[3.0,2.0,3.0,4.4]}");
-        invalid(numericDataTensor, "{\"type\":\"short\",\"shape\":[1,2,2]}");
+        invalid(numericDataTensor, "{\"type\":\"float32\",\"data\":[3,2,3,4]}");
+        invalid(numericDataTensor, "{\"type\":\"float64\",\"data\":[3,2,3,4]}");
+        invalid(numericDataTensor, "{\"type\":\"int64\",\"shape\":[1,2,2],\"data\":[3.0,2.0,3.0,4.4]}");
+        invalid(numericDataTensor, "{\"type\":\"int16\",\"shape\":[1,2,2]}");
     }
 
     @Test
     public void NumericDataTensor_03() {
-        invalid(numericDataTensor, "{\"type\":\"int\",\"shape\":[1,2,2],\"data\":[3.0,null,3.0,4.0]}");
-        invalid(numericDataTensor, "{\"type\":\"float\",\"shape\":[2,1,2],\"data\":[3.0,2.0,3.0]}");
-        invalid(numericDataTensor, "{\"type\":\"double\",\"shape\":[2,1,2],\"data\":[3.0,2.0,3.0,4.0,5.0]}");
-        invalid(numericDataTensor, "{\"type\":\"long\",\"shape\":[2,2,1],\"data\":[3,2,3,4,5]}");
+        invalid(numericDataTensor, "{\"type\":\"int32\",\"shape\":[1,2,2],\"data\":[3.0,null,3.0,4.0]}");
+        invalid(numericDataTensor, "{\"type\":\"float32\",\"shape\":[2,1,2],\"data\":[3.0,2.0,3.0]}");
+        invalid(numericDataTensor, "{\"type\":\"float64\",\"shape\":[2,1,2],\"data\":[3.0,2.0,3.0,4.0,5.0]}");
+        invalid(numericDataTensor, "{\"type\":\"int64\",\"shape\":[2,2,1],\"data\":[3,2,3,4,5]}");
         invalid(numericDataTensor, "{\"type\":\"string\",\"shape\":[1,2,2],\"data\":['3','2','3','4']}");
     }
 
     @Test
-    public void valueToLex_int() {
-        testValueToLex(Nd4j.create(new int[1][1][1]), numericDataTensor);
-        testValueToLex(Nd4j.create(new int[][]{{1, 2}, {3, 4}}), numericDataTensor);
-        testValueToLex(Nd4j.create(new int[]{3}), numericDataTensor);
-    }
-
-    @Test
-    public void valueToLex_short() {
+    public void valueToLexInt16() {
         testValueToLex(Nd4j.create(new short[]{1}, new long[]{1, 1, 1}, DataType.INT16), numericDataTensor);
         testValueToLex(Nd4j.create(new short[]{1, 2, 3, 4}, new long[]{2, 2}, DataType.INT16), numericDataTensor);
         testValueToLex(Nd4j.create(new short[]{3}, new long[]{1}, DataType.INT16), numericDataTensor);
     }
 
     @Test
-    public void valueToLex_long() {
+    public void valueToLexInt32() {
+        testValueToLex(Nd4j.create(new int[1][1][1]), numericDataTensor);
+        testValueToLex(Nd4j.create(new int[][]{{1, 2}, {3, 4}}), numericDataTensor);
+        testValueToLex(Nd4j.create(new int[]{3}), numericDataTensor);
+    }
+
+    @Test
+    public void valueToLexInt64() {
         testValueToLex(Nd4j.create(new long[1][1]), numericDataTensor);
         testValueToLex(Nd4j.create(new long[][]{{1, 2}, {3, 4}}), numericDataTensor);
         testValueToLex(Nd4j.create(new long[]{1}), numericDataTensor);
     }
 
     @Test
-    public void valueToLex_float() {
+    public void valueToLexFloat32() {
         testValueToLex(Nd4j.create(new float[1][1]), numericDataTensor);
         testValueToLex(Nd4j.create(new float[][]{{1.4f, 2.3f}, {3f, 4f}}), numericDataTensor);
         testValueToLex(Nd4j.create(new float[]{1f}), numericDataTensor);
     }
 
     @Test
-    public void valueToLex_double() {
+    public void valueToLexFloat64() {
         testValueToLex(Nd4j.create(new double[1][1]), numericDataTensor);
         testValueToLex(Nd4j.create(new double[][]{{1.4d, 2.3d}, {3d, 4d}}), numericDataTensor);
         testValueToLex(Nd4j.create(new double[]{1}), numericDataTensor);
     }
 
     @Test
-    public void literalIsCorrect_int() {
-        testLiteralIsCorrectType(Nd4j.create(new int[1][1][1]), numericDataTensor);
-        testLiteralIsCorrectType(Nd4j.create(new int[][]{{1, 2}, {3, 4}}), numericDataTensor);
-        testLiteralIsCorrectType(Nd4j.create(new int[]{3}), numericDataTensor);
-    }
-
-    @Test
-    public void literalIsCorrect_short() {
+    public void literalIsCorrectInt16() {
         testLiteralIsCorrectType(Nd4j.create(new short[]{1}, new long[]{1, 1, 1}, DataType.INT16), numericDataTensor);
         testLiteralIsCorrectType(Nd4j.create(new short[]{1, 2, 3, 4}, new long[]{2, 2}, DataType.INT16), numericDataTensor);
         testLiteralIsCorrectType(Nd4j.create(new short[]{3}, new long[]{1}, DataType.INT16), numericDataTensor);
     }
 
     @Test
-    public void literalIsCorrect_long() {
+    public void literalIsCorrectInt32() {
+        testLiteralIsCorrectType(Nd4j.create(new int[1][1][1]), numericDataTensor);
+        testLiteralIsCorrectType(Nd4j.create(new int[][]{{1, 2}, {3, 4}}), numericDataTensor);
+        testLiteralIsCorrectType(Nd4j.create(new int[]{3}), numericDataTensor);
+    }
+
+    @Test
+    public void literalIsCorrectInt64() {
         testLiteralIsCorrectType(Nd4j.create(new long[1][1]), numericDataTensor);
         testLiteralIsCorrectType(Nd4j.create(new long[][]{{1, 2}, {3, 4}}), numericDataTensor);
         testLiteralIsCorrectType(Nd4j.create(new long[]{1}), numericDataTensor);
     }
 
     @Test
-    public void literalIsCorrect_float() {
+    public void literalIsCorrectFloat32() {
         testLiteralIsCorrectType(Nd4j.create(new float[1][1]), numericDataTensor);
         testLiteralIsCorrectType(Nd4j.create(new float[][]{{1.4f, 2.3f}, {3f, 4f}}), numericDataTensor);
         testLiteralIsCorrectType(Nd4j.create(new float[]{1f}), numericDataTensor);
     }
 
     @Test
-    public void literalIsCorrect_double() {
+    public void literalIsCorrectFloat64() {
         testLiteralIsCorrectType(Nd4j.create(new double[1][1]), numericDataTensor);
         testLiteralIsCorrectType(Nd4j.create(new double[][]{{1.4d, 2.3d}, {3d, 4d}}), numericDataTensor);
         testLiteralIsCorrectType(Nd4j.create(new double[]{1}), numericDataTensor);
@@ -131,28 +131,28 @@ public class TestDatatypes {
     // ex:BooleanDataTensor
     @Test
     public void BooleanDataTensor_01() {
-        valid(booleanDataTensor, "{\"type\":\"boolean\",\"shape\":[1,2,2],\"data\":[true,false,true,false]}");
-        valid(booleanDataTensor, "{\"type\":\"boolean\",\"shape\":[2,1,2],\"data\":[true,false,true,false]}");
-        valid(booleanDataTensor, "{\"type\":\"boolean\",\"shape\":[2,1,2],\"data\":[true,false,true,false]}");
-        valid(booleanDataTensor, "{\"type\":\"boolean\",\"shape\":[2,2,1],\"data\":[true,false,true,false]}");
-        valid(booleanDataTensor, "{\"type\":\"boolean\",\"shape\":[1,2,2],\"data\":[true,false,true,false]}");
+        valid(booleanDataTensor, "{\"shape\":[1,2,2],\"data\":[true,false,true,false]}");
+        valid(booleanDataTensor, "{\"shape\":[2,1,2],\"data\":[true,false,true,false]}");
+        valid(booleanDataTensor, "{\"shape\":[2,1,2],\"data\":[true,false,true,false]}");
+        valid(booleanDataTensor, "{\"shape\":[2,2,1],\"data\":[true,false,true,false]}");
+        valid(booleanDataTensor, "{\"shape\":[1,2,2],\"data\":[true,false,true,false]}");
     }
 
     @Test
     public void BooleanDataTensor_02() {
-        invalid(booleanDataTensor, "{\"type\":\"boolean\",\"shape\":[1,2,2],\"data\":[\"true\",\"false\",\"true\",\"false\"]}");
-        invalid(booleanDataTensor, "{\"type\":\"boolean\",\"shape\":[2,1,2],\"data\":[1,0,1,0]}");
+        invalid(booleanDataTensor, "{\"shape\":[1,2,2],\"data\":[\"true\",\"false\",\"true\",\"false\"]}");
+        invalid(booleanDataTensor, "{\"shape\":[2,1,2],\"data\":[1,0,1,0]}");
     }
 
     @Test
-    public void valueToLex_boolean() {
+    public void valueToLexBoolean() {
         testValueToLex(Nd4j.create(new boolean[1][1]), booleanDataTensor);
         testValueToLex(Nd4j.create(new boolean[][]{{true, false}, {true, false}}), booleanDataTensor);
         testValueToLex(Nd4j.create(new boolean[]{true}), booleanDataTensor);
     }
 
     @Test
-    public void literalIsCorrect_boolean() {
+    public void literalIsCorrectBoolean() {
         testLiteralIsCorrectType(Nd4j.create(new boolean[1][1]), booleanDataTensor);
         testLiteralIsCorrectType(Nd4j.create(new boolean[][]{{true, false}, {true, false}}), booleanDataTensor);
         testLiteralIsCorrectType(Nd4j.create(new boolean[]{true}), booleanDataTensor);

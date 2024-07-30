@@ -13,7 +13,7 @@ public class ExpTransformTest {
     @Test
     public void testExec1() {
         ExpTransform expTransform = new ExpTransform();
-        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"int\",\"shape\":[2],\"data\":[0, 0]}", NumericDataTensor.INSTANCE);
+        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"int32\",\"shape\":[2],\"data\":[0, 0]}", NumericDataTensor.INSTANCE);
         NodeValue transformed = expTransform.exec(nodeValue);
         INDArray result = (INDArray) transformed.getNode().getLiteralValue();
         INDArray expected = Nd4j.create(new double[]{1, 1});
@@ -24,7 +24,7 @@ public class ExpTransformTest {
     @Test
     public void testExec2() {
         ExpTransform expTransform = new ExpTransform();
-        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"short\",\"shape\":[2],\"data\":[1, 1]}", NumericDataTensor.INSTANCE);
+        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"int16\",\"shape\":[2],\"data\":[1, 1]}", NumericDataTensor.INSTANCE);
         NodeValue transformed = expTransform.exec(nodeValue);
         INDArray result = (INDArray) transformed.getNode().getLiteralValue();
         INDArray expected = Nd4j.create(new double[]{2.718281828459045, 2.718281828459045});
@@ -35,7 +35,7 @@ public class ExpTransformTest {
     @Test
     public void testExec3() {
         ExpTransform expTransform = new ExpTransform();
-        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"int\",\"shape\":[1,2,2],\"data\":[3,2,3,4]}", NumericDataTensor.INSTANCE);
+        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"int32\",\"shape\":[1,2,2],\"data\":[3,2,3,4]}", NumericDataTensor.INSTANCE);
         NodeValue transformed = expTransform.exec(nodeValue);
         INDArray result = (INDArray) transformed.getNode().getLiteralValue();
         INDArray expected = Nd4j.create(new double[][][]{{{20.085536923187668, 7.38905609893065}, {20.085536923187668, 54.598150033144236}}});
@@ -46,7 +46,7 @@ public class ExpTransformTest {
     @Test
     public void testExec4() {
         ExpTransform expTransform = new ExpTransform();
-        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"float\",\"shape\":[1,2,2],\"data\":[3,2,3,4]}", NumericDataTensor.INSTANCE);
+        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"float32\",\"shape\":[1,2,2],\"data\":[3,2,3,4]}", NumericDataTensor.INSTANCE);
         NodeValue transformed = expTransform.exec(nodeValue);
         INDArray result = (INDArray) transformed.getNode().getLiteralValue();
         INDArray expected = Nd4j.create(new double[][][]{{{20.085536923187668, 7.38905609893065}, {20.085536923187668, 54.598150033144236}}}).castTo(DataType.FLOAT);

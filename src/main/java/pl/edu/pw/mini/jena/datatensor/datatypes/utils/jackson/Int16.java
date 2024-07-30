@@ -2,12 +2,12 @@ package pl.edu.pw.mini.jena.datatensor.datatypes.utils.jackson;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-@JsonTypeName("short")
-public class ShortJSONData extends JSONData {
+@JsonTypeName("int16")
+public class Int16 extends JSONData {
     private short[] data;
 
-    public ShortJSONData() {
-        super("short");
+    public Int16() {
+        super("int16");
     }
 
     public short[] getData() {

@@ -3,12 +3,12 @@ package pl.edu.pw.mini.jena.datatensor.datatypes.utils.jackson;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-@JsonTypeName("double")
-public class DoubleJSONData extends JSONData {
+@JsonTypeName("float64")
+public class Float64 extends JSONData {
     private double[] data;
 
-    public DoubleJSONData() {
-        super("double");
+    public Float64() {
+        super("float64");
     }
 
     public double[] getData() {

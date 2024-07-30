@@ -13,7 +13,7 @@ public class AbsTransformTest {
     @Test
     public void testExec1() {
         AbsTransform absTransform = new AbsTransform();
-        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"int\",\"shape\":[2],\"data\":[-1, -2]}", NumericDataTensor.INSTANCE);
+        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"int32\",\"shape\":[2],\"data\":[-1, -2]}", NumericDataTensor.INSTANCE);
         NodeValue transformed = absTransform.exec(nodeValue);
         INDArray result = (INDArray) transformed.getNode().getLiteralValue();
         INDArray expected = Nd4j.create(new double[]{1, 2}).castTo(DataType.INT32);
@@ -24,7 +24,7 @@ public class AbsTransformTest {
     @Test
     public void testExec2() {
         AbsTransform absTransform = new AbsTransform();
-        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"short\",\"shape\":[2],\"data\":[-3, -4]}", NumericDataTensor.INSTANCE);
+        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"int16\",\"shape\":[2],\"data\":[-3, -4]}", NumericDataTensor.INSTANCE);
         NodeValue transformed = absTransform.exec(nodeValue);
         INDArray result = (INDArray) transformed.getNode().getLiteralValue();
         INDArray expected = Nd4j.create(new double[]{3, 4}).castTo(DataType.INT16);
@@ -35,7 +35,7 @@ public class AbsTransformTest {
     @Test
     public void testExec3() {
         AbsTransform absTransform = new AbsTransform();
-        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"double\",\"shape\":[2,2],\"data\":[-5, 6, -7,-8]}", NumericDataTensor.INSTANCE);
+        NodeValue nodeValue = NodeValue.makeNode("{\"type\":\"float64\",\"shape\":[2,2],\"data\":[-5, 6, -7,-8]}", NumericDataTensor.INSTANCE);
         NodeValue transformed = absTransform.exec(nodeValue);
         INDArray result = (INDArray) transformed.getNode().getLiteralValue();
         INDArray expected = Nd4j.create(new double[][]{{5, 6}, {7, 8}});

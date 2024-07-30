@@ -3,12 +3,12 @@ package pl.edu.pw.mini.jena.datatensor.datatypes.utils.jackson;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-@JsonTypeName("float")
-public class FloatJSONData extends JSONData {
+@JsonTypeName("float32")
+public class Float32 extends JSONData {
     private float[] data;
 
-    public FloatJSONData() {
-        super("float");
+    public Float32() {
+        super("float32");
     }
 
     public float[] getData() {

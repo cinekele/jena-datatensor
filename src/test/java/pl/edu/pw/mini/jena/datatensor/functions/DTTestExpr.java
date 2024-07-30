@@ -121,8 +121,6 @@ public class DTTestExpr {
         Expr expr = parse(exprString);
         NodeValue actual = expr.eval(null, new FunctionEnvBase());
         NodeValue expected = NodeValue.makeNode(result);
-        // Note that we don't test lexical form because we can get mismatches
-        // between how things like doubles are expressed
         if (NodeValue.sameValueAs(expected, actual))
             return;
         testDouble(exprString, expected.getDouble(), delta);
@@ -134,9 +132,6 @@ public class DTTestExpr {
         assertTrue("Not a double: " + actual, actual.isDouble());
         double result = actual.getDouble();
 
-        // Because Java floating point calculations are woefully imprecise we
-        // are in many cases simply testing that the differences between the
-        // values are within a given delta
         if (Double.isInfinite(expected)) {
             assertTrue("Expected INF: Got " + result, Double.isInfinite(result));
             return;

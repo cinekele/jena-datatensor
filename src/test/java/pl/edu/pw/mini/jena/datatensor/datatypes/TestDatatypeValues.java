@@ -11,11 +11,11 @@ public class TestDatatypeValues {
 
     @Test
     public void numericCompareTests() {
-        numericCompareTest(true, "{\"type\":\"int\",\"shape\":[1,2,2],\"data\":[3,2,3,4]}", "{\"type\":\"int\",\"shape\":[1,2,2],\"data\":[3,2,3,4]}");
-        numericCompareTest(false, "{\"type\":\"int\",\"shape\":[1,2,2],\"data\":[3,2,3,4]}", "{\"type\":\"int\",\"shape\":[1,2,2],\"data\":[3,2,3,5]}");
-        numericCompareTest(false, "{\"type\":\"int\",\"shape\":[1,2,2],\"data\":[3,2,3,4]}", "{\"type\":\"int\",\"shape\":[1,1,3],\"data\":[3,2,3]}");
-        numericCompareTest(false, "{\"type\":\"int\",\"shape\":[1,2,2],\"data\":[3,2,3,4]}", "{\"type\":\"int\",\"shape\":[1,5],\"data\":[3,2,3,4,5]}");
-        numericCompareTest(false, "{\"type\":\"int\",\"shape\":[1,2,2],\"data\":[3,2,3,4]}", "{\"type\":\"int\",\"shape\":[2,1,2],\"data\":[3,2,3,4]}");
+        numericCompareTest(true, "{\"type\":\"int32\",\"shape\":[1,2,2],\"data\":[3,2,3,4]}", "{\"type\":\"int32\",\"shape\":[1,2,2],\"data\":[3,2,3,4]}");
+        numericCompareTest(false, "{\"type\":\"int32\",\"shape\":[1,2,2],\"data\":[3,2,3,4]}", "{\"type\":\"int32\",\"shape\":[1,2,2],\"data\":[3,2,3,5]}");
+        numericCompareTest(false, "{\"type\":\"int32\",\"shape\":[1,2,2],\"data\":[3,2,3,4]}", "{\"type\":\"int32\",\"shape\":[1,1,3],\"data\":[3,2,3]}");
+        numericCompareTest(false, "{\"type\":\"int32\",\"shape\":[1,2,2],\"data\":[3,2,3,4]}", "{\"type\":\"int32\",\"shape\":[1,5],\"data\":[3,2,3,4,5]}");
+        numericCompareTest(false, "{\"type\":\"int32\",\"shape\":[1,2,2],\"data\":[3,2,3,4]}", "{\"type\":\"int32\",\"shape\":[2,1,2],\"data\":[3,2,3,4]}");
     }
 
     @Test

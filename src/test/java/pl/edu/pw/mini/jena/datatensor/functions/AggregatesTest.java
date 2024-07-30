@@ -24,16 +24,16 @@ public class AggregatesTest {
             "PREFIX dta: <http://example.org/datatensor/functions/aggregates#>",
             "PREFIX dt: <http://example.org/data-tensor#>");
     static DatasetGraph ds = SSE.parseDatasetGraph(
-            "(dataset (graph (:x :p1 \"{\\\"type\\\":\\\"int\\\",\\\"shape\\\":[3],\\\"data\\\":[10, 20, 30]}\"^^dt:NumericDataTensor)" +
-                    " (:x :p2 \"{\\\"type\\\":\\\"double\\\",\\\"shape\\\":[3],\\\"data\\\":[15.5, 25.5, 30.5]}\"^^dt:NumericDataTensor) " +
-                    " (:x :p3 \"{\\\"type\\\":\\\"double\\\",\\\"shape\\\":[3],\\\"data\\\":[1.55E1, 2.55E1, 3.05E1]}\"^^dt:NumericDataTensor) " +
-                    " (:x :p4 \"{\\\"type\\\":\\\"int\\\",\\\"shape\\\":[3],\\\"data\\\":[10, 20, 30]}\"^^dt:NumericDataTensor) " +
-                    " (:x :p5 \"{\\\"type\\\":\\\"int\\\",\\\"shape\\\":[3],\\\"data\\\":[10, 20, 30]}\"^^dt:NumericDataTensor) ))",
+            "(dataset (graph (:x :p1 \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[3],\\\"data\\\":[10, 20, 30]}\"^^dt:NumericDataTensor)" +
+                    " (:x :p2 \"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[3],\\\"data\\\":[15.5, 25.5, 30.5]}\"^^dt:NumericDataTensor) " +
+                    " (:x :p3 \"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[3],\\\"data\\\":[1.55E1, 2.55E1, 3.05E1]}\"^^dt:NumericDataTensor) " +
+                    " (:x :p4 \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[3],\\\"data\\\":[10, 20, 30]}\"^^dt:NumericDataTensor) " +
+                    " (:x :p5 \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[3],\\\"data\\\":[10, 20, 30]}\"^^dt:NumericDataTensor) ))",
             PrefixMapping.Factory.create().setNsPrefix("dt", "http://example.org/data-tensor#")
 
     );
     static DatasetGraph dsEmpty = SSE.parseDatasetGraph("(dataset)");
-    static DatasetGraph ds1 = SSE.parseDatasetGraph("(dataset (graph (:x :p \"{\\\"type\\\":\\\"int\\\",\\\"shape\\\":[3],\\\"data\\\":[10, 20, 30]}\"^^dt:NumericDataTensor)) )",
+    static DatasetGraph ds1 = SSE.parseDatasetGraph("(dataset (graph (:x :p \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[3],\\\"data\\\":[10, 20, 30]}\"^^dt:NumericDataTensor)) )",
             PrefixMapping.Factory.create().setNsPrefix("dt", "http://example.org/data-tensor#"));
 
     static INDArray sum_expected = Nd4j.create(new double[]{61, 111, 151});
