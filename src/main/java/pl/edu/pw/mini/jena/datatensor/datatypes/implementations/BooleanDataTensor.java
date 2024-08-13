@@ -16,7 +16,7 @@ public class BooleanDataTensor extends BaseDataTensor {
 
     public static final BooleanDataTensor INSTANCE = new BooleanDataTensor(URI + "BooleanDataTensor");
 
-    public BooleanDataTensor(String uri) {
+    private BooleanDataTensor(String uri) {
         super(uri);
     }
 

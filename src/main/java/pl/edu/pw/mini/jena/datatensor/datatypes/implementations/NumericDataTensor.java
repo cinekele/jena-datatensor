@@ -16,11 +16,11 @@ public class NumericDataTensor extends BaseDataTensor {
 
     public static final NumericDataTensor INSTANCE = new NumericDataTensor(URI + "NumericDataTensor");
 
-    public NumericDataTensor(String uri) {
+    private NumericDataTensor(String uri) {
         super(uri);
     }
 
-    public NumericDataTensor(String uri, Class<?> javaClass) {
+    private NumericDataTensor(String uri, Class<?> javaClass) {
         super(uri, javaClass);
     }
 
