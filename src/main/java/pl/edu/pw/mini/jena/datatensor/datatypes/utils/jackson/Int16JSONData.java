@@ -4,35 +4,36 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import java.util.Arrays;
 
-@JsonTypeName("float16")
-public class Float16JsonData extends JSONData {
-    private float[] data;
+@JsonTypeName("int16")
+public class Int16JSONData extends JSONData {
+    private short[] data;
 
-    public Float16JsonData() {
-        super("float16");
+    public Int16JSONData() {
+        super("int16");
     }
 
-    public Float16JsonData(float[] data, long[] shape) {
-        super("float16");
+    public Int16JSONData(short[] data, long[] shape) {
+        super("int16");
         super.setShape(shape);
         this.data = data;
     }
 
-    public float[] getData() {
+    public short[] getData() {
         return data;
     }
 
-    public void setData(float[] data) {
+    public void setData(short[] data) {
         this.data = data;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Float16JsonData)) return false;
+        if (!(o instanceof Int16JSONData)) return false;
         if (!super.equals(o)) return false;
 
-        Float16JsonData that = (Float16JsonData) o;
+        Int16JSONData that = (Int16JSONData) o;
         return super.equals(that) && Arrays.equals(getData(), that.getData());
     }
+
 }

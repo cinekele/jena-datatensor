@@ -5,35 +5,35 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import java.util.Arrays;
 
-@JsonTypeName("float64")
-public class Float64JsonData extends JSONData {
-    private double[] data;
+@JsonTypeName("int32")
+public class Int32JSONData extends JSONData {
+    private int[] data;
 
-    public Float64JsonData() {
-        super("float64");
+    public Int32JSONData() {
+        super("int32");
     }
 
-    public Float64JsonData(double[] data, long[] shape) {
-        super("float64");
+    public Int32JSONData(int[] data, long[] shape) {
+        super("int32");
         super.setShape(shape);
         this.data = data;
     }
 
-    public double[] getData() {
+    public int[] getData() {
         return data;
     }
 
-    public void setData(double[] data) {
+    public void setData(int[] data) {
         this.data = data;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Float64JsonData)) return false;
+        if (!(o instanceof Int32JSONData)) return false;
         if (!super.equals(o)) return false;
 
-        Float64JsonData that = (Float64JsonData) o;
+        Int32JSONData that = (Int32JSONData) o;
         return super.equals(that) && Arrays.equals(getData(), that.getData());
     }
 }

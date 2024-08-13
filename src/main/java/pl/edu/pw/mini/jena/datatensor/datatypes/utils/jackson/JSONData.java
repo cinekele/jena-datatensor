@@ -12,12 +12,12 @@ import static com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY,
         property = "type")
 @JsonSubTypes({
-        @Type(value = Float16JsonData.class, name = "float16"),
-        @Type(value = Float32JsonData.class, name = "float32"),
-        @Type(value = Float64JsonData.class, name = "float64"),
-        @Type(value = Int16JsonData.class, name = "int16"),
-        @Type(value = Int32JsonData.class, name = "int32"),
-        @Type(value = Int64JsonData.class, name = "int64"),
+        @Type(value = Float16JSONData.class, name = "float16"),
+        @Type(value = Float32JSONData.class, name = "float32"),
+        @Type(value = Float64JSONData.class, name = "float64"),
+        @Type(value = Int16JSONData.class, name = "int16"),
+        @Type(value = Int32JSONData.class, name = "int32"),
+        @Type(value = Int64JSONData.class, name = "int64"),
         @Type(value = BooleanJSONData.class, name = "boolean")
 })
 @JsonPropertyOrder({"type", "shape"})
