@@ -36,7 +36,7 @@ public class BooleanDataTensor extends BaseDataTensor {
                 .disable(MapperFeature.ALLOW_COERCION_OF_SCALARS);
         try {
             BooleanJSONData booleanJSONData = objectMapper.readValue(lexicalForm, BooleanJSONData.class);
-            return BooleanMapper.mapJsonObjectToINDArray(booleanJSONData);
+            return BooleanMapper.mapJSONDataToINDArray(booleanJSONData);
         } catch (IllegalArgumentException | JsonProcessingException e) {
             throw new DatatypeFormatException("Invalid value for BooleanDataTensor: " + lexicalForm);
         }
@@ -48,7 +48,7 @@ public class BooleanDataTensor extends BaseDataTensor {
                 .configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, true)
                 .disable(MapperFeature.ALLOW_COERCION_OF_SCALARS);
         try {
-            BooleanJSONData booleanJSONData = BooleanMapper.mapINDArrayToJsonObject((INDArray) value);
+            BooleanJSONData booleanJSONData = BooleanMapper.mapINDArrayToJSONData((INDArray) value);
             return objectMapper.writeValueAsString(booleanJSONData);
         } catch (IllegalArgumentException | JsonProcessingException e) {
             throw new DatatypeFormatException("Invalid value for BooleanDataTensor: " + value);

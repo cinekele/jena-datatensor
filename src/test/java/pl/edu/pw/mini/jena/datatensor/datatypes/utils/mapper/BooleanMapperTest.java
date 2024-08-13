@@ -12,7 +12,7 @@ public class BooleanMapperTest {
     @Test
     public void testMapJSONtoINDArray() {
         BooleanJSONData booleanJSONData = new BooleanJSONData(new long[]{2, 2}, new boolean[]{true, false, true, false});
-        INDArray array = BooleanMapper.mapJsonObjectToINDArray(booleanJSONData);
+        INDArray array = BooleanMapper.mapJSONDataToINDArray(booleanJSONData);
         INDArray expected = Nd4j.create(
                 new boolean[]{true, false, true, false},
                 new long[]{2, 2}, DataType.BOOL);
@@ -23,21 +23,21 @@ public class BooleanMapperTest {
     @Test(expected = IllegalArgumentException.class)
     public void testMapJSONtoINDArrayWithInvalidShape() {
         BooleanJSONData booleanJSONData = new BooleanJSONData(new long[]{2, 2, 2}, new boolean[]{true, false, true, false});
-        BooleanMapper.mapJsonObjectToINDArray(booleanJSONData);
+        BooleanMapper.mapJSONDataToINDArray(booleanJSONData);
         Assert.fail("Expected an IllegalArgumentException to be thrown");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testMapJSONtoINDArrayWithInvalidJSON() {
         BooleanJSONData booleanJSONData = new BooleanJSONData();
-        BooleanMapper.mapJsonObjectToINDArray(booleanJSONData);
+        BooleanMapper.mapJSONDataToINDArray(booleanJSONData);
         Assert.fail("Expected an IllegalArgumentException to be thrown");
     }
 
     @Test
     public void testMapINDArrayToJson() {
         INDArray array = Nd4j.create(new boolean[]{true, false, true, false}, new long[]{2, 2}, DataType.BOOL);
-        BooleanJSONData json = BooleanMapper.mapINDArrayToJsonObject(array);
+        BooleanJSONData json = BooleanMapper.mapINDArrayToJSONData(array);
         BooleanJSONData expected = new BooleanJSONData(new long[]{2, 2}, new boolean[]{true, false, true, false});
         Assert.assertEquals(expected, json);
     }

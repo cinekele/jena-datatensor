@@ -9,7 +9,7 @@ import pl.edu.pw.mini.jena.datatensor.datatypes.utils.jackson.BooleanJSONData;
 
 public class BooleanMapper {
 
-    public static INDArray mapJsonObjectToINDArray(BooleanJSONData booleanJSONData) {
+    public static INDArray mapJSONDataToINDArray(BooleanJSONData booleanJSONData) {
         long[] shape = booleanJSONData.getShape();
         boolean[] data = booleanJSONData.getData();
         try {
@@ -19,7 +19,7 @@ public class BooleanMapper {
         }
     }
 
-    public static BooleanJSONData mapINDArrayToJsonObject(INDArray array) {
+    public static BooleanJSONData mapINDArrayToJSONData(INDArray array) {
         BooleanJSONData booleanJSONData = new BooleanJSONData();
         try {
             boolean[] data = getBooleanArray(array);

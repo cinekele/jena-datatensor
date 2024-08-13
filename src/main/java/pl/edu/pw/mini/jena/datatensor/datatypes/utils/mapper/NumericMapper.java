@@ -7,7 +7,7 @@ import pl.edu.pw.mini.jena.datatensor.datatypes.utils.jackson.*;
 
 public class NumericMapper {
 
-    public static JSONData mapINDArrayToJsonObject(INDArray array) {
+    public static JSONData mapINDArrayToJSONData(INDArray array) {
         JSONData jsonData;
         try {
             String type = array.data().dataType().toString().toLowerCase();
@@ -59,7 +59,7 @@ public class NumericMapper {
         return data;
     }
 
-    public static INDArray mapJsonObjectToINDArray(JSONData jsonData) throws IllegalArgumentException {
+    public static INDArray mapJSONDataToINDArray(JSONData jsonData) throws IllegalArgumentException {
         INDArray indArray;
         long[] shape = jsonData.getShape();
 

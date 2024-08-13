@@ -41,7 +41,7 @@ public class NumericDataTensor extends BaseDataTensor {
 
         try {
             JSONData jsonData = objectMapper.readValue(lexicalForm, JSONData.class);
-            return NumericMapper.mapJsonObjectToINDArray(jsonData);
+            return NumericMapper.mapJSONDataToINDArray(jsonData);
         } catch (IllegalArgumentException | JsonProcessingException e) {
             throw new DatatypeFormatException("Invalid value for NumericDataTensor: " + lexicalForm + "\n" + e.getMessage());
         }
@@ -53,7 +53,7 @@ public class NumericDataTensor extends BaseDataTensor {
                 .configure(DeserializationFeature.ACCEPT_FLOAT_AS_INT, false)
                 .configure(MapperFeature.ALLOW_COERCION_OF_SCALARS, false);
         try {
-            JSONData jsonData = NumericMapper.mapINDArrayToJsonObject((INDArray) value);
+            JSONData jsonData = NumericMapper.mapINDArrayToJSONData((INDArray) value);
             return objectMapper.writeValueAsString(jsonData);
         } catch (JsonProcessingException e) {
             throw new IllegalArgumentException("Invalid value for NumericDataTensor: " + value + "\n" + e.getMessage());
