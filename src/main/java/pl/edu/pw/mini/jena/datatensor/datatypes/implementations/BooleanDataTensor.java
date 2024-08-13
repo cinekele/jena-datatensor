@@ -2,7 +2,6 @@ package pl.edu.pw.mini.jena.datatensor.datatypes.implementations;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.jena.datatypes.DatatypeFormatException;
@@ -11,7 +10,6 @@ import org.nd4j.linalg.api.buffer.DataType;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import pl.edu.pw.mini.jena.datatensor.datatypes.BaseDataTensor;
 import pl.edu.pw.mini.jena.datatensor.datatypes.utils.jackson.BooleanJSONData;
-import pl.edu.pw.mini.jena.datatensor.datatypes.utils.jackson.JSONData;
 import pl.edu.pw.mini.jena.datatensor.datatypes.utils.mapper.BooleanMapper;
 
 public class BooleanDataTensor extends BaseDataTensor {
