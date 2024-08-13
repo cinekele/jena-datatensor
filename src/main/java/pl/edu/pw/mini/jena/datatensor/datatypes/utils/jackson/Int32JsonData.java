@@ -6,14 +6,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.Arrays;
 
 @JsonTypeName("int32")
-public class Int32 extends JSONData {
+public class Int32JsonData extends JSONData {
     private int[] data;
 
-    public Int32() {
+    public Int32JsonData() {
         super("int32");
     }
 
-    public Int32(int[] data, long[] shape) {
+    public Int32JsonData(int[] data, long[] shape) {
         super("int32");
         super.setShape(shape);
         this.data = data;
@@ -30,10 +30,10 @@ public class Int32 extends JSONData {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Int32)) return false;
+        if (!(o instanceof Int32JsonData)) return false;
         if (!super.equals(o)) return false;
 
-        Int32 that = (Int32) o;
+        Int32JsonData that = (Int32JsonData) o;
         return super.equals(that) && Arrays.equals(getData(), that.getData());
     }
 }

@@ -4,14 +4,14 @@ package pl.edu.pw.mini.jena.datatensor.datatypes.utils.jackson;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @JsonTypeName("int64")
-public class Int64 extends JSONData {
+public class Int64JsonData extends JSONData {
     private long[] data;
 
-    public Int64() {
+    public Int64JsonData() {
         super("int64");
     }
 
-    public Int64(long[] data, long[] shape) {
+    public Int64JsonData(long[] data, long[] shape) {
         super("int64");
         super.setShape(shape);
         this.data = data;
@@ -28,10 +28,10 @@ public class Int64 extends JSONData {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Int64)) return false;
+        if (!(o instanceof Int64JsonData)) return false;
         if (!super.equals(o)) return false;
 
-        Int64 that = (Int64) o;
+        Int64JsonData that = (Int64JsonData) o;
         return super.equals(that) && java.util.Arrays.equals(getData(), that.getData());
     }
 }

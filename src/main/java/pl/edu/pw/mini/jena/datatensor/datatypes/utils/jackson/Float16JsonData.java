@@ -1,39 +1,38 @@
 package pl.edu.pw.mini.jena.datatensor.datatypes.utils.jackson;
 
-
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import java.util.Arrays;
 
-@JsonTypeName("float64")
-public class Float64 extends JSONData {
-    private double[] data;
+@JsonTypeName("float16")
+public class Float16JsonData extends JSONData {
+    private float[] data;
 
-    public Float64() {
-        super("float64");
+    public Float16JsonData() {
+        super("float16");
     }
 
-    public Float64(double[] data, long[] shape) {
-        super("float64");
+    public Float16JsonData(float[] data, long[] shape) {
+        super("float16");
         super.setShape(shape);
         this.data = data;
     }
 
-    public double[] getData() {
+    public float[] getData() {
         return data;
     }
 
-    public void setData(double[] data) {
+    public void setData(float[] data) {
         this.data = data;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Float64)) return false;
+        if (!(o instanceof Float16JsonData)) return false;
         if (!super.equals(o)) return false;
 
-        Float64 that = (Float64) o;
+        Float16JsonData that = (Float16JsonData) o;
         return super.equals(that) && Arrays.equals(getData(), that.getData());
     }
 }
