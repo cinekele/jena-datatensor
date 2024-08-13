@@ -6,38 +6,33 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.nd4j.linalg.api.buffer.DataType;
 import org.nd4j.linalg.api.ndarray.INDArray;
+import org.nd4j.linalg.exception.ND4JIllegalArgumentException;
+import org.nd4j.linalg.exception.ND4JIllegalStateException;
 import org.nd4j.linalg.factory.Nd4j;
 import pl.edu.pw.mini.jena.datatensor.datatypes.utils.jackson.BooleanJSONData;
 
 public class BooleanMapper {
 
-    public static INDArray mapJsonToINDArray(String json) {
-        ObjectMapper objectMapper = new ObjectMapper()
-                .configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, true)
-                .disable(MapperFeature.ALLOW_COERCION_OF_SCALARS);
-        BooleanJSONData booleanJSONData;
-        try {
-            booleanJSONData = objectMapper.readValue(json, BooleanJSONData.class);
-        } catch (Exception e) {
-            throw new IllegalArgumentException("Invalid JSON format\n" + e.getMessage());
-        }
+    public static INDArray mapJsonObjectToINDArray(BooleanJSONData booleanJSONData) {
         long[] shape = booleanJSONData.getShape();
         boolean[] data = booleanJSONData.getData();
-        INDArray array = Nd4j.create(data, shape, DataType.BOOL);
-        return array;
+        try {
+            return Nd4j.create(data, shape, DataType.BOOL);
+        } catch (ND4JIllegalArgumentException | ND4JIllegalStateException | NullPointerException e) {
+            throw new IllegalArgumentException("Error parsing tensor: " + e.getMessage());
+        }
     }
 
-    public static String mapINDArrayToJson(INDArray array) {
-        ObjectMapper objectMapper = new ObjectMapper();
+    public static BooleanJSONData mapINDArrayToJsonObject(INDArray array) {
         BooleanJSONData booleanJSONData = new BooleanJSONData();
-        boolean[] data = getBooleanArray(array);
-        booleanJSONData.setData(data);
-        booleanJSONData.setShape(array.shape());
         try {
-            return objectMapper.writeValueAsString(booleanJSONData);
-        } catch (JsonProcessingException e) {
-            throw new IllegalArgumentException("Error while processing JSON\n" + e.getMessage());
+            boolean[] data = getBooleanArray(array);
+            booleanJSONData.setData(data);
+            booleanJSONData.setShape(array.shape());
+        } catch (NullPointerException e) {
+            throw new IllegalArgumentException("Error parsing tensor: " + e.getMessage());
         }
+        return booleanJSONData;
     }
 
     private static boolean[] getBooleanArray(INDArray array) {

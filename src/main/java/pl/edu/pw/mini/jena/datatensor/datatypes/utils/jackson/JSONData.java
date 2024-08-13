@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+import java.util.Arrays;
+
 import static com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY,
@@ -38,6 +40,15 @@ abstract public class JSONData {
 
     public void setShape(long[] shape) {
         this.shape = shape;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof JSONData)) return false;
+
+        JSONData jsonData = (JSONData) o;
+        return getType().equals(jsonData.getType()) && Arrays.equals(getShape(), jsonData.getShape());
     }
 }
 

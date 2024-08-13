@@ -1,10 +1,16 @@
 package pl.edu.pw.mini.jena.datatensor.datatypes.implementations;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.MapperFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.jena.datatypes.DatatypeFormatException;
 import org.apache.jena.graph.impl.LiteralLabel;
 import org.nd4j.linalg.api.buffer.DataType;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import pl.edu.pw.mini.jena.datatensor.datatypes.BaseDataTensor;
+import pl.edu.pw.mini.jena.datatensor.datatypes.utils.jackson.JSONData;
 import pl.edu.pw.mini.jena.datatensor.datatypes.utils.mapper.NumericMapper;
 
 public class NumericDataTensor extends BaseDataTensor {
@@ -19,17 +25,6 @@ public class NumericDataTensor extends BaseDataTensor {
         super(uri, javaClass);
     }
 
-
-    @Override
-    public boolean isValidLiteral(LiteralLabel lexicalForm) {
-        try {
-            NumericMapper.mapJsonToINDArray(lexicalForm.getLexicalForm());
-            return true;
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-    }
-
     @Override
     public boolean isValidValue(Object value) {
         if (value instanceof INDArray) {
@@ -41,16 +36,29 @@ public class NumericDataTensor extends BaseDataTensor {
 
     @Override
     public Object parse(String lexicalForm) throws DatatypeFormatException {
+        ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, true)
+                .configure(DeserializationFeature.ACCEPT_FLOAT_AS_INT, false)
+                .configure(MapperFeature.ALLOW_COERCION_OF_SCALARS, false);
+
         try {
-            return NumericMapper.mapJsonToINDArray(lexicalForm);
-        } catch (IllegalArgumentException e) {
+            JSONData jsonData = objectMapper.readValue(lexicalForm, JSONData.class);
+            return NumericMapper.mapJsonObjectToINDArray(jsonData);
+        } catch (IllegalArgumentException | JsonProcessingException e) {
             throw new DatatypeFormatException("Invalid value for NumericDataTensor: " + lexicalForm + "\n" + e.getMessage());
         }
     }
 
     @Override
     public String unparse(Object value) throws IllegalArgumentException {
-        return NumericMapper.mapINDArrayToJson((INDArray) value);
+        ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, true)
+                .configure(DeserializationFeature.ACCEPT_FLOAT_AS_INT, false)
+                .configure(MapperFeature.ALLOW_COERCION_OF_SCALARS, false);
+        try {
+            JSONData jsonData = NumericMapper.mapINDArrayToJsonObject((INDArray) value);
+            return objectMapper.writeValueAsString(jsonData);
+        } catch (JsonProcessingException e) {
+            throw new IllegalArgumentException("Invalid value for NumericDataTensor: " + value + "\n" + e.getMessage());
+        }
     }
 
     @Override
