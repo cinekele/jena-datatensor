@@ -2,6 +2,7 @@ package pl.edu.pw.mini.jena.datatensor.functions;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+import pl.edu.pw.mini.jena.datatensor.AggregatesTest;
 import pl.edu.pw.mini.jena.datatensor.functions.concatenators.TestDTConcatenators;
 import pl.edu.pw.mini.jena.datatensor.functions.indexers.TestDTIndexers;
 import pl.edu.pw.mini.jena.datatensor.functions.operators.TestDTOperators;
@@ -17,7 +18,6 @@ import pl.edu.pw.mini.jena.datatensor.functions.transfomers.TestDTTransformers;
         TestDTReductors.class,
         TestDTSimilarities.class,
         TestDTTransformers.class,
-        AggregatesTest.class
 })
 public class TS_DTFunctionsIntegration {
 }
