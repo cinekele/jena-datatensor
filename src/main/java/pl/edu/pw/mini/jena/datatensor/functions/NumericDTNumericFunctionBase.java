@@ -24,7 +24,7 @@ abstract public class NumericDTNumericFunctionBase extends FunctionBase2 {
     @Override
     public NodeValue exec(NodeValue v1, NodeValue v2) {
         if (isNotNumericAndNumericDT(v1, v2))
-            throw new ExprEvalException("Arguments must be the NumericDataTensor datatype");
+            throw new ExprEvalException("First argument must be a numeric value and the second argument must be the NumericDataTensor datatype");
 
         try {
             double t1 = v1.getDouble();
