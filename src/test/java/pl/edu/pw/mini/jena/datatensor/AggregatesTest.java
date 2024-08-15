@@ -1,4 +1,4 @@
-package pl.edu.pw.mini.jena.datatensor.functions;
+package pl.edu.pw.mini.jena.datatensor;
 
 import org.apache.jena.atlas.lib.StrUtils;
 import org.apache.jena.query.*;
