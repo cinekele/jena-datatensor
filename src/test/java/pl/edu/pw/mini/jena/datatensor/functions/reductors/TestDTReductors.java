@@ -8,6 +8,78 @@ import static pl.edu.pw.mini.jena.datatensor.functions.DTTestExpr.*;
 public class TestDTReductors {
 
     @Test
+    public void allDTTest1() {
+        test("dt:all(\"{\\\"type\\\":\\\"boolean\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[true,true,true,true]}\"^^dt:BooleanDataTensor)",
+                "true");
+    }
+
+    @Test
+    public void allDTTest2() {
+        test("dt:all(\"{\\\"type\\\":\\\"boolean\\\",\\\"shape\\\":[2,2],\\\"data\\\":[true,true,true,false]}\"^^dt:BooleanDataTensor)",
+                "false");
+    }
+
+    @Test
+    public void allDTTest3() {
+        test("dt:all(\"{\\\"type\\\":\\\"boolean\\\",\\\"shape\\\":[1,4],\\\"data\\\":[true,true,true,true]}\"^^dt:BooleanDataTensor)",
+                "true");
+    }
+
+    @Test
+    public void allDTTest4() {
+        test("dt:all(\"{\\\"type\\\":\\\"boolean\\\",\\\"shape\\\":[1,2],\\\"data\\\":[false,true]}\"^^dt:BooleanDataTensor)",
+                "false");
+    }
+
+    @Test
+    public void allDTTest5() {
+        test("dt:all(\"{\\\"type\\\":\\\"boolean\\\",\\\"shape\\\":[1,3],\\\"data\\\":[true,false,true]}\"^^dt:BooleanDataTensor)",
+                "false");
+    }
+
+    @Test(expected = ExprEvalException.class)
+    public void allDTTest6() {
+        testError("dt:all(\"{\\\"type\\\":\\\"boolean\\\",\\\"shape\\\":[1,2],\\\"data\\\":[true,1]}\"^^dt:BooleanDataTensor)");
+    }
+
+    @Test
+    public void anyDTTest1() {
+        test("dt:any(\"{\\\"type\\\":\\\"boolean\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[true,true,true,true]}\"^^dt:BooleanDataTensor)",
+                "true");
+    }
+
+    @Test
+    public void anyDTTest2() {
+        test("dt:any(\"{\\\"type\\\":\\\"boolean\\\",\\\"shape\\\":[2,2],\\\"data\\\":[true,true,true,false]}\"^^dt:BooleanDataTensor)",
+                "true");
+    }
+
+    @Test
+    public void anyDTTest3() {
+        test("dt:any(\"{\\\"type\\\":\\\"boolean\\\",\\\"shape\\\":[1,4],\\\"data\\\":[true,true,true,true]}\"^^dt:BooleanDataTensor)",
+                "true");
+    }
+
+    @Test
+    public void anyDTTest4() {
+        test("dt:any(\"{\\\"type\\\":\\\"boolean\\\",\\\"shape\\\":[1,2],\\\"data\\\":[false,false]}\"^^dt:BooleanDataTensor)",
+                "false");
+    }
+
+    @Test
+    public void anyDTTest5() {
+        test("dt:any(\"{\\\"type\\\":\\\"boolean\\\",\\\"shape\\\":[1,3],\\\"data\\\":[true,false,true]}\"^^dt:BooleanDataTensor)",
+                "true");
+    }
+
+    @Test(expected = ExprEvalException.class)
+    public void anyDTTest6() {
+        testError("dt:any(\"{\\\"type\\\":\\\"boolean\\\",\\\"shape\\\":[1,2],\\\"data\\\":[true,1]}\"^^dt:BooleanDataTensor)");
+    }
+
+
+
+    @Test
     public void avgDTTest1() {
         testDouble("dt:avg(-1, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor)",
                 3.0, 0.0001);

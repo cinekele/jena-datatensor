@@ -7,6 +7,8 @@ import static pl.edu.pw.mini.jena.datatensor.vocabulary.FunctionsDT.*;
 public class ReductionRegistry {
 
     public static void loadFunctions(FunctionRegistry registry){
+        registry.put(ALL, All.class);
+        registry.put(ANY, Any.class);
         registry.put(SUM, Sum.class);
         registry.put(AVG, Avg.class);
         registry.put(MIN, Min.class);

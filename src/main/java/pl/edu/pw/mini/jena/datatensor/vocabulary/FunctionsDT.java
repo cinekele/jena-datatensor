@@ -37,6 +37,8 @@ public class FunctionsDT {
     public static final String VSTACK = DataTensor.getURI() + "vstack";
 
     // Reductions
+    public static final String ALL = DataTensor.getURI() + "all";
+    public static final String ANY = DataTensor.getURI() + "any";
     public static final String AVG = DataTensor.getURI() + "avg";
     public static final String SUM = DataTensor.getURI() + "sum";
     public static final String MAX = DataTensor.getURI() + "max";
