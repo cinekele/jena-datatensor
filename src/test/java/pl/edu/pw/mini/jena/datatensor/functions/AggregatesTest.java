@@ -13,7 +13,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
-import pl.edu.pw.mini.jena.datatensor.functions.aggregators.DTAggregates;
+import pl.edu.pw.mini.jena.datatensor.aggregators.DTAggregates;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

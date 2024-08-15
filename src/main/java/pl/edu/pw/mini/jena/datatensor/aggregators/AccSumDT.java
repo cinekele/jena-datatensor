@@ -1,4 +1,4 @@
-package pl.edu.pw.mini.jena.datatensor.functions.aggregators;
+package pl.edu.pw.mini.jena.datatensor.aggregators;
 
 import org.apache.jena.sparql.expr.Expr;
 import org.nd4j.linalg.api.ndarray.INDArray;

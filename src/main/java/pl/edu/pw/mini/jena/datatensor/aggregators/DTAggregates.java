@@ -1,4 +1,4 @@
-package pl.edu.pw.mini.jena.datatensor.functions.aggregators;
+package pl.edu.pw.mini.jena.datatensor.aggregators;
 
 import org.apache.jena.sparql.expr.aggregate.AccumulatorFactory;
 import org.apache.jena.sparql.expr.aggregate.AggregateRegistry;
