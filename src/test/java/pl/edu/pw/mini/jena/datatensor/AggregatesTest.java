@@ -44,11 +44,6 @@ public class AggregatesTest {
     static INDArray std_expected = Nd4j.create(new double[]{3.0124741, 3.0124741, 0.2738613});
 
 
-    @BeforeClass
-    public static void setupClass() {
-        DTAggregates.register();
-    }
-
     @Test
     public void agg_stat_registry() {
         assertTrue(AggregateRegistry.isRegistered("http://example.org/datatensor/functions/aggregates#avg"));

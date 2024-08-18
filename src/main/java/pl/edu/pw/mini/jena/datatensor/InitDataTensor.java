@@ -6,6 +6,7 @@ import org.apache.jena.sparql.function.FunctionRegistry;
 import org.apache.jena.sys.JenaSubsystemLifecycle;
 import org.apache.jena.sys.JenaSystem;
 import org.nd4j.linalg.factory.Nd4j;
+import pl.edu.pw.mini.jena.datatensor.aggregators.DTAggregates;
 import pl.edu.pw.mini.jena.datatensor.datatypes.BaseDataTensor;
 import pl.edu.pw.mini.jena.datatensor.functions.concatenators.ConcatenaterRegistry;
 import pl.edu.pw.mini.jena.datatensor.functions.indexers.IndexerRegistry;
@@ -45,6 +46,7 @@ public class InitDataTensor implements JenaSubsystemLifecycle {
             IndexerRegistry.loadFunctions(functionRegistry);
             ConcatenaterRegistry.loadFunctions(functionRegistry);
             ReductionRegistry.loadFunctions(functionRegistry);
+            DTAggregates.register();
             JenaSystem.logLifecycle("InitTensSPARQL - registered function");
             JenaSystem.logLifecycle("InitTensSPARQL - finish");
         }
