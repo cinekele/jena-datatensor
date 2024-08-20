@@ -2,6 +2,7 @@ package pl.edu.pw.mini.jena.datatensor.aggregators;
 
 import org.apache.jena.sparql.expr.aggregate.AccumulatorFactory;
 import org.apache.jena.sparql.expr.aggregate.AggregateRegistry;
+import pl.edu.pw.mini.jena.datatensor.vocabulary.AggregatesDT;
 
 public class DTAggregates {
     public static final String BASE = "http://example.org/datatensor/functions/aggregates#";
@@ -12,9 +13,9 @@ public class DTAggregates {
         AccumulatorFactory f_var_pop = (agg, distinct) -> new AccVarDT(agg.getExpr(), false);
         AccumulatorFactory f_std_pop = (agg, distinct) -> new AccStdDevDT(agg.getExpr(), false);
 
-        AggregateRegistry.register(BASE + "avg", f_avg, null);
-        AggregateRegistry.register(BASE + "sum", f_sum, null);
-        AggregateRegistry.register(BASE + "var", f_var_pop, null);
-        AggregateRegistry.register(BASE + "std", f_std_pop, null);
+        AggregateRegistry.register(AggregatesDT.AVG, f_avg, null);
+        AggregateRegistry.register(AggregatesDT.SUM, f_sum, null);
+        AggregateRegistry.register(AggregatesDT.VAR, f_var_pop, null);
+        AggregateRegistry.register(AggregatesDT.STD, f_std_pop, null);
     }
 }
