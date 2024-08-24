@@ -6,11 +6,15 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         AddTest.class,
+        AndTest.class,
         DivideTest.class,
-        MultiplyTest.class,
-        SubtractTest.class,
         EqTest.class,
-        NotEqTest.class
+        GtTest.class,
+        LtTest.class,
+        MultiplyTest.class,
+        NotEqTest.class,
+        OrTest.class,
+        SubtractTest.class,
 })
 public class TSOperators {
 }
