@@ -10,104 +10,104 @@ public class TestDTConcatenators {
 
     @Test
     public void concatenateDTTest1() {
-        test("dt:concat(0, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]})\"^^dt:NumericDataTensor)",
+        test("dtf:concat(0, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]})\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[2,2,2],\\\"data\\\":[3,2,3,4,3,2,3,4]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void concatenateDTTest2() {
-        test("dt:concat(1, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor)",
+        test("dtf:concat(1, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,4,2],\\\"data\\\":[3,2,3,4,3,2,3,4]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void concatenateDTTest3() {
-        test("dt:concat(2, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]})\"^^dt:NumericDataTensor)",
+        test("dtf:concat(2, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]})\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,4],\\\"data\\\":[3,2,3,2,3,4,3,4]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void concatenateDTTest4() {
-        test("dt:concat(0, \"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor)",
+        test("dtf:concat(0, \"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[2,2,2],\\\"data\\\":[3,2,3,4,3,2,3,4]}\"^^dt:NumericDataTensor");
     }
 
     @Test(expected = ExprEvalException.class)
     public void concatenateDTTest5() {
-        testError("dt:concat(0, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,3],\\\"data\\\":[3,2,3,4,5,6]}\"^^dt:NumericDataTensor)");
+        testError("dtf:concat(0, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,3],\\\"data\\\":[3,2,3,4,5,6]}\"^^dt:NumericDataTensor)");
     }
 
     @Test(expected = ExprEvalException.class)
     public void concatenateDTTest6() {
-        testError("dt:concat(0, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[true,false,false,true]}\"^^dt:BooleanDataTensor)");
+        testError("dtf:concat(0, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[true,false,false,true]}\"^^dt:BooleanDataTensor)");
     }
 
     @Test
     public void hstackDTTest1() {
-        test("dt:hstack(\"{\\\"type\\\":\\\"float32\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,2]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,4]}\"^^dt:NumericDataTensor)",
+        test("dtf:hstack(\"{\\\"type\\\":\\\"float32\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,2]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,4]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float32\\\",\\\"shape\\\":[1,4],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void hstackDTTest2() {
-        test("dt:hstack(\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[2],\\\"data\\\":[3,2]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[3],\\\"data\\\":[3,4,5]}\"^^dt:NumericDataTensor)",
+        test("dtf:hstack(\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[2],\\\"data\\\":[3,2]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[3],\\\"data\\\":[3,4,5]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[5],\\\"data\\\":[3,2,3,4,5]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void hstackDTTest3() {
-        test("dt:hstack(\"{\\\"type\\\":\\\"int16\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,2]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"float32\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,4]}\"^^dt:NumericDataTensor)",
+        test("dtf:hstack(\"{\\\"type\\\":\\\"int16\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,2]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"float32\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,4]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float32\\\",\\\"shape\\\":[1,4],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void hstackDTTest4() {
-        test("dt:hstack(\"{\\\"type\\\":\\\"int16\\\",\\\"shape\\\":[4],\\\"data\\\":[3,2,5,7]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[3],\\\"data\\\":[3,4,7]}\"^^dt:NumericDataTensor)",
+        test("dtf:hstack(\"{\\\"type\\\":\\\"int16\\\",\\\"shape\\\":[4],\\\"data\\\":[3,2,5,7]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[3],\\\"data\\\":[3,4,7]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[7],\\\"data\\\":[3,2,5,7,3,4,7]}\"^^dt:NumericDataTensor");
     }
 
     @Test(expected = ExprEvalException.class)
     public void hstackDTTest5() {
-        testError("dt:hstack(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[2],\\\"data\\\":[3,2]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,3],\\\"data\\\":[3,4,5]}\"^^dt:NumericDataTensor)");
+        testError("dtf:hstack(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[2],\\\"data\\\":[3,2]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,3],\\\"data\\\":[3,4,5]}\"^^dt:NumericDataTensor)");
     }
 
     @Test(expected = ExprEvalException.class)
     public void hstackDTTest6() {
-        testError("dt:hstack(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,2]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,4]}\"^^dt:BooleanDataTensor)");
+        testError("dtf:hstack(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,2]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,4]}\"^^dt:BooleanDataTensor)");
     }
 
     @Test
     public void vstackDTTest1() {
-        test("dt:vstack(\"{\\\"type\\\":\\\"float32\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,2]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,4]}\"^^dt:NumericDataTensor)",
+        test("dtf:vstack(\"{\\\"type\\\":\\\"float32\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,2]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,4]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float32\\\",\\\"shape\\\":[2,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void vstackDTTest2() {
-        test("dt:vstack(\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[3],\\\"data\\\":[3,2,1]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[3],\\\"data\\\":[3,4,5]}\"^^dt:NumericDataTensor)",
+        test("dtf:vstack(\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[3],\\\"data\\\":[3,2,1]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[3],\\\"data\\\":[3,4,5]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[2,3],\\\"data\\\":[3,2,1,3,4,5]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void vstackDTTest3() {
-        test("dt:vstack(\"{\\\"type\\\":\\\"int16\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,2]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"float32\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,4]}\"^^dt:NumericDataTensor)",
+        test("dtf:vstack(\"{\\\"type\\\":\\\"int16\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,2]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"float32\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,4]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float32\\\",\\\"shape\\\":[2,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void vstackDTTest4() {
-        test("dt:vstack(\"{\\\"type\\\":\\\"int16\\\",\\\"shape\\\":[3],\\\"data\\\":[3,2,5]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[3],\\\"data\\\":[3,4,7]}\"^^dt:NumericDataTensor)",
+        test("dtf:vstack(\"{\\\"type\\\":\\\"int16\\\",\\\"shape\\\":[3],\\\"data\\\":[3,2,5]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[3],\\\"data\\\":[3,4,7]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[2,3],\\\"data\\\":[3,2,5,3,4,7]}\"^^dt:NumericDataTensor");
     }
 
     @Test(expected = ExprEvalException.class)
     public void vstackDTTest5() {
-        testError("dt:vstack(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[2],\\\"data\\\":[3,2]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,3],\\\"data\\\":[3,4,5]}\"^^dt:NumericDataTensor)");
+        testError("dtf:vstack(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[2],\\\"data\\\":[3,2]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,3],\\\"data\\\":[3,4,5]}\"^^dt:NumericDataTensor)");
     }
 
     @Test(expected = ExprEvalException.class)
     public void vstackDTTest6() {
-        testError("dt:vstack(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,2]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,4]}\"^^dt:BooleanDataTensor)");
+        testError("dtf:vstack(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,2]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2],\\\"data\\\":[3,4]}\"^^dt:BooleanDataTensor)");
     }
 
 

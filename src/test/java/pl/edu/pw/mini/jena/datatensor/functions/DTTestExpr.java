@@ -29,6 +29,7 @@ public class DTTestExpr {
     static {
         pmap.setNsPrefixes(ARQConstants.getGlobalPrefixMap());
         pmap.setNsPrefix("dt", "http://example.org/data-tensor#");
+        pmap.setNsPrefix("dtf", "http://example.org/data-tensor/functions#");
     }
 
     public static void testExpr(String exprExpected, String expectedResult) {

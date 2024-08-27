@@ -21,7 +21,7 @@ import static org.junit.Assert.assertTrue;
 public class AggregatesTest {
     static String NL = System.getProperty("line.separator");
     static String PRE = StrUtils.strjoinNL(
-            "PREFIX dta: <http://example.org/datatensor/functions/aggregates#>",
+            "PREFIX dta: <http://example.org/data-tensor/aggregators#>",
             "PREFIX dt: <http://example.org/data-tensor#>");
     static DatasetGraph ds = SSE.parseDatasetGraph(
             "(dataset (graph (:x :p1 \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[3],\\\"data\\\":[10, 20, 30]}\"^^dt:NumericDataTensor)" +
@@ -46,11 +46,11 @@ public class AggregatesTest {
 
     @Test
     public void agg_stat_registry() {
-        assertTrue(AggregateRegistry.isRegistered("http://example.org/datatensor/functions/aggregates#avg"));
-        assertTrue(AggregateRegistry.isRegistered("http://example.org/datatensor/functions/aggregates#var"));
-        assertTrue(AggregateRegistry.isRegistered("http://example.org/datatensor/functions/aggregates#std"));
-        assertTrue(AggregateRegistry.isRegistered("http://example.org/datatensor/functions/aggregates#sum"));
-        assertFalse(AggregateRegistry.isRegistered("http://example.org/datatensor/functions/aggregates#avg2"));
+        assertTrue(AggregateRegistry.isRegistered("http://example.org/data-tensor/aggregators#avg"));
+        assertTrue(AggregateRegistry.isRegistered("http://example.org/data-tensor/aggregators#var"));
+        assertTrue(AggregateRegistry.isRegistered("http://example.org/data-tensor/aggregators#std"));
+        assertTrue(AggregateRegistry.isRegistered("http://example.org/data-tensor/aggregators#sum"));
+        assertFalse(AggregateRegistry.isRegistered("http://example.org/data-tensor/aggregators#avg2"));
     }
 
     @Test

@@ -10,262 +10,262 @@ public class TestDTTransformers {
 
     @Test
     public void absDTTest1() {
-        test("dt:abs(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[-3,2,-3,4]}\"^^dt:NumericDataTensor)",
+        test("dtf:abs(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[-3,2,-3,4]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void absDTTest2() {
-        test("dt:abs(\"{\\\"type\\\":\\\"float32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[-3.0,2.0,-3.0,4.0]}\"^^dt:NumericDataTensor)",
+        test("dtf:abs(\"{\\\"type\\\":\\\"float32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[-3.0,2.0,-3.0,4.0]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3.0,2.0,3.0,4.0]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void absDTTest3() {
-        test("dt:abs(\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[4],\\\"data\\\":[-3.0,2.0,-3.0,4.0]}\"^^dt:NumericDataTensor)",
+        test("dtf:abs(\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[4],\\\"data\\\":[-3.0,2.0,-3.0,4.0]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[4],\\\"data\\\":[3.0,2.0,3.0,4.0]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void absDTTest4() {
-        test("dt:abs(\"{\\\"type\\\":\\\"int16\\\",\\\"shape\\\":[2,1,2],\\\"data\\\":[-3,2,-3,4]}\"^^dt:NumericDataTensor)",
+        test("dtf:abs(\"{\\\"type\\\":\\\"int16\\\",\\\"shape\\\":[2,1,2],\\\"data\\\":[-3,2,-3,4]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"int16\\\",\\\"shape\\\":[2,1,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void absDTTest5() {
-        test("dt:abs(\"{\\\"type\\\":\\\"int64\\\",\\\"shape\\\":[2,2],\\\"data\\\":[-3,2,-3,4]}\"^^dt:NumericDataTensor)",
+        test("dtf:abs(\"{\\\"type\\\":\\\"int64\\\",\\\"shape\\\":[2,2],\\\"data\\\":[-3,2,-3,4]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"int64\\\",\\\"shape\\\":[2,2],\\\"data\\\":[3,2,3,4]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void cosDTTest1() {
-        test("dt:cos(\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[0.0,0.0,0.0,0.0]}\"^^dt:NumericDataTensor)",
+        test("dtf:cos(\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[0.0,0.0,0.0,0.0]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[1.0,1.0,1.0,1.0]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void cosDTTest2() {
-        test("dt:cos(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[1,1,1,1]}\"^^dt:NumericDataTensor)",
+        test("dtf:cos(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[1,1,1,1]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[0.5403023058681398,0.5403023058681398,0.5403023058681398,0.5403023058681398]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void cosDTTest3() {
-        test("dt:cos(\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3.0,3.0,3.0,3.0]}\"^^dt:NumericDataTensor)",
+        test("dtf:cos(\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3.0,3.0,3.0,3.0]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[-0.9899924966004454,-0.9899924966004454,-0.9899924966004454,-0.9899924966004454]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void cosDTTest4() {
-        test("dt:cos(\"{\\\"type\\\":\\\"int16\\\",\\\"shape\\\":[4],\\\"data\\\":[3,3,3,3]}\"^^dt:NumericDataTensor)",
+        test("dtf:cos(\"{\\\"type\\\":\\\"int16\\\",\\\"shape\\\":[4],\\\"data\\\":[3,3,3,3]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[4],\\\"data\\\":[-0.9899924966004454,-0.9899924966004454,-0.9899924966004454,-0.9899924966004454]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void cosDTTest5() {
-        test("dt:cos(\"{\\\"type\\\":\\\"int64\\\",\\\"shape\\\":[2,2],\\\"data\\\":[3,3,3,3]}\"^^dt:NumericDataTensor)",
+        test("dtf:cos(\"{\\\"type\\\":\\\"int64\\\",\\\"shape\\\":[2,2],\\\"data\\\":[3,3,3,3]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[2,2],\\\"data\\\":[-0.9899924966004454,-0.9899924966004454,-0.9899924966004454,-0.9899924966004454]}\"^^dt:NumericDataTensor");
     }
 
 
     @Test
     public void sinDTTest1() {
-        test("dt:sin(\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[0.0,0.0,0.0,0.0]}\"^^dt:NumericDataTensor)",
+        test("dtf:sin(\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[0.0,0.0,0.0,0.0]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[0.0,0.0,0.0,0.0]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void sinDTTest2() {
-        test("dt:sin(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[1,1,1,1]}\"^^dt:NumericDataTensor)",
+        test("dtf:sin(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[1,1,1,1]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[0.8414709848078965,0.8414709848078965,0.8414709848078965,0.8414709848078965]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void sinDTTest3() {
-        test("dt:sin(\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3.0,3.0,3.0,3.0]}\"^^dt:NumericDataTensor)",
+        test("dtf:sin(\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3.0,3.0,3.0,3.0]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[0.1411200080598672,0.1411200080598672,0.1411200080598672,0.1411200080598672]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void sinDTTest4() {
-        test("dt:sin(\"{\\\"type\\\":\\\"int16\\\",\\\"shape\\\":[4],\\\"data\\\":[3,3,3,3]}\"^^dt:NumericDataTensor)",
+        test("dtf:sin(\"{\\\"type\\\":\\\"int16\\\",\\\"shape\\\":[4],\\\"data\\\":[3,3,3,3]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[4],\\\"data\\\":[0.1411200080598672,0.1411200080598672,0.1411200080598672,0.1411200080598672]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void sinDTTest5() {
-        test("dt:sin(\"{\\\"type\\\":\\\"int64\\\",\\\"shape\\\":[2,2],\\\"data\\\":[3,3,3,3]}\"^^dt:NumericDataTensor)",
+        test("dtf:sin(\"{\\\"type\\\":\\\"int64\\\",\\\"shape\\\":[2,2],\\\"data\\\":[3,3,3,3]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[2,2],\\\"data\\\":[0.1411200080598672,0.1411200080598672,0.1411200080598672,0.1411200080598672]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void logDTTest1() {
-        test("dt:log(\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[1.0,1.0,1.0,1.0]}\"^^dt:NumericDataTensor)",
+        test("dtf:log(\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[1.0,1.0,1.0,1.0]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[0.0,0.0,0.0,0.0]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void logDTTest2() {
-        test("dt:log(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[2,2,2,2]}\"^^dt:NumericDataTensor)",
+        test("dtf:log(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[2,2,2,2]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[0.6931471805599453,0.6931471805599453,0.6931471805599453,0.6931471805599453]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void logDTTest3() {
-        test("dt:log(\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3.0,3.0,3.0,3.0]}\"^^dt:NumericDataTensor)",
+        test("dtf:log(\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3.0,3.0,3.0,3.0]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[1.0986122886681098,1.0986122886681098,1.0986122886681098,1.0986122886681098]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void logDTTest4() {
-        test("dt:log(\"{\\\"type\\\":\\\"int16\\\",\\\"shape\\\":[4],\\\"data\\\":[3,3,3,3]}\"^^dt:NumericDataTensor)",
+        test("dtf:log(\"{\\\"type\\\":\\\"int16\\\",\\\"shape\\\":[4],\\\"data\\\":[3,3,3,3]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[4],\\\"data\\\":[1.0986122886681098,1.0986122886681098,1.0986122886681098,1.0986122886681098]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void logDTTest5() {
-        test("dt:log(\"{\\\"type\\\":\\\"int64\\\",\\\"shape\\\":[2,2],\\\"data\\\":[3,3,3,3]}\"^^dt:NumericDataTensor)",
+        test("dtf:log(\"{\\\"type\\\":\\\"int64\\\",\\\"shape\\\":[2,2],\\\"data\\\":[3,3,3,3]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[2,2],\\\"data\\\":[1.0986122886681098,1.0986122886681098,1.0986122886681098,1.0986122886681098]}\"^^dt:NumericDataTensor");
     }
 
     @Test(expected = ExprEvalException.class)
     public void logDTTest6() {
-        testError("dt:log(\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[0.0,0.0,0.0,0.0]}\"^^dt:NumericDataTensor)");
+        testError("dtf:log(\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[0.0,0.0,0.0,0.0]}\"^^dt:NumericDataTensor)");
     }
 
     @Test
     public void logPDTTest1() {
-        test("dt:logp(2, \"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[1.0,1.0,1.0,1.0]}\"^^dt:NumericDataTensor)",
+        test("dtf:logp(2, \"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[1.0,1.0,1.0,1.0]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[0.0,0.0,0.0,0.0]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void logPDTTest2() {
-        test("dt:logp(2, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[2,2,2,2]}\"^^dt:NumericDataTensor)",
+        test("dtf:logp(2, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[2,2,2,2]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[1.0,1.0,1.0,1.0]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void logPDTTest3() {
-        test("dt:logp(2, \"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3.0,3.0,3.0,3.0]}\"^^dt:NumericDataTensor)",
+        test("dtf:logp(2, \"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3.0,3.0,3.0,3.0]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[1.5849625007211563,1.5849625007211563,1.5849625007211563,1.5849625007211563]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void logPDTTest4() {
-        test("dt:logp(2, \"{\\\"type\\\":\\\"int16\\\",\\\"shape\\\":[4],\\\"data\\\":[3,3,3,3]}\"^^dt:NumericDataTensor)",
+        test("dtf:logp(2, \"{\\\"type\\\":\\\"int16\\\",\\\"shape\\\":[4],\\\"data\\\":[3,3,3,3]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[4],\\\"data\\\":[1.5849625007211563,1.5849625007211563,1.5849625007211563,1.5849625007211563]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void logPDTTest5() {
-        test("dt:logp(2, \"{\\\"type\\\":\\\"int64\\\",\\\"shape\\\":[2,2],\\\"data\\\":[4,8,16,4]}\"^^dt:NumericDataTensor)",
+        test("dtf:logp(2, \"{\\\"type\\\":\\\"int64\\\",\\\"shape\\\":[2,2],\\\"data\\\":[4,8,16,4]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[2,2],\\\"data\\\":[2,3,4,2]}\"^^dt:NumericDataTensor");
     }
 
     @Test(expected = ExprEvalException.class)
     public void logPDTTest6() {
-        testError("dt:logp(2, \"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[0.0,0.0,0.0,0.0]}\"^^dt:NumericDataTensor)");
+        testError("dtf:logp(2, \"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[0.0,0.0,0.0,0.0]}\"^^dt:NumericDataTensor)");
     }
 
     @Test
     public void notDTTest1() {
-        test("dt:not(\"{\\\"shape\\\":[1,2,2],\\\"data\\\":[true,false,true,false]}\"^^dt:BooleanDataTensor)",
+        test("dtf:not(\"{\\\"shape\\\":[1,2,2],\\\"data\\\":[true,false,true,false]}\"^^dt:BooleanDataTensor)",
                 "\"{\\\"shape\\\":[1,2,2],\\\"data\\\":[false,true,false,true]}\"^^dt:BooleanDataTensor");
     }
 
     @Test
     public void notDTTest2() {
-        test("dt:not(\"{\\\"shape\\\":[1,2,2],\\\"data\\\":[false,false,false,false]}\"^^dt:BooleanDataTensor)",
+        test("dtf:not(\"{\\\"shape\\\":[1,2,2],\\\"data\\\":[false,false,false,false]}\"^^dt:BooleanDataTensor)",
                 "\"{\\\"shape\\\":[1,2,2],\\\"data\\\":[true,true,true,true]}\"^^dt:BooleanDataTensor");
     }
 
     @Test
     public void notDTTest3() {
-        test("dt:not(\"{\\\"shape\\\":[1,2,2],\\\"data\\\":[true,true,true,true]}\"^^dt:BooleanDataTensor)",
+        test("dtf:not(\"{\\\"shape\\\":[1,2,2],\\\"data\\\":[true,true,true,true]}\"^^dt:BooleanDataTensor)",
                 "\"{\\\"shape\\\":[1,2,2],\\\"data\\\":[false,false,false,false]}\"^^dt:BooleanDataTensor");
     }
 
     @Test
     public void notDTTest4() {
-        test("dt:not(\"{\\\"shape\\\":[4],\\\"data\\\":[true,true,true,true]}\"^^dt:BooleanDataTensor)",
+        test("dtf:not(\"{\\\"shape\\\":[4],\\\"data\\\":[true,true,true,true]}\"^^dt:BooleanDataTensor)",
                 "\"{\\\"shape\\\":[4],\\\"data\\\":[false,false,false,false]}\"^^dt:BooleanDataTensor");
     }
 
     @Test
     public void notDTTest5() {
-        test("dt:not(\"{\\\"shape\\\":[2,2],\\\"data\\\":[true,true,true,true]}\"^^dt:BooleanDataTensor)",
+        test("dtf:not(\"{\\\"shape\\\":[2,2],\\\"data\\\":[true,true,true,true]}\"^^dt:BooleanDataTensor)",
                 "\"{\\\"shape\\\":[2,2],\\\"data\\\":[false,false,false,false]}\"^^dt:BooleanDataTensor");
     }
 
     @Test
     public void polyDTTest1() {
-        test("dt:poly(2, \"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[1.0,1.0,1.0,1.0]}\"^^dt:NumericDataTensor)",
+        test("dtf:poly(2, \"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[1.0,1.0,1.0,1.0]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[1.0,1.0,1.0,1.0]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void polyDTTest2() {
-        test("dt:poly(2, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[2,2,2,2]}\"^^dt:NumericDataTensor)",
+        test("dtf:poly(2, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[2,2,2,2]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[4,4,4,4]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void polyDTTest3() {
-        test("dt:poly(2, \"{\\\"type\\\":\\\"float32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3.0,3.0,3.0,3.0]}\"^^dt:NumericDataTensor)",
+        test("dtf:poly(2, \"{\\\"type\\\":\\\"float32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3.0,3.0,3.0,3.0]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[9.0,9.0,9.0,9.0]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void polyDTTest4() {
-        test("dt:poly(3, \"{\\\"type\\\":\\\"int16\\\",\\\"shape\\\":[4],\\\"data\\\":[1,2,3,4]}\"^^dt:NumericDataTensor)",
+        test("dtf:poly(3, \"{\\\"type\\\":\\\"int16\\\",\\\"shape\\\":[4],\\\"data\\\":[1,2,3,4]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[4],\\\"data\\\":[1,8,27,64]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void polyDTTest5() {
-        test("dt:poly(3, \"{\\\"type\\\":\\\"int64\\\",\\\"shape\\\":[2,2],\\\"data\\\":[1,2,3,4]}\"^^dt:NumericDataTensor)",
+        test("dtf:poly(3, \"{\\\"type\\\":\\\"int64\\\",\\\"shape\\\":[2,2],\\\"data\\\":[1,2,3,4]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[2,2],\\\"data\\\":[1,8,27,64]}\"^^dt:NumericDataTensor");
     }
 
     @Test(expected = ExprEvalException.class)
     public void polyDTTest6() {
-        testError("dt:poly(-1, \"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[0.0,0.0,0.0,0.0]}\"^^dt:NumericDataTensor)");
+        testError("dtf:poly(-1, \"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[0.0,0.0,0.0,0.0]}\"^^dt:NumericDataTensor)");
     }
 
     @Test(expected = ExprEvalException.class)
     public void polyDTTest7() {
-        testError("dt:poly(-1, \"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[1.0,2.0,3.0,0.0]}\"^^dt:NumericDataTensor)");
+        testError("dtf:poly(-1, \"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[1.0,2.0,3.0,0.0]}\"^^dt:NumericDataTensor)");
     }
 
     @Test
     public void scaleDTTest1() {
-        test("dt:scale(2.0, \"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[1.0,1.0,1.0,1.0]}\"^^dt:NumericDataTensor)",
+        test("dtf:scale(2.0, \"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[1.0,1.0,1.0,1.0]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[2.0,2.0,2.0,2.0]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void scaleDTTest2() {
-        test("dt:scale(2.0, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[2,2,2,2]}\"^^dt:NumericDataTensor)",
+        test("dtf:scale(2.0, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[2,2,2,2]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[4.0,4.0,4.0,4.0]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void scaleDTTest3() {
-        test("dt:scale(3.0, \"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3.0,6.0,5.0,4.0]}\"^^dt:NumericDataTensor)",
+        test("dtf:scale(3.0, \"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[3.0,6.0,5.0,4.0]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[1,2,2],\\\"data\\\":[9.0,18.0,15.0,12.0]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void scaleDTTest4() {
-        test("dt:scale(3.0, \"{\\\"type\\\":\\\"int16\\\",\\\"shape\\\":[4],\\\"data\\\":[3,6,5,4]}\"^^dt:NumericDataTensor)",
+        test("dtf:scale(3.0, \"{\\\"type\\\":\\\"int16\\\",\\\"shape\\\":[4],\\\"data\\\":[3,6,5,4]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[4],\\\"data\\\":[9.0,18.0,15.0,12.0]}\"^^dt:NumericDataTensor");
     }
 
     @Test
     public void scaleDTTest5() {
-        test("dt:scale(-1.0, \"{\\\"type\\\":\\\"int64\\\",\\\"shape\\\":[2,2],\\\"data\\\":[3,6,5,4]}\"^^dt:NumericDataTensor)",
+        test("dtf:scale(-1.0, \"{\\\"type\\\":\\\"int64\\\",\\\"shape\\\":[2,2],\\\"data\\\":[3,6,5,4]}\"^^dt:NumericDataTensor)",
                 "\"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[2,2],\\\"data\\\":[-3.0,-6.0,-5.0,-4.0]}\"^^dt:NumericDataTensor");
     }
 

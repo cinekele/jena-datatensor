@@ -1,7 +1,7 @@
 package pl.edu.pw.mini.jena.datatensor.vocabulary;
 
 public class AggregatesDT {
-    public static final String BASE = "http://example.org/data-tensor/functions/aggregates#";
+    public static final String BASE = "http://example.org/data-tensor/aggregators#";
 
     public static final String SUM = BASE + "sum";
     public static final String AVG = BASE + "avg";
