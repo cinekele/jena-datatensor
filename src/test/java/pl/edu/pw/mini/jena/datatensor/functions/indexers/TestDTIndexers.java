@@ -37,13 +37,19 @@ public class TestDTIndexers {
                 "\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[2],\\\"data\\\":[2, 2]}\"^^dt:NumericDataTensor");
     }
 
-    @Test(expected = ExprEvalException.class)
+    @Test
     public void getSubDTTest6() {
-        testError("dtf:getSubDT(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[2,2,2],\\\"data\\\":[3,2,3,4,3,2,3,4]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1],\\\"data\\\":[1]}\"^^dt:NumericDataTensor)");
+        test("dtf:getSubDT(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[8],\\\"data\\\":[3,2,3,4,3,2,3,4]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[2],\\\"data\\\":[0, 1]}\"^^dt:NumericDataTensor)",
+                "\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[2],\\\"data\\\":[3, 2]}\"^^dt:NumericDataTensor");
     }
 
     @Test(expected = ExprEvalException.class)
     public void getSubDTTest7() {
+        testError("dtf:getSubDT(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[2,2,2],\\\"data\\\":[3,2,3,4,3,2,3,4]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[1],\\\"data\\\":[1]}\"^^dt:NumericDataTensor)");
+    }
+
+    @Test(expected = ExprEvalException.class)
+    public void getSubDTTest8() {
         testError("dtf:getSubDT(\"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[2,2,2],\\\"data\\\":[3,2,3,4,3,2,3,4]}\"^^dt:NumericDataTensor, \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[3, 1],\\\"data\\\":[2,2,2]}\"^^dt:NumericDataTensor)");
     }
 }
