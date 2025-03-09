@@ -101,11 +101,12 @@ The table below lists the implemented SPARQL functions, including their input ar
 ## Implemented Aggregators
 
 The table below lists the implemented aggregation functions, which operate on `NumericDataTensor` inputs and return `NumericDataTensor` results. These aggregators generalize standard aggregation functions for numerical tensors and do not support the `DISTINCT` keyword.
+The `dtf` prefix set to `http://example.org/datatensor/functions/aggregates#`)
 
 | **IRI (with Turtle prefix)** | **Description**                        |
 | -----------------------------|----------------------------------------|
-| **dtf:sum**                  | Sums grouped tensors                   |
-| **dtf:avg**                  | Calculates an average tensor           |
-| **dtf:var**                  | Computes the variance tensor           |
-| **dtf:std**                  | Computes the standard deviation tensor |
+| **dta:sum**                  | Sums grouped tensors                   |
+| **dta:avg**                  | Calculates an average tensor           |
+| **dta:var**                  | Computes the variance tensor           |
+| **dta:std**                  | Computes the standard deviation tensor |
 
