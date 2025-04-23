@@ -32,7 +32,7 @@ This dataset is under fair use license and is provided for educational purposes 
 
 ## Implemented Functions
 
-The table below lists the implemented SPARQL functions, including their input arguments, return values, and associated IRI (with the `dtf` prefix set to `http://example.org/date-tensor/functions#`).
+The table below lists the implemented SPARQL functions, including their input arguments, return values, and associated IRI (with the `dtf` prefix set to `https://w3id.org/rdf-tensor/functions#`).
 
 ### Transforming Functions
 
@@ -104,7 +104,7 @@ The table below lists the implemented SPARQL functions, including their input ar
 ## Implemented Aggregators
 
 The table below lists the implemented aggregation functions, which operate on `NumericDataTensor` inputs and return `NumericDataTensor` results. These aggregators generalize standard aggregation functions for numerical tensors and do not support the `DISTINCT` keyword.
-The `dta` prefix set to `http://example.org/datatensor/functions/aggregates#`)
+The `dta` prefix set to `https://w3id.org/rdf-tensor/aggregators#`)
 
 | **IRI (with Turtle prefix)** | **Description**                        |
 | -----------------------------|----------------------------------------|
