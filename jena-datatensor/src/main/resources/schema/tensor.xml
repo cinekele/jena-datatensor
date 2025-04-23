@@ -4,18 +4,18 @@
          xmlns:dc11="http://purl.org/dc/elements/1.1/"
          xmlns:skos="http://www.w3.org/2004/02/skos/core#">
 
-  <rdfs:Datatype rdf:about="http://example.org/data-tensor#NumericDataTensor">
+  <rdfs:Datatype rdf:about="https://w3id.org/rdf-tensor/datatypes#NumericDataTensor">
     <dc11:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-07-28</dc11:date>
-    <rdfs:label>DataTensor</rdfs:label>
+    <rdfs:label>Numeric Data Tensor</rdfs:label>
     <rdfs:comment xml:lang="en">The datatype for a tensor representing numeric data.</rdfs:comment>
     <dc11:description xml:lang="en">The datatype for a tensor representing numeric data.</dc11:description>
     <skos:definition xml:lang="en">The datatype for a tensor representing numeric data.</skos:definition>
     <dc11:creator>Marciniak Piotr</dc11:creator>
   </rdfs:Datatype>
 
-  <rdfs:Datatype rdf:about="http://example.org/data-tensor#BooleanDataTensor">
+  <rdfs:Datatype rdf:about="https://w3id.org/rdf-tensor/datatypes#BooleanDataTensor">
     <dc11:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-07-28</dc11:date>
-    <rdfs:label>DataTensor</rdfs:label>
+    <rdfs:label>Boolean Data Tensor</rdfs:label>
     <rdfs:comment xml:lang="en">The datatype for a tensor representing boolean data.</rdfs:comment>
     <dc11:description xml:lang="en">The datatype for a tensor representing boolean data.</dc11:description>
     <skos:definition xml:lang="en">The datatype for a tensor representing boolean data.</skos:definition>

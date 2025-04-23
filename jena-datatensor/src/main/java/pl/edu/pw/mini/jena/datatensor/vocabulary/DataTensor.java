@@ -7,7 +7,7 @@ import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.NumericDataTenso
 
 public class DataTensor {
 
-    public static final String NS = "http://example.org/data-tensor#";
+    public static final String NS = "https://w3id.org/rdf-tensor/datatypes#";
     public static final Resource numericDataTensor;
     public static final Resource booleanDataTensor;
 

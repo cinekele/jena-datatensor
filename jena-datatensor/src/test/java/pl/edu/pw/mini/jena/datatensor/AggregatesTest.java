@@ -21,20 +21,20 @@ import static org.junit.Assert.assertTrue;
 public class AggregatesTest {
     static String NL = System.getProperty("line.separator");
     static String PRE = StrUtils.strjoinNL(
-            "PREFIX dta: <http://example.org/data-tensor/aggregators#>",
-            "PREFIX dt: <http://example.org/data-tensor#>");
+            "PREFIX dta: <https://w3id.org/rdf-tensor/aggregators#>",
+            "PREFIX dt: <https://w3id.org/rdf-tensor/datatypes#>");
     static DatasetGraph ds = SSE.parseDatasetGraph(
             "(dataset (graph (:x :p1 \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[3],\\\"data\\\":[10, 20, 30]}\"^^dt:NumericDataTensor)" +
                     " (:x :p2 \"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[3],\\\"data\\\":[15.5, 25.5, 30.5]}\"^^dt:NumericDataTensor) " +
                     " (:x :p3 \"{\\\"type\\\":\\\"float64\\\",\\\"shape\\\":[3],\\\"data\\\":[1.55E1, 2.55E1, 3.05E1]}\"^^dt:NumericDataTensor) " +
                     " (:x :p4 \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[3],\\\"data\\\":[10, 20, 30]}\"^^dt:NumericDataTensor) " +
                     " (:x :p5 \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[3],\\\"data\\\":[10, 20, 30]}\"^^dt:NumericDataTensor) ))",
-            PrefixMapping.Factory.create().setNsPrefix("dt", "http://example.org/data-tensor#")
+            PrefixMapping.Factory.create().setNsPrefix("dt", "https://w3id.org/rdf-tensor/datatypes#")
 
     );
     static DatasetGraph dsEmpty = SSE.parseDatasetGraph("(dataset)");
     static DatasetGraph ds1 = SSE.parseDatasetGraph("(dataset (graph (:x :p \"{\\\"type\\\":\\\"int32\\\",\\\"shape\\\":[3],\\\"data\\\":[10, 20, 30]}\"^^dt:NumericDataTensor)) )",
-            PrefixMapping.Factory.create().setNsPrefix("dt", "http://example.org/data-tensor#"));
+            PrefixMapping.Factory.create().setNsPrefix("dt", "https://w3id.org/rdf-tensor/datatypes#"));
 
     static INDArray sum_expected = Nd4j.create(new double[]{61, 111, 151});
     static INDArray sum_expected_no_duplicates = Nd4j.create(new double[]{25.5, 45.5, 60.5});
@@ -46,11 +46,11 @@ public class AggregatesTest {
 
     @Test
     public void agg_stat_registry() {
-        assertTrue(AggregateRegistry.isRegistered("http://example.org/data-tensor/aggregators#avg"));
-        assertTrue(AggregateRegistry.isRegistered("http://example.org/data-tensor/aggregators#var"));
-        assertTrue(AggregateRegistry.isRegistered("http://example.org/data-tensor/aggregators#std"));
-        assertTrue(AggregateRegistry.isRegistered("http://example.org/data-tensor/aggregators#sum"));
-        assertFalse(AggregateRegistry.isRegistered("http://example.org/data-tensor/aggregators#avg2"));
+        assertTrue(AggregateRegistry.isRegistered("https://w3id.org/rdf-tensor/aggregators#avg"));
+        assertTrue(AggregateRegistry.isRegistered("https://w3id.org/rdf-tensor/aggregators#var"));
+        assertTrue(AggregateRegistry.isRegistered("https://w3id.org/rdf-tensor/aggregators#std"));
+        assertTrue(AggregateRegistry.isRegistered("https://w3id.org/rdf-tensor/aggregators#sum"));
+        assertFalse(AggregateRegistry.isRegistered("https://w3id.org/rdf-tensor/aggregators#avg2"));
     }
 
     @Test

@@ -10,7 +10,7 @@ import pl.edu.pw.mini.jena.datatensor.datatypes.implementations.NumericDataTenso
  * @author Piotr Marciniak
  */
 public class BaseDataTensor extends BaseDatatype {
-    public static final String URI = "http://example.org/data-tensor#";
+    public static final String URI = "https://w3id.org/rdf-tensor/datatypes#";
     private static boolean isDatatypesRegistered = false;
     public Class<?> javaClass = null;
 

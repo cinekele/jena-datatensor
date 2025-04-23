@@ -1,7 +1,7 @@
 package pl.edu.pw.mini.jena.datatensor.vocabulary;
 
 public class FunctionsDT {
-    public static final String NS = "http://example.org/data-tensor/functions#";
+    public static final String NS = "https://w3id.org/rdf-tensor/functions#";
 
     public static String getURI() {
         return NS;
