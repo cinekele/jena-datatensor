@@ -1,13 +1,13 @@
-# jena-datatensor
-
 ## THIS PROJECT WAS MOVED TO [https://github.com/RDF-tensor/jena-datatensor](https://github.com/RDF-tensor/jena-datatensor)
 
 Please go there for updates and detailed documentation.
 
 
-<br><br><br><br>
+<br><br><br><br><br><br><br><br>
 
 ----
+
+# jena-datatensor
 
 `jena-datatensor` is an extension for Apache Jena that introduces 2 new datatypes, 36 SPARQL functions, and 6 new aggregators to enhance the processing of data tensors within RDF models.
 
